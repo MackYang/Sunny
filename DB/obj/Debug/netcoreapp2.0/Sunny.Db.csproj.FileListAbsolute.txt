@@ -9,3 +9,5 @@ D:\Work\Code\Sunny\DB\obj\Debug\netcoreapp2.0\Sunny.Db.dll
 D:\Work\Code\Sunny\DB\obj\Debug\netcoreapp2.0\Sunny.Db.pdb
 D:\Work\Code\Sunny\DB\bin\Debug\netcoreapp2.0\Sunny.Common.dll
 D:\Work\Code\Sunny\DB\bin\Debug\netcoreapp2.0\Sunny.Common.pdb
+D:\Work\Code\Sunny\DB\bin\Debug\netcoreapp2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Work\Code\Sunny\DB\bin\Debug\netcoreapp2.0\Microsoft.Extensions.DependencyInjection.Abstractions.xml

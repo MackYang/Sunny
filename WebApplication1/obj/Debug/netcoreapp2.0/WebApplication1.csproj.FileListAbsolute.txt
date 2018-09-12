@@ -1,0 +1,11 @@
+D:\Work\Code\Sunny\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.deps.json
+D:\Work\Code\Sunny\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.runtimeconfig.json
+D:\Work\Code\Sunny\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.runtimeconfig.dev.json
+D:\Work\Code\Sunny\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.dll
+D:\Work\Code\Sunny\WebApplication1\bin\Debug\netcoreapp2.0\WebApplication1.pdb
+D:\Work\Code\Sunny\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.csprojResolveAssemblyReference.cache
+D:\Work\Code\Sunny\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.csproj.CoreCompileInputs.cache
+D:\Work\Code\Sunny\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.AssemblyInfoInputs.cache
+D:\Work\Code\Sunny\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.AssemblyInfo.cs
+D:\Work\Code\Sunny\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.dll
+D:\Work\Code\Sunny\WebApplication1\obj\Debug\netcoreapp2.0\WebApplication1.pdb
