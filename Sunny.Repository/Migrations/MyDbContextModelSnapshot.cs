@@ -7,7 +7,7 @@ using Sunny.Repository;
 
 namespace Sunny.Repository.Migrations
 {
-    [DbContext(typeof(MyDbContext))]
+    [DbContext(typeof(EfDbContext))]
     partial class MyDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -63,7 +63,8 @@ namespace Sunny.Repository.Migrations
 
                     b.Property<string>("AAA");
 
-                    b.Property<string>("StudentName");
+                    b.Property<string>("StudentName")
+                        .HasMaxLength(15);
 
                     b.Property<string>("Test");
 

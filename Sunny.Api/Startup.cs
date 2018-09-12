@@ -44,7 +44,7 @@ namespace Sunny.Api
              
             
             var connection = Configuration.GetConnectionString("MySql");
-            services.AddDbContext<MyDbContext>(options =>
+            services.AddDbContext<EfDbContext>(options =>
                 options.UseLoggerFactory(Mlogger).UseMySql(connection));
 
             services.AddMvc();

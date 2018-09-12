@@ -24,10 +24,10 @@ namespace Sunny.Api.Controllers
         public IEnumerable<string> Get()
         {
 
-            var builder = new DbContextOptionsBuilder<MyDbContext>();
+            var builder = new DbContextOptionsBuilder<EfDbContext>();
 
             builder.UseMySql("server=localhost;database=test;user=root;password=myAdmin.;");
-            MyDbContext db = new MyDbContext(builder.Options);
+            EfDbContext db = new EfDbContext(builder.Options);
 
             //db.Update(new User());
             //var a=db.Uesrs;

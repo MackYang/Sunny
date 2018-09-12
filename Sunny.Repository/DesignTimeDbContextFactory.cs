@@ -7,20 +7,20 @@ using System.Text;
 
 namespace Sunny.Repository
 {
-    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<MyDbContext>
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<EfDbContext>
 
     { 
 
-        public MyDbContext CreateDbContext(string[] args)
+        public EfDbContext CreateDbContext(string[] args)
 
         {
 
-            var builder = new DbContextOptionsBuilder<MyDbContext>();
+            var builder = new DbContextOptionsBuilder<EfDbContext>();
             
-
+             
             builder.UseMySql("server=localhost;database=test;user=root;password=myAdmin.;");
             
-            return new MyDbContext(builder.Options);
+            return new EfDbContext(builder.Options);
 
 
         }

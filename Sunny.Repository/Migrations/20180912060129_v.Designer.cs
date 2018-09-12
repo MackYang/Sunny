@@ -8,8 +8,8 @@ using Sunny.Repository;
 
 namespace Sunny.Repository.Migrations
 {
-    [DbContext(typeof(MyDbContext))]
-    [Migration("20180912050818_v")]
+    [DbContext(typeof(EfDbContext))]
+    [Migration("20180912060129_v")]
     partial class v
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,7 +65,8 @@ namespace Sunny.Repository.Migrations
 
                     b.Property<string>("AAA");
 
-                    b.Property<string>("StudentName");
+                    b.Property<string>("StudentName")
+                        .HasMaxLength(15);
 
                     b.Property<string>("Test");
 

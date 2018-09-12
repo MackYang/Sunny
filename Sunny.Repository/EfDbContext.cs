@@ -10,12 +10,12 @@ using System.Text;
  
 namespace Sunny.Repository
 {
-    public class MyDbContext : DbContext
+    public class EfDbContext : DbContext
     {
-        public MyDbContext(DbContextOptions<MyDbContext> options)
+        public EfDbContext(DbContextOptions<EfDbContext> options)
             : base(options)
         {
-
+            
             Database.EnsureCreated();
             //Database.Migrate();
              
@@ -28,7 +28,7 @@ namespace Sunny.Repository
         {
             // IEntityTypeConfiguration
             base.OnModelCreating(modelBuilder);
-
+            
             //查找所有FluentAPI配置
             var typesToRegister = Assembly.GetExecutingAssembly().GetTypes().Where(q => q.GetInterface(typeof(IEntityTypeConfiguration<>).FullName) != null);
 
@@ -39,6 +39,7 @@ namespace Sunny.Repository
 
                 dynamic configurationInstance = Activator.CreateInstance(type);
                 modelBuilder.ApplyConfiguration(configurationInstance);
+                
             }
 
             modelBuilder.Entity<Student>().HasOne(x => x.Address).WithOne(x=>x.Student).HasForeignKey<StudentAddress>(x=>x.Zipcode);

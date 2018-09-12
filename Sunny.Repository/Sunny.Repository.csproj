@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Sunny.Common\Sunny.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DbModel\Model\" />
+  </ItemGroup>
+
 </Project>

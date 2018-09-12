@@ -41,7 +41,7 @@ namespace Sunny.Repository.Migrations
                 {
                     StudentId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    StudentName = table.Column<string>(nullable: true),
+                    StudentName = table.Column<string>(maxLength: 15, nullable: true),
                     Test = table.Column<string>(nullable: true),
                     AAA = table.Column<string>(nullable: true)
                 },
