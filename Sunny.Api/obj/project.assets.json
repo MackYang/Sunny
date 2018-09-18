@@ -4825,7 +4825,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
-          "Microsoft.Extensions.DependencyModel": "2.1.0"
+          "Microsoft.Extensions.DependencyModel": "2.1.0",
+          "Microsoft.Extensions.Logging": "2.1.1"
         },
         "compile": {
           "bin/placeholder/Sunny.Common.dll": {}
@@ -4840,6 +4841,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.1.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.1.1",
+          "Microsoft.Extensions.Logging": "2.1.1",
           "Pomelo.EntityFrameworkCore.MySql": "2.1.1",
           "Sunny.Common": "1.0.0"
         },

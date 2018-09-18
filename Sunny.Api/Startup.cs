@@ -5,12 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Sunny.Api.Midware;
 using Sunny.Common.ConfigOption;
 using Sunny.Common.DependencyInjection;
 using Sunny.Repository;
@@ -32,10 +34,10 @@ namespace Sunny.Api
 
         public IConfiguration Configuration { get; }
 
-        //创建日志工厂
-        private static ILoggerFactory Mlogger => new LoggerFactory()
-                 .AddDebug((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name))
-                .AddConsole((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
+        ////创建日志工厂
+        //private static ILoggerFactory MyLoggerProvider => new LoggerFactory()
+        //         .AddDebug((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name))
+        //        .AddConsole((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -45,10 +47,8 @@ namespace Sunny.Api
             
             var connection = Configuration.GetConnectionString("MySql");
             services.AddDbContext<EfDbContext>(options =>
-                options.UseLoggerFactory(Mlogger).UseMySql(connection));
-
-            services.AddMvc();
-
+                options.UseMySql(connection));
+               
             //services.Configure<TestOption>(Configuration.GetSection("ConfigOption:Person"));
 
             DIHelper.AutoRegister(services);
@@ -59,12 +59,28 @@ namespace Sunny.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+
+            //loggerFactory.AddProvider(new MyFilteredLoggerProvider());
+            // loggerFactory.AddDebug((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
+            //loggerFactory.AddConsole((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == "Microsoft.EntityFrameworkCore.Database.Command"));
+
+            //loggerFactory.AddConsole();
+            //loggerFactory.AddNetLogger((categoryName,logLevel)=>true);
+            loggerFactory.AddNetLogger((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
+
+            //app.Use(async (ctx, next) =>
+            //{
+            //    IGreeter greeter = ctx.RequestServices.GetService<IGreeter>();
+            //    await ctx.Response.WriteAsync(greeter.Greet());
+            //    await next();
+            //});
 
             app.UseMvc();
         }

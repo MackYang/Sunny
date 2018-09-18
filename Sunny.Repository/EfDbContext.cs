@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Sunny.Common.DependencyInjection;
 using Sunny.Repository.DbModel;
@@ -10,15 +12,14 @@ using System.Text;
  
 namespace Sunny.Repository
 {
-    public class EfDbContext : DbContext
+    public partial class EfDbContext : DbContext
     {
         public EfDbContext(DbContextOptions<EfDbContext> options)
             : base(options)
         {
             
             Database.EnsureCreated();
-            //Database.Migrate();
-             
+          
         }
 
          
@@ -28,7 +29,9 @@ namespace Sunny.Repository
         {
             // IEntityTypeConfiguration
             base.OnModelCreating(modelBuilder);
-            
+
+           
+
             //查找所有FluentAPI配置
             var typesToRegister = Assembly.GetExecutingAssembly().GetTypes().Where(q => q.GetInterface(typeof(IEntityTypeConfiguration<>).FullName) != null);
 
@@ -41,21 +44,9 @@ namespace Sunny.Repository
                 modelBuilder.ApplyConfiguration(configurationInstance);
                 
             }
-
-            modelBuilder.Entity<Student>().HasOne(x => x.Address).WithOne(x=>x.Student).HasForeignKey<StudentAddress>(x=>x.Zipcode);
-            //modelBuilder.Entity<Student>().HasIndex(x => x.StudentName).ForMySqlIsFullText();
+ 
         }
 
 
-        public DbSet<Category> Category { get; set; }
-        public DbSet<Passage> Passage { get; set; }
-        public DbSet<PassageCategory> PassageCategory { get; set; }
-
-
-        //public DbSet<User> Uesrs { get; set; }
-        //public DbSet<UserB> Uesr2s { get; set; }
-        public DbSet<Student> Student { get; set; }
-       
-        public DbSet<StudentAddress> StudentAddress { get; set; }
     }
 }

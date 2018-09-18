@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Sunny.Repository;
 using Sunny.Repository.DbModel;
 
@@ -13,10 +14,12 @@ namespace Sunny.Api.Controllers
     public class ValuesController : Controller
     {
 
-
-        public ValuesController()
+        EfDbContext db;
+        ILogger logger;
+        public ValuesController(EfDbContext efDbContext,ILogger<ValuesController> logger)
         {
-
+            this.db = efDbContext;
+            this.logger = logger;
         }
 
         // GET api/values
@@ -24,42 +27,42 @@ namespace Sunny.Api.Controllers
         public IEnumerable<string> Get()
         {
 
-            var builder = new DbContextOptionsBuilder<EfDbContext>();
+            //var builder = new DbContextOptionsBuilder<EfDbContext>();
 
-            builder.UseMySql("server=localhost;database=test;user=root;password=myAdmin.;");
-            EfDbContext db = new EfDbContext(builder.Options);
+            //builder.UseMySql("server=localhost;database=test;user=root;password=myAdmin.;");
+            //EfDbContext db = new EfDbContext(builder.Options);
 
-            //db.Update(new User());
-            //var a=db.Uesrs;
-            //db.Query<User>();
+
 
             //// var b = db.Query<User>();
             //var c = db.Uesr2s.First();
 
-            Student student = new Student();
-            student.StudentId = 23;
-            student.StudentName = "YH";
+            //Student student = new Student();
+            //student.Id = 23;
+            //student.StudentName = "YH";
 
-            StudentAddress address = new StudentAddress();
-            address.Student = student;
-            address.Zipcode = 999;
-            address.StudentAddressId = 111;
+            //StudentAddress address = new StudentAddress();
+            //address.Student = student;
+            //address.Zipcode = 999;
+            //address.Id = 111;
 
-            StudentAddress address2 = new StudentAddress();
-            address2.Student = student;
-            address2.Zipcode = 001;
-            address2.StudentAddressId = 222;
+            //StudentAddress address2 = new StudentAddress();
+            //address2.Student = student;
+            //address2.Zipcode = 001;
+            //address2.Id = 222;
 
-            db.AddRange(student, address, address2);
+            //db.AddRange(student, address, address2);
 
-            db.SaveChanges();
+            //db.SaveChanges();
 
-            
 
-        
-            
-           
-            return new string[] { "value1", "value2" };
+            var x=db.Student.FirstOrDefault();
+
+            Console.WriteLine("hello");
+            logger.LogInformation("this is test AAAA");
+            logger.LogWarning("QWWWWWWW");
+
+            return new string[] { "value1", "value2",x.ToString() };
         }
 
         // GET api/values/5
