@@ -1,8 +1,14 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using Sunny.Common.ConfigOption;
+using Sunny.Common.Enum;
+using Sunny.Common.Helper.Net;
+using Sunny.Common.Helper.String;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Sunny.Common.Helper.Log
 {
@@ -12,10 +18,12 @@ namespace Sunny.Common.Helper.Log
 
         private readonly BlockingCollection<LogData> _messageQueue = new BlockingCollection<LogData>(_maxQueuedMessages);
         private readonly Thread _outputThread;
+        private readonly NetLoggerOption option;
 
-        
-        public NetLoggerProcessor()
+
+        public NetLoggerProcessor(NetLoggerOption option)
         {
+            this.option = option;
             // Start Console message queue processor
             _outputThread = new Thread(ProcessLogQueue)
             {
@@ -42,10 +50,64 @@ namespace Sunny.Common.Helper.Log
         }
 
         // for testing
-        internal virtual void WriteMessage(LogData message)
+        internal virtual void WriteMessage(LogData log)
         {
-            Console.WriteLine($"NetXXX:Message{message.Message},Level:{message.LevelString}");
+            //Console.WriteLine($"NetXXX:Message{message.Message},Level:{message.LevelString}")
+
+            AddLog(log.LevelString, log.Message, null, log.Exception?.StackTrace);
         }
+
+
+
+
+        private async Task<bool> AddLog(string logLevel, string logMessage, string attData, string stackInfo)
+        {
+            bool flag = false;
+
+            var jsonObj = new
+            {
+                systemId = option.SystemId,
+                logLevel = logLevel,
+                logMessage = logMessage,
+                attData = attData,
+                stackInfo = stackInfo
+            };
+
+            try
+            {
+                var res = NetHelper.PostWithJson(option.Url, JsonHelper.ToJsonString(jsonObj));
+                OPResult opRes = JsonHelper.FromJsonString<OPResult>(res);
+                if (opRes.State == 1)
+                {
+                    flag = true;
+                }
+                else
+                {
+                    //TODO
+                    // Logger.Error("调用日志系统失败:" + res + ",extensionData=" + JsonConvert.SerializeObject(dicArgs));
+                }
+            }
+            catch (Exception ex)
+            {
+                //TODO
+                // Logger.Error("调用日志系统失败:" + ex.Message + ",extensionData=" + JsonConvert.SerializeObject(dicArgs), ex);
+            }
+
+            return flag;
+
+        }
+
+
+        private class OPResult
+        {
+            public int State { get; set; }
+
+            public object Data { get; set; }
+
+        }
+
+
+
 
         private void ProcessLogQueue()
         {

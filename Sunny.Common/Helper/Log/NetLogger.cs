@@ -9,7 +9,7 @@ namespace Sunny.Common.Helper.Log
     public class NetLogger : ILogger
     {
 
-        private static readonly string _loglevelPadding = ": ";
+       
         private static readonly string _messagePadding;
         private static readonly string _newLineWithMessagePadding;
         private readonly NetLoggerProcessor _queueProcessor;
@@ -24,16 +24,6 @@ namespace Sunny.Common.Helper.Log
         public IDisposable BeginScope<TState>(TState state) => ScopeProvider?.Push(state) ?? NullScope.Instance;
 
 
-
-        public NetLogger(string name, Func<string, LogLevel, bool> filter, bool includeScopes)
-            : this(name, filter, includeScopes ? new LoggerExternalScopeProvider() : null, new NetLoggerProcessor())
-        {
-        }
-
-        public NetLogger(string name, Func<string, LogLevel, bool> filter, IExternalScopeProvider scopeProvider)
-            : this(name, filter, scopeProvider, new NetLoggerProcessor())
-        {
-        }
 
         internal NetLogger(string name, Func<string, LogLevel, bool> filter, IExternalScopeProvider scopeProvider, NetLoggerProcessor loggerProcessor)
         {
@@ -68,20 +58,22 @@ namespace Sunny.Common.Helper.Log
             switch (logLevel)
             {
                 case LogLevel.Trace:
-                    return "trce";
+                    return "Trace";
                 case LogLevel.Debug:
-                    return "dbug";
+                    return "Debug";
                 case LogLevel.Information:
-                    return "info";
+                    return "Info";
                 case LogLevel.Warning:
-                    return "warn";
+                    return "Warn";
                 case LogLevel.Error:
-                    return "fail";
+                    return "Error";
                 case LogLevel.Critical:
-                    return "crit";
+                    return "Fotal";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(logLevel));
             }
+
+
         }
 
         private void GetScopeInformation(StringBuilder stringBuilder)
@@ -119,11 +111,9 @@ namespace Sunny.Common.Helper.Log
 
             var logLevelString = GetLogLevelString(logLevel);
             // category and event id
-            logBuilder.Append(_loglevelPadding);
             logBuilder.Append(logName);
-            logBuilder.Append("[");
-            logBuilder.Append(eventId);
-            logBuilder.AppendLine("]");
+            logBuilder.Append($"[eventid={eventId}]");
+
 
             // scope information
             GetScopeInformation(logBuilder);
@@ -138,9 +128,9 @@ namespace Sunny.Common.Helper.Log
                 logBuilder.Replace(Environment.NewLine, _newLineWithMessagePadding, len, message.Length);
             }
 
-            // Example:
-            // System.InvalidOperationException
-            //    at Namespace.Class.Function() in File:line X
+            //// Example:
+            //// System.InvalidOperationException
+            ////    at Namespace.Class.Function() in File:line X
             if (exception != null)
             {
                 // exception message
@@ -154,7 +144,9 @@ namespace Sunny.Common.Helper.Log
                 _queueProcessor.EnqueueMessage(new LogData()
                 {
                     Message = logBuilder.ToString(),
-                    LevelString = hasLevel ? logLevelString : null
+                    LevelString = hasLevel ? logLevelString : null,
+                    Exception = exception
+
                 });
             }
 

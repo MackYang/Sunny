@@ -1,7 +1,61 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v2.0": {
+    ".NETCoreApp,Version=v2.1": {
+      "Microsoft.AspNetCore.Http/2.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.1",
+          "Microsoft.AspNetCore.WebUtilities": "2.1.1",
+          "Microsoft.Extensions.ObjectPool": "2.1.1",
+          "Microsoft.Extensions.Options": "2.1.1",
+          "Microsoft.Net.Http.Headers": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.1.1",
+          "System.Text.Encodings.Web": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.WebUtilities/2.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Net.Http.Headers": "2.1.1",
+          "System.Text.Encodings.Web": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "compile": {
@@ -253,6 +307,15 @@
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Console.dll": {}
         }
       },
+      "Microsoft.Extensions.ObjectPool/2.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {}
+        }
+      },
       "Microsoft.Extensions.Options/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -294,178 +357,193 @@
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
-      "Microsoft.NETCore.App/2.0.0": {
+      "Microsoft.Net.Http.Headers/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.DotNetHostPolicy": "2.0.0",
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "NETStandard.Library": "2.0.0"
+          "Microsoft.Extensions.Primitives": "2.1.1",
+          "System.Buffers": "4.5.0"
         },
         "compile": {
-          "ref/netcoreapp2.0/Microsoft.CSharp.dll": {},
-          "ref/netcoreapp2.0/Microsoft.VisualBasic.dll": {},
-          "ref/netcoreapp2.0/Microsoft.Win32.Primitives.dll": {},
-          "ref/netcoreapp2.0/System.AppContext.dll": {},
-          "ref/netcoreapp2.0/System.Buffers.dll": {},
-          "ref/netcoreapp2.0/System.Collections.Concurrent.dll": {},
-          "ref/netcoreapp2.0/System.Collections.Immutable.dll": {},
-          "ref/netcoreapp2.0/System.Collections.NonGeneric.dll": {},
-          "ref/netcoreapp2.0/System.Collections.Specialized.dll": {},
-          "ref/netcoreapp2.0/System.Collections.dll": {},
-          "ref/netcoreapp2.0/System.ComponentModel.Annotations.dll": {},
-          "ref/netcoreapp2.0/System.ComponentModel.Composition.dll": {},
-          "ref/netcoreapp2.0/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/netcoreapp2.0/System.ComponentModel.EventBasedAsync.dll": {},
-          "ref/netcoreapp2.0/System.ComponentModel.Primitives.dll": {},
-          "ref/netcoreapp2.0/System.ComponentModel.TypeConverter.dll": {},
-          "ref/netcoreapp2.0/System.ComponentModel.dll": {},
-          "ref/netcoreapp2.0/System.Configuration.dll": {},
-          "ref/netcoreapp2.0/System.Console.dll": {},
-          "ref/netcoreapp2.0/System.Core.dll": {},
-          "ref/netcoreapp2.0/System.Data.Common.dll": {},
-          "ref/netcoreapp2.0/System.Data.dll": {},
-          "ref/netcoreapp2.0/System.Diagnostics.Contracts.dll": {},
-          "ref/netcoreapp2.0/System.Diagnostics.Debug.dll": {},
-          "ref/netcoreapp2.0/System.Diagnostics.DiagnosticSource.dll": {},
-          "ref/netcoreapp2.0/System.Diagnostics.FileVersionInfo.dll": {},
-          "ref/netcoreapp2.0/System.Diagnostics.Process.dll": {},
-          "ref/netcoreapp2.0/System.Diagnostics.StackTrace.dll": {},
-          "ref/netcoreapp2.0/System.Diagnostics.TextWriterTraceListener.dll": {},
-          "ref/netcoreapp2.0/System.Diagnostics.Tools.dll": {},
-          "ref/netcoreapp2.0/System.Diagnostics.TraceSource.dll": {},
-          "ref/netcoreapp2.0/System.Diagnostics.Tracing.dll": {},
-          "ref/netcoreapp2.0/System.Drawing.Primitives.dll": {},
-          "ref/netcoreapp2.0/System.Drawing.dll": {},
-          "ref/netcoreapp2.0/System.Dynamic.Runtime.dll": {},
-          "ref/netcoreapp2.0/System.Globalization.Calendars.dll": {},
-          "ref/netcoreapp2.0/System.Globalization.Extensions.dll": {},
-          "ref/netcoreapp2.0/System.Globalization.dll": {},
-          "ref/netcoreapp2.0/System.IO.Compression.FileSystem.dll": {},
-          "ref/netcoreapp2.0/System.IO.Compression.ZipFile.dll": {},
-          "ref/netcoreapp2.0/System.IO.Compression.dll": {},
-          "ref/netcoreapp2.0/System.IO.FileSystem.DriveInfo.dll": {},
-          "ref/netcoreapp2.0/System.IO.FileSystem.Primitives.dll": {},
-          "ref/netcoreapp2.0/System.IO.FileSystem.Watcher.dll": {},
-          "ref/netcoreapp2.0/System.IO.FileSystem.dll": {},
-          "ref/netcoreapp2.0/System.IO.IsolatedStorage.dll": {},
-          "ref/netcoreapp2.0/System.IO.MemoryMappedFiles.dll": {},
-          "ref/netcoreapp2.0/System.IO.Pipes.dll": {},
-          "ref/netcoreapp2.0/System.IO.UnmanagedMemoryStream.dll": {},
-          "ref/netcoreapp2.0/System.IO.dll": {},
-          "ref/netcoreapp2.0/System.Linq.Expressions.dll": {},
-          "ref/netcoreapp2.0/System.Linq.Parallel.dll": {},
-          "ref/netcoreapp2.0/System.Linq.Queryable.dll": {},
-          "ref/netcoreapp2.0/System.Linq.dll": {},
-          "ref/netcoreapp2.0/System.Net.Http.dll": {},
-          "ref/netcoreapp2.0/System.Net.HttpListener.dll": {},
-          "ref/netcoreapp2.0/System.Net.Mail.dll": {},
-          "ref/netcoreapp2.0/System.Net.NameResolution.dll": {},
-          "ref/netcoreapp2.0/System.Net.NetworkInformation.dll": {},
-          "ref/netcoreapp2.0/System.Net.Ping.dll": {},
-          "ref/netcoreapp2.0/System.Net.Primitives.dll": {},
-          "ref/netcoreapp2.0/System.Net.Requests.dll": {},
-          "ref/netcoreapp2.0/System.Net.Security.dll": {},
-          "ref/netcoreapp2.0/System.Net.ServicePoint.dll": {},
-          "ref/netcoreapp2.0/System.Net.Sockets.dll": {},
-          "ref/netcoreapp2.0/System.Net.WebClient.dll": {},
-          "ref/netcoreapp2.0/System.Net.WebHeaderCollection.dll": {},
-          "ref/netcoreapp2.0/System.Net.WebProxy.dll": {},
-          "ref/netcoreapp2.0/System.Net.WebSockets.Client.dll": {},
-          "ref/netcoreapp2.0/System.Net.WebSockets.dll": {},
-          "ref/netcoreapp2.0/System.Net.dll": {},
-          "ref/netcoreapp2.0/System.Numerics.Vectors.dll": {},
-          "ref/netcoreapp2.0/System.Numerics.dll": {},
-          "ref/netcoreapp2.0/System.ObjectModel.dll": {},
-          "ref/netcoreapp2.0/System.Reflection.DispatchProxy.dll": {},
-          "ref/netcoreapp2.0/System.Reflection.Emit.ILGeneration.dll": {},
-          "ref/netcoreapp2.0/System.Reflection.Emit.Lightweight.dll": {},
-          "ref/netcoreapp2.0/System.Reflection.Emit.dll": {},
-          "ref/netcoreapp2.0/System.Reflection.Extensions.dll": {},
-          "ref/netcoreapp2.0/System.Reflection.Metadata.dll": {},
-          "ref/netcoreapp2.0/System.Reflection.Primitives.dll": {},
-          "ref/netcoreapp2.0/System.Reflection.TypeExtensions.dll": {},
-          "ref/netcoreapp2.0/System.Reflection.dll": {},
-          "ref/netcoreapp2.0/System.Resources.Reader.dll": {},
-          "ref/netcoreapp2.0/System.Resources.ResourceManager.dll": {},
-          "ref/netcoreapp2.0/System.Resources.Writer.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.CompilerServices.VisualC.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.Extensions.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.Handles.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.InteropServices.RuntimeInformation.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.InteropServices.WindowsRuntime.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.InteropServices.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.Loader.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.Numerics.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.Serialization.Formatters.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.Serialization.Json.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.Serialization.Primitives.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.Serialization.Xml.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.Serialization.dll": {},
-          "ref/netcoreapp2.0/System.Runtime.dll": {},
-          "ref/netcoreapp2.0/System.Security.Claims.dll": {},
-          "ref/netcoreapp2.0/System.Security.Cryptography.Algorithms.dll": {},
-          "ref/netcoreapp2.0/System.Security.Cryptography.Csp.dll": {},
-          "ref/netcoreapp2.0/System.Security.Cryptography.Encoding.dll": {},
-          "ref/netcoreapp2.0/System.Security.Cryptography.Primitives.dll": {},
-          "ref/netcoreapp2.0/System.Security.Cryptography.X509Certificates.dll": {},
-          "ref/netcoreapp2.0/System.Security.Principal.dll": {},
-          "ref/netcoreapp2.0/System.Security.SecureString.dll": {},
-          "ref/netcoreapp2.0/System.Security.dll": {},
-          "ref/netcoreapp2.0/System.ServiceModel.Web.dll": {},
-          "ref/netcoreapp2.0/System.ServiceProcess.dll": {},
-          "ref/netcoreapp2.0/System.Text.Encoding.Extensions.dll": {},
-          "ref/netcoreapp2.0/System.Text.Encoding.dll": {},
-          "ref/netcoreapp2.0/System.Text.RegularExpressions.dll": {},
-          "ref/netcoreapp2.0/System.Threading.Overlapped.dll": {},
-          "ref/netcoreapp2.0/System.Threading.Tasks.Dataflow.dll": {},
-          "ref/netcoreapp2.0/System.Threading.Tasks.Extensions.dll": {},
-          "ref/netcoreapp2.0/System.Threading.Tasks.Parallel.dll": {},
-          "ref/netcoreapp2.0/System.Threading.Tasks.dll": {},
-          "ref/netcoreapp2.0/System.Threading.Thread.dll": {},
-          "ref/netcoreapp2.0/System.Threading.ThreadPool.dll": {},
-          "ref/netcoreapp2.0/System.Threading.Timer.dll": {},
-          "ref/netcoreapp2.0/System.Threading.dll": {},
-          "ref/netcoreapp2.0/System.Transactions.Local.dll": {},
-          "ref/netcoreapp2.0/System.Transactions.dll": {},
-          "ref/netcoreapp2.0/System.ValueTuple.dll": {},
-          "ref/netcoreapp2.0/System.Web.HttpUtility.dll": {},
-          "ref/netcoreapp2.0/System.Web.dll": {},
-          "ref/netcoreapp2.0/System.Windows.dll": {},
-          "ref/netcoreapp2.0/System.Xml.Linq.dll": {},
-          "ref/netcoreapp2.0/System.Xml.ReaderWriter.dll": {},
-          "ref/netcoreapp2.0/System.Xml.Serialization.dll": {},
-          "ref/netcoreapp2.0/System.Xml.XDocument.dll": {},
-          "ref/netcoreapp2.0/System.Xml.XPath.XDocument.dll": {},
-          "ref/netcoreapp2.0/System.Xml.XPath.dll": {},
-          "ref/netcoreapp2.0/System.Xml.XmlDocument.dll": {},
-          "ref/netcoreapp2.0/System.Xml.XmlSerializer.dll": {},
-          "ref/netcoreapp2.0/System.Xml.dll": {},
-          "ref/netcoreapp2.0/System.dll": {},
-          "ref/netcoreapp2.0/WindowsBase.dll": {},
-          "ref/netcoreapp2.0/mscorlib.dll": {},
-          "ref/netcoreapp2.0/netstandard.dll": {}
+          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
+        }
+      },
+      "Microsoft.NETCore.App/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.DotNetHostPolicy": "2.1.0",
+          "Microsoft.NETCore.Platforms": "2.1.0",
+          "Microsoft.NETCore.Targets": "2.1.0",
+          "NETStandard.Library": "2.0.3"
+        },
+        "compile": {
+          "ref/netcoreapp2.1/Microsoft.CSharp.dll": {},
+          "ref/netcoreapp2.1/Microsoft.VisualBasic.dll": {},
+          "ref/netcoreapp2.1/Microsoft.Win32.Primitives.dll": {},
+          "ref/netcoreapp2.1/System.AppContext.dll": {},
+          "ref/netcoreapp2.1/System.Buffers.dll": {},
+          "ref/netcoreapp2.1/System.Collections.Concurrent.dll": {},
+          "ref/netcoreapp2.1/System.Collections.Immutable.dll": {},
+          "ref/netcoreapp2.1/System.Collections.NonGeneric.dll": {},
+          "ref/netcoreapp2.1/System.Collections.Specialized.dll": {},
+          "ref/netcoreapp2.1/System.Collections.dll": {},
+          "ref/netcoreapp2.1/System.ComponentModel.Annotations.dll": {},
+          "ref/netcoreapp2.1/System.ComponentModel.DataAnnotations.dll": {},
+          "ref/netcoreapp2.1/System.ComponentModel.EventBasedAsync.dll": {},
+          "ref/netcoreapp2.1/System.ComponentModel.Primitives.dll": {},
+          "ref/netcoreapp2.1/System.ComponentModel.TypeConverter.dll": {},
+          "ref/netcoreapp2.1/System.ComponentModel.dll": {},
+          "ref/netcoreapp2.1/System.Configuration.dll": {},
+          "ref/netcoreapp2.1/System.Console.dll": {},
+          "ref/netcoreapp2.1/System.Core.dll": {},
+          "ref/netcoreapp2.1/System.Data.Common.dll": {},
+          "ref/netcoreapp2.1/System.Data.dll": {},
+          "ref/netcoreapp2.1/System.Diagnostics.Contracts.dll": {},
+          "ref/netcoreapp2.1/System.Diagnostics.Debug.dll": {},
+          "ref/netcoreapp2.1/System.Diagnostics.DiagnosticSource.dll": {},
+          "ref/netcoreapp2.1/System.Diagnostics.FileVersionInfo.dll": {},
+          "ref/netcoreapp2.1/System.Diagnostics.Process.dll": {},
+          "ref/netcoreapp2.1/System.Diagnostics.StackTrace.dll": {},
+          "ref/netcoreapp2.1/System.Diagnostics.TextWriterTraceListener.dll": {},
+          "ref/netcoreapp2.1/System.Diagnostics.Tools.dll": {},
+          "ref/netcoreapp2.1/System.Diagnostics.TraceSource.dll": {},
+          "ref/netcoreapp2.1/System.Diagnostics.Tracing.dll": {},
+          "ref/netcoreapp2.1/System.Drawing.Primitives.dll": {},
+          "ref/netcoreapp2.1/System.Drawing.dll": {},
+          "ref/netcoreapp2.1/System.Dynamic.Runtime.dll": {},
+          "ref/netcoreapp2.1/System.Globalization.Calendars.dll": {},
+          "ref/netcoreapp2.1/System.Globalization.Extensions.dll": {},
+          "ref/netcoreapp2.1/System.Globalization.dll": {},
+          "ref/netcoreapp2.1/System.IO.Compression.Brotli.dll": {},
+          "ref/netcoreapp2.1/System.IO.Compression.FileSystem.dll": {},
+          "ref/netcoreapp2.1/System.IO.Compression.ZipFile.dll": {},
+          "ref/netcoreapp2.1/System.IO.Compression.dll": {},
+          "ref/netcoreapp2.1/System.IO.FileSystem.DriveInfo.dll": {},
+          "ref/netcoreapp2.1/System.IO.FileSystem.Primitives.dll": {},
+          "ref/netcoreapp2.1/System.IO.FileSystem.Watcher.dll": {},
+          "ref/netcoreapp2.1/System.IO.FileSystem.dll": {},
+          "ref/netcoreapp2.1/System.IO.IsolatedStorage.dll": {},
+          "ref/netcoreapp2.1/System.IO.MemoryMappedFiles.dll": {},
+          "ref/netcoreapp2.1/System.IO.Pipes.dll": {},
+          "ref/netcoreapp2.1/System.IO.UnmanagedMemoryStream.dll": {},
+          "ref/netcoreapp2.1/System.IO.dll": {},
+          "ref/netcoreapp2.1/System.Linq.Expressions.dll": {},
+          "ref/netcoreapp2.1/System.Linq.Parallel.dll": {},
+          "ref/netcoreapp2.1/System.Linq.Queryable.dll": {},
+          "ref/netcoreapp2.1/System.Linq.dll": {},
+          "ref/netcoreapp2.1/System.Memory.dll": {},
+          "ref/netcoreapp2.1/System.Net.Http.dll": {},
+          "ref/netcoreapp2.1/System.Net.HttpListener.dll": {},
+          "ref/netcoreapp2.1/System.Net.Mail.dll": {},
+          "ref/netcoreapp2.1/System.Net.NameResolution.dll": {},
+          "ref/netcoreapp2.1/System.Net.NetworkInformation.dll": {},
+          "ref/netcoreapp2.1/System.Net.Ping.dll": {},
+          "ref/netcoreapp2.1/System.Net.Primitives.dll": {},
+          "ref/netcoreapp2.1/System.Net.Requests.dll": {},
+          "ref/netcoreapp2.1/System.Net.Security.dll": {},
+          "ref/netcoreapp2.1/System.Net.ServicePoint.dll": {},
+          "ref/netcoreapp2.1/System.Net.Sockets.dll": {},
+          "ref/netcoreapp2.1/System.Net.WebClient.dll": {},
+          "ref/netcoreapp2.1/System.Net.WebHeaderCollection.dll": {},
+          "ref/netcoreapp2.1/System.Net.WebProxy.dll": {},
+          "ref/netcoreapp2.1/System.Net.WebSockets.Client.dll": {},
+          "ref/netcoreapp2.1/System.Net.WebSockets.dll": {},
+          "ref/netcoreapp2.1/System.Net.dll": {},
+          "ref/netcoreapp2.1/System.Numerics.Vectors.dll": {},
+          "ref/netcoreapp2.1/System.Numerics.dll": {},
+          "ref/netcoreapp2.1/System.ObjectModel.dll": {},
+          "ref/netcoreapp2.1/System.Reflection.DispatchProxy.dll": {},
+          "ref/netcoreapp2.1/System.Reflection.Emit.ILGeneration.dll": {},
+          "ref/netcoreapp2.1/System.Reflection.Emit.Lightweight.dll": {},
+          "ref/netcoreapp2.1/System.Reflection.Emit.dll": {},
+          "ref/netcoreapp2.1/System.Reflection.Extensions.dll": {},
+          "ref/netcoreapp2.1/System.Reflection.Metadata.dll": {},
+          "ref/netcoreapp2.1/System.Reflection.Primitives.dll": {},
+          "ref/netcoreapp2.1/System.Reflection.TypeExtensions.dll": {},
+          "ref/netcoreapp2.1/System.Reflection.dll": {},
+          "ref/netcoreapp2.1/System.Resources.Reader.dll": {},
+          "ref/netcoreapp2.1/System.Resources.ResourceManager.dll": {},
+          "ref/netcoreapp2.1/System.Resources.Writer.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.CompilerServices.VisualC.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.Extensions.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.Handles.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.InteropServices.RuntimeInformation.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.InteropServices.WindowsRuntime.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.InteropServices.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.Loader.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.Numerics.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.Serialization.Formatters.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.Serialization.Json.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.Serialization.Primitives.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.Serialization.Xml.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.Serialization.dll": {},
+          "ref/netcoreapp2.1/System.Runtime.dll": {},
+          "ref/netcoreapp2.1/System.Security.Claims.dll": {},
+          "ref/netcoreapp2.1/System.Security.Cryptography.Algorithms.dll": {},
+          "ref/netcoreapp2.1/System.Security.Cryptography.Csp.dll": {},
+          "ref/netcoreapp2.1/System.Security.Cryptography.Encoding.dll": {},
+          "ref/netcoreapp2.1/System.Security.Cryptography.Primitives.dll": {},
+          "ref/netcoreapp2.1/System.Security.Cryptography.X509Certificates.dll": {},
+          "ref/netcoreapp2.1/System.Security.Principal.dll": {},
+          "ref/netcoreapp2.1/System.Security.SecureString.dll": {},
+          "ref/netcoreapp2.1/System.Security.dll": {},
+          "ref/netcoreapp2.1/System.ServiceModel.Web.dll": {},
+          "ref/netcoreapp2.1/System.ServiceProcess.dll": {},
+          "ref/netcoreapp2.1/System.Text.Encoding.Extensions.dll": {},
+          "ref/netcoreapp2.1/System.Text.Encoding.dll": {},
+          "ref/netcoreapp2.1/System.Text.RegularExpressions.dll": {},
+          "ref/netcoreapp2.1/System.Threading.Overlapped.dll": {},
+          "ref/netcoreapp2.1/System.Threading.Tasks.Dataflow.dll": {},
+          "ref/netcoreapp2.1/System.Threading.Tasks.Extensions.dll": {},
+          "ref/netcoreapp2.1/System.Threading.Tasks.Parallel.dll": {},
+          "ref/netcoreapp2.1/System.Threading.Tasks.dll": {},
+          "ref/netcoreapp2.1/System.Threading.Thread.dll": {},
+          "ref/netcoreapp2.1/System.Threading.ThreadPool.dll": {},
+          "ref/netcoreapp2.1/System.Threading.Timer.dll": {},
+          "ref/netcoreapp2.1/System.Threading.dll": {},
+          "ref/netcoreapp2.1/System.Transactions.Local.dll": {},
+          "ref/netcoreapp2.1/System.Transactions.dll": {},
+          "ref/netcoreapp2.1/System.ValueTuple.dll": {},
+          "ref/netcoreapp2.1/System.Web.HttpUtility.dll": {},
+          "ref/netcoreapp2.1/System.Web.dll": {},
+          "ref/netcoreapp2.1/System.Windows.dll": {},
+          "ref/netcoreapp2.1/System.Xml.Linq.dll": {},
+          "ref/netcoreapp2.1/System.Xml.ReaderWriter.dll": {},
+          "ref/netcoreapp2.1/System.Xml.Serialization.dll": {},
+          "ref/netcoreapp2.1/System.Xml.XDocument.dll": {},
+          "ref/netcoreapp2.1/System.Xml.XPath.XDocument.dll": {},
+          "ref/netcoreapp2.1/System.Xml.XPath.dll": {},
+          "ref/netcoreapp2.1/System.Xml.XmlDocument.dll": {},
+          "ref/netcoreapp2.1/System.Xml.XmlSerializer.dll": {},
+          "ref/netcoreapp2.1/System.Xml.dll": {},
+          "ref/netcoreapp2.1/System.dll": {},
+          "ref/netcoreapp2.1/WindowsBase.dll": {},
+          "ref/netcoreapp2.1/mscorlib.dll": {},
+          "ref/netcoreapp2.1/netstandard.dll": {}
         },
         "build": {
-          "build/netcoreapp2.0/Microsoft.NETCore.App.props": {},
-          "build/netcoreapp2.0/Microsoft.NETCore.App.targets": {}
+          "build/netcoreapp2.1/Microsoft.NETCore.App.props": {},
+          "build/netcoreapp2.1/Microsoft.NETCore.App.targets": {}
         }
       },
-      "Microsoft.NETCore.DotNetAppHost/2.0.0": {
+      "Microsoft.NETCore.DotNetAppHost/2.1.0": {
         "type": "package"
       },
-      "Microsoft.NETCore.DotNetHostPolicy/2.0.0": {
+      "Microsoft.NETCore.DotNetHostPolicy/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.DotNetHostResolver": "2.0.0"
+          "Microsoft.NETCore.DotNetHostResolver": "2.1.0"
         }
       },
-      "Microsoft.NETCore.DotNetHostResolver/2.0.0": {
+      "Microsoft.NETCore.DotNetHostResolver/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.DotNetAppHost": "2.0.0"
+          "Microsoft.NETCore.DotNetAppHost": "2.1.0"
         }
       },
-      "Microsoft.NETCore.Platforms/2.0.0": {
+      "Microsoft.NETCore.Platforms/2.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -474,7 +552,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Targets/1.1.0": {
+      "Microsoft.NETCore.Targets/2.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -485,19 +563,14 @@
       },
       "MySqlConnector/0.42.1": {
         "type": "package",
-        "dependencies": {
-          "System.Buffers": "4.4.0",
-          "System.Memory": "4.5.0",
-          "System.Threading.Tasks.Extensions": "4.3.0"
-        },
         "compile": {
-          "lib/netstandard2.0/MySqlConnector.dll": {}
+          "lib/netcoreapp2.1/MySqlConnector.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/MySqlConnector.dll": {}
+          "lib/netcoreapp2.1/MySqlConnector.dll": {}
         }
       },
-      "NETStandard.Library/2.0.0": {
+      "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -621,7 +694,7 @@
           "lib/netstandard1.6/System.AppContext.dll": {}
         }
       },
-      "System.Buffers/4.4.0": {
+      "System.Buffers/4.5.0": {
         "type": "package",
         "compile": {
           "ref/netcoreapp2.0/_._": {}
@@ -630,12 +703,12 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "System.Collections/4.3.0": {
+      "System.Collections/4.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
-          "Microsoft.NETCore.Targets": "1.1.0",
-          "System.Runtime": "4.3.0"
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.Runtime": "4.1.0"
         },
         "compile": {
           "ref/netstandard1.3/System.Collections.dll": {}
@@ -845,14 +918,11 @@
       },
       "System.Memory/4.5.1": {
         "type": "package",
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
-        },
         "compile": {
-          "ref/netstandard2.0/System.Memory.dll": {}
+          "ref/netcoreapp2.1/_._": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Memory.dll": {}
+          "lib/netcoreapp2.1/_._": {}
         }
       },
       "System.ObjectModel/4.0.12": {
@@ -978,11 +1048,11 @@
           "ref/netstandard1.0/System.Resources.ResourceManager.dll": {}
         }
       },
-      "System.Runtime/4.3.0": {
+      "System.Runtime/4.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
-          "Microsoft.NETCore.Targets": "1.1.0"
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1"
         },
         "compile": {
           "ref/netstandard1.5/System.Runtime.dll": {}
@@ -1094,6 +1164,15 @@
           "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {}
         }
       },
+      "System.Text.Encodings.Web/4.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
+        }
+      },
       "System.Text.RegularExpressions/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -1124,26 +1203,26 @@
           "lib/netstandard1.3/System.Threading.dll": {}
         }
       },
-      "System.Threading.Tasks/4.3.0": {
+      "System.Threading.Tasks/4.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
-          "Microsoft.NETCore.Targets": "1.1.0",
-          "System.Runtime": "4.3.0"
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.Runtime": "4.1.0"
         },
         "compile": {
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "System.Threading.Tasks.Extensions/4.3.0": {
+      "System.Threading.Tasks.Extensions/4.0.0": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Threading.Tasks": "4.3.0"
+          "System.Collections": "4.0.11",
+          "System.Runtime": "4.1.0",
+          "System.Threading.Tasks": "4.0.11"
         },
         "compile": {
-          "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll": {}
+          "lib/netstandard1.0/_._": {}
         },
         "runtime": {
           "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll": {}
@@ -1200,8 +1279,9 @@
       },
       "Sunny.Common/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v2.0",
+        "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.1.1",
           "Microsoft.Extensions.DependencyModel": "2.1.0",
           "Microsoft.Extensions.Logging": "2.1.1"
         },
@@ -1215,6 +1295,54 @@
     }
   },
   "libraries": {
+    "Microsoft.AspNetCore.Http/2.1.1": {
+      "sha512": "u8Fmky/nirrxOU1gBGh97J5gPoniWDc1QiT+J0EFuXJWcFo3BgPGiv7RLvYCi89QpLgIt5CkkPqTkPnWz0eaSA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http/2.1.1",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.xml",
+        "microsoft.aspnetcore.http.2.1.1.nupkg.sha512",
+        "microsoft.aspnetcore.http.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.1.1": {
+      "sha512": "0TPQgjRy2xJ75GcK18vvrT6/zCtSAWUEBSskSJN/lY0zuvQx2or8lzwr0TdKyMNK8A8MLP4QMLPqL9NOAxe0yg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.abstractions/2.1.1",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.xml",
+        "microsoft.aspnetcore.http.abstractions.2.1.1.nupkg.sha512",
+        "microsoft.aspnetcore.http.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Features/2.1.1": {
+      "sha512": "cMnTXRH+8T7GLht6cXRCMmN1HaYfXti2WEUdXqMUuyJgi4oH9cmzW4nECSBkQjsCs5O06BphyDDDAsTW/zQmpg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.features/2.1.1",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
+        "microsoft.aspnetcore.http.features.2.1.1.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.WebUtilities/2.1.1": {
+      "sha512": "gvCdObgQDLdZ9enyFQuPb3Rae6QyzZAPgHiv5JhYjORLMW1UNgWXvdqLov6iGtnyG+BBCavPooW9ScWGQCJHLg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.webutilities/2.1.1",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.xml",
+        "microsoft.aspnetcore.webutilities.2.1.1.nupkg.sha512",
+        "microsoft.aspnetcore.webutilities.nuspec"
+      ]
+    },
     "Microsoft.CSharp/4.5.0": {
       "sha512": "EGoBmf3Na2ppbhPePDE9PlX81r1HuOZH5twBrq7couJZiPTjUnD3648balerQJO6EJ8Sj+43+XuRwQ7r+3tE3w==",
       "type": "package",
@@ -1532,6 +1660,18 @@
         "microsoft.extensions.logging.console.nuspec"
       ]
     },
+    "Microsoft.Extensions.ObjectPool/2.1.1": {
+      "sha512": "FE4JmV6FEZdmqSKqvld5TRnvHfJfrw9QzvvZlAiTn+FCiq/1ZaQDpcYBRH7dMHFWIsYD6Z2UTsufdbCGznox8g==",
+      "type": "package",
+      "path": "microsoft.extensions.objectpool/2.1.1",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.xml",
+        "microsoft.extensions.objectpool.2.1.1.nupkg.sha512",
+        "microsoft.extensions.objectpool.nuspec"
+      ]
+    },
     "Microsoft.Extensions.Options/2.1.1": {
       "sha512": "j0zOfTt1Qm+JDW2m+6Q/aj1m4C8+onudUu4ls/fN69VxruZkMWmX1bPKkbkYIPNNxJsf4k7FOkVq5o1vEFq9pQ==",
       "type": "package",
@@ -1568,346 +1708,352 @@
         "microsoft.extensions.primitives.nuspec"
       ]
     },
-    "Microsoft.NETCore.App/2.0.0": {
-      "sha512": "/mzXF+UtZef+VpzzN88EpvFq5U6z4rj54ZMq/J968H6pcvyLOmcupmTRpJ3CJm8ILoCGh9WI7qpDdiKtuzswrQ==",
+    "Microsoft.Net.Http.Headers/2.1.1": {
+      "sha512": "tNh1YCfZ943/d3WSE6cD57O05rhvi3lmKgwoi3zFg4wc/O/oec5FNHZmBCRau4GfzRC5zS/CBdOAkRwbvtZSaQ==",
       "type": "package",
-      "path": "microsoft.netcore.app/2.0.0",
+      "path": "microsoft.net.http.headers/2.1.1",
       "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll",
+        "lib/netstandard2.0/Microsoft.Net.Http.Headers.xml",
+        "microsoft.net.http.headers.2.1.1.nupkg.sha512",
+        "microsoft.net.http.headers.nuspec"
+      ]
+    },
+    "Microsoft.NETCore.App/2.1.0": {
+      "sha512": "AvT774nTFgU8cYcGO9j1EMwuayKslxqYTurg32HGpWa2hEYNuW2+XgYVVNcZe6Ndbr84QX6fwaOZfd5n+1m2OA==",
+      "type": "package",
+      "path": "microsoft.netcore.app/2.1.0",
+      "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
         "Microsoft.NETCore.App.versions.txt",
         "THIRD-PARTY-NOTICES.TXT",
-        "build/netcoreapp2.0/Microsoft.NETCore.App.PlatformManifest.txt",
-        "build/netcoreapp2.0/Microsoft.NETCore.App.props",
-        "build/netcoreapp2.0/Microsoft.NETCore.App.targets",
-        "microsoft.netcore.app.2.0.0.nupkg.sha512",
+        "build/netcoreapp2.1/Microsoft.NETCore.App.PlatformManifest.txt",
+        "build/netcoreapp2.1/Microsoft.NETCore.App.props",
+        "build/netcoreapp2.1/Microsoft.NETCore.App.targets",
+        "microsoft.netcore.app.2.1.0.nupkg.sha512",
         "microsoft.netcore.app.nuspec",
         "ref/netcoreapp/_._",
-        "ref/netcoreapp2.0/Microsoft.CSharp.dll",
-        "ref/netcoreapp2.0/Microsoft.CSharp.xml",
-        "ref/netcoreapp2.0/Microsoft.VisualBasic.dll",
-        "ref/netcoreapp2.0/Microsoft.VisualBasic.xml",
-        "ref/netcoreapp2.0/Microsoft.Win32.Primitives.dll",
-        "ref/netcoreapp2.0/Microsoft.Win32.Primitives.xml",
-        "ref/netcoreapp2.0/System.AppContext.dll",
-        "ref/netcoreapp2.0/System.AppContext.xml",
-        "ref/netcoreapp2.0/System.Buffers.dll",
-        "ref/netcoreapp2.0/System.Buffers.xml",
-        "ref/netcoreapp2.0/System.Collections.Concurrent.dll",
-        "ref/netcoreapp2.0/System.Collections.Concurrent.xml",
-        "ref/netcoreapp2.0/System.Collections.Immutable.dll",
-        "ref/netcoreapp2.0/System.Collections.Immutable.xml",
-        "ref/netcoreapp2.0/System.Collections.NonGeneric.dll",
-        "ref/netcoreapp2.0/System.Collections.NonGeneric.xml",
-        "ref/netcoreapp2.0/System.Collections.Specialized.dll",
-        "ref/netcoreapp2.0/System.Collections.Specialized.xml",
-        "ref/netcoreapp2.0/System.Collections.dll",
-        "ref/netcoreapp2.0/System.Collections.xml",
-        "ref/netcoreapp2.0/System.ComponentModel.Annotations.dll",
-        "ref/netcoreapp2.0/System.ComponentModel.Annotations.xml",
-        "ref/netcoreapp2.0/System.ComponentModel.Composition.dll",
-        "ref/netcoreapp2.0/System.ComponentModel.DataAnnotations.dll",
-        "ref/netcoreapp2.0/System.ComponentModel.EventBasedAsync.dll",
-        "ref/netcoreapp2.0/System.ComponentModel.EventBasedAsync.xml",
-        "ref/netcoreapp2.0/System.ComponentModel.Primitives.dll",
-        "ref/netcoreapp2.0/System.ComponentModel.Primitives.xml",
-        "ref/netcoreapp2.0/System.ComponentModel.TypeConverter.dll",
-        "ref/netcoreapp2.0/System.ComponentModel.TypeConverter.xml",
-        "ref/netcoreapp2.0/System.ComponentModel.dll",
-        "ref/netcoreapp2.0/System.ComponentModel.xml",
-        "ref/netcoreapp2.0/System.Configuration.dll",
-        "ref/netcoreapp2.0/System.Console.dll",
-        "ref/netcoreapp2.0/System.Console.xml",
-        "ref/netcoreapp2.0/System.Core.dll",
-        "ref/netcoreapp2.0/System.Data.Common.dll",
-        "ref/netcoreapp2.0/System.Data.Common.xml",
-        "ref/netcoreapp2.0/System.Data.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.Contracts.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.Contracts.xml",
-        "ref/netcoreapp2.0/System.Diagnostics.Debug.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.Debug.xml",
-        "ref/netcoreapp2.0/System.Diagnostics.DiagnosticSource.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.DiagnosticSource.xml",
-        "ref/netcoreapp2.0/System.Diagnostics.FileVersionInfo.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.FileVersionInfo.xml",
-        "ref/netcoreapp2.0/System.Diagnostics.Process.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.Process.xml",
-        "ref/netcoreapp2.0/System.Diagnostics.StackTrace.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.StackTrace.xml",
-        "ref/netcoreapp2.0/System.Diagnostics.TextWriterTraceListener.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.TextWriterTraceListener.xml",
-        "ref/netcoreapp2.0/System.Diagnostics.Tools.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.Tools.xml",
-        "ref/netcoreapp2.0/System.Diagnostics.TraceSource.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.TraceSource.xml",
-        "ref/netcoreapp2.0/System.Diagnostics.Tracing.dll",
-        "ref/netcoreapp2.0/System.Diagnostics.Tracing.xml",
-        "ref/netcoreapp2.0/System.Drawing.Primitives.dll",
-        "ref/netcoreapp2.0/System.Drawing.Primitives.xml",
-        "ref/netcoreapp2.0/System.Drawing.dll",
-        "ref/netcoreapp2.0/System.Dynamic.Runtime.dll",
-        "ref/netcoreapp2.0/System.Dynamic.Runtime.xml",
-        "ref/netcoreapp2.0/System.Globalization.Calendars.dll",
-        "ref/netcoreapp2.0/System.Globalization.Calendars.xml",
-        "ref/netcoreapp2.0/System.Globalization.Extensions.dll",
-        "ref/netcoreapp2.0/System.Globalization.Extensions.xml",
-        "ref/netcoreapp2.0/System.Globalization.dll",
-        "ref/netcoreapp2.0/System.Globalization.xml",
-        "ref/netcoreapp2.0/System.IO.Compression.FileSystem.dll",
-        "ref/netcoreapp2.0/System.IO.Compression.ZipFile.dll",
-        "ref/netcoreapp2.0/System.IO.Compression.ZipFile.xml",
-        "ref/netcoreapp2.0/System.IO.Compression.dll",
-        "ref/netcoreapp2.0/System.IO.Compression.xml",
-        "ref/netcoreapp2.0/System.IO.FileSystem.DriveInfo.dll",
-        "ref/netcoreapp2.0/System.IO.FileSystem.DriveInfo.xml",
-        "ref/netcoreapp2.0/System.IO.FileSystem.Primitives.dll",
-        "ref/netcoreapp2.0/System.IO.FileSystem.Primitives.xml",
-        "ref/netcoreapp2.0/System.IO.FileSystem.Watcher.dll",
-        "ref/netcoreapp2.0/System.IO.FileSystem.Watcher.xml",
-        "ref/netcoreapp2.0/System.IO.FileSystem.dll",
-        "ref/netcoreapp2.0/System.IO.FileSystem.xml",
-        "ref/netcoreapp2.0/System.IO.IsolatedStorage.dll",
-        "ref/netcoreapp2.0/System.IO.IsolatedStorage.xml",
-        "ref/netcoreapp2.0/System.IO.MemoryMappedFiles.dll",
-        "ref/netcoreapp2.0/System.IO.MemoryMappedFiles.xml",
-        "ref/netcoreapp2.0/System.IO.Pipes.dll",
-        "ref/netcoreapp2.0/System.IO.Pipes.xml",
-        "ref/netcoreapp2.0/System.IO.UnmanagedMemoryStream.dll",
-        "ref/netcoreapp2.0/System.IO.UnmanagedMemoryStream.xml",
-        "ref/netcoreapp2.0/System.IO.dll",
-        "ref/netcoreapp2.0/System.IO.xml",
-        "ref/netcoreapp2.0/System.Linq.Expressions.dll",
-        "ref/netcoreapp2.0/System.Linq.Expressions.xml",
-        "ref/netcoreapp2.0/System.Linq.Parallel.dll",
-        "ref/netcoreapp2.0/System.Linq.Parallel.xml",
-        "ref/netcoreapp2.0/System.Linq.Queryable.dll",
-        "ref/netcoreapp2.0/System.Linq.Queryable.xml",
-        "ref/netcoreapp2.0/System.Linq.dll",
-        "ref/netcoreapp2.0/System.Linq.xml",
-        "ref/netcoreapp2.0/System.Net.Http.dll",
-        "ref/netcoreapp2.0/System.Net.Http.xml",
-        "ref/netcoreapp2.0/System.Net.HttpListener.dll",
-        "ref/netcoreapp2.0/System.Net.HttpListener.xml",
-        "ref/netcoreapp2.0/System.Net.Mail.dll",
-        "ref/netcoreapp2.0/System.Net.Mail.xml",
-        "ref/netcoreapp2.0/System.Net.NameResolution.dll",
-        "ref/netcoreapp2.0/System.Net.NameResolution.xml",
-        "ref/netcoreapp2.0/System.Net.NetworkInformation.dll",
-        "ref/netcoreapp2.0/System.Net.NetworkInformation.xml",
-        "ref/netcoreapp2.0/System.Net.Ping.dll",
-        "ref/netcoreapp2.0/System.Net.Ping.xml",
-        "ref/netcoreapp2.0/System.Net.Primitives.dll",
-        "ref/netcoreapp2.0/System.Net.Primitives.xml",
-        "ref/netcoreapp2.0/System.Net.Requests.dll",
-        "ref/netcoreapp2.0/System.Net.Requests.xml",
-        "ref/netcoreapp2.0/System.Net.Security.dll",
-        "ref/netcoreapp2.0/System.Net.Security.xml",
-        "ref/netcoreapp2.0/System.Net.ServicePoint.dll",
-        "ref/netcoreapp2.0/System.Net.ServicePoint.xml",
-        "ref/netcoreapp2.0/System.Net.Sockets.dll",
-        "ref/netcoreapp2.0/System.Net.Sockets.xml",
-        "ref/netcoreapp2.0/System.Net.WebClient.dll",
-        "ref/netcoreapp2.0/System.Net.WebClient.xml",
-        "ref/netcoreapp2.0/System.Net.WebHeaderCollection.dll",
-        "ref/netcoreapp2.0/System.Net.WebHeaderCollection.xml",
-        "ref/netcoreapp2.0/System.Net.WebProxy.dll",
-        "ref/netcoreapp2.0/System.Net.WebProxy.xml",
-        "ref/netcoreapp2.0/System.Net.WebSockets.Client.dll",
-        "ref/netcoreapp2.0/System.Net.WebSockets.Client.xml",
-        "ref/netcoreapp2.0/System.Net.WebSockets.dll",
-        "ref/netcoreapp2.0/System.Net.WebSockets.xml",
-        "ref/netcoreapp2.0/System.Net.dll",
-        "ref/netcoreapp2.0/System.Numerics.Vectors.dll",
-        "ref/netcoreapp2.0/System.Numerics.Vectors.xml",
-        "ref/netcoreapp2.0/System.Numerics.dll",
-        "ref/netcoreapp2.0/System.ObjectModel.dll",
-        "ref/netcoreapp2.0/System.ObjectModel.xml",
-        "ref/netcoreapp2.0/System.Reflection.DispatchProxy.dll",
-        "ref/netcoreapp2.0/System.Reflection.DispatchProxy.xml",
-        "ref/netcoreapp2.0/System.Reflection.Emit.ILGeneration.dll",
-        "ref/netcoreapp2.0/System.Reflection.Emit.ILGeneration.xml",
-        "ref/netcoreapp2.0/System.Reflection.Emit.Lightweight.dll",
-        "ref/netcoreapp2.0/System.Reflection.Emit.Lightweight.xml",
-        "ref/netcoreapp2.0/System.Reflection.Emit.dll",
-        "ref/netcoreapp2.0/System.Reflection.Emit.xml",
-        "ref/netcoreapp2.0/System.Reflection.Extensions.dll",
-        "ref/netcoreapp2.0/System.Reflection.Extensions.xml",
-        "ref/netcoreapp2.0/System.Reflection.Metadata.dll",
-        "ref/netcoreapp2.0/System.Reflection.Metadata.xml",
-        "ref/netcoreapp2.0/System.Reflection.Primitives.dll",
-        "ref/netcoreapp2.0/System.Reflection.Primitives.xml",
-        "ref/netcoreapp2.0/System.Reflection.TypeExtensions.dll",
-        "ref/netcoreapp2.0/System.Reflection.TypeExtensions.xml",
-        "ref/netcoreapp2.0/System.Reflection.dll",
-        "ref/netcoreapp2.0/System.Reflection.xml",
-        "ref/netcoreapp2.0/System.Resources.Reader.dll",
-        "ref/netcoreapp2.0/System.Resources.Reader.xml",
-        "ref/netcoreapp2.0/System.Resources.ResourceManager.dll",
-        "ref/netcoreapp2.0/System.Resources.ResourceManager.xml",
-        "ref/netcoreapp2.0/System.Resources.Writer.dll",
-        "ref/netcoreapp2.0/System.Resources.Writer.xml",
-        "ref/netcoreapp2.0/System.Runtime.CompilerServices.VisualC.dll",
-        "ref/netcoreapp2.0/System.Runtime.CompilerServices.VisualC.xml",
-        "ref/netcoreapp2.0/System.Runtime.Extensions.dll",
-        "ref/netcoreapp2.0/System.Runtime.Extensions.xml",
-        "ref/netcoreapp2.0/System.Runtime.Handles.dll",
-        "ref/netcoreapp2.0/System.Runtime.Handles.xml",
-        "ref/netcoreapp2.0/System.Runtime.InteropServices.RuntimeInformation.dll",
-        "ref/netcoreapp2.0/System.Runtime.InteropServices.RuntimeInformation.xml",
-        "ref/netcoreapp2.0/System.Runtime.InteropServices.WindowsRuntime.dll",
-        "ref/netcoreapp2.0/System.Runtime.InteropServices.WindowsRuntime.xml",
-        "ref/netcoreapp2.0/System.Runtime.InteropServices.dll",
-        "ref/netcoreapp2.0/System.Runtime.InteropServices.xml",
-        "ref/netcoreapp2.0/System.Runtime.Loader.dll",
-        "ref/netcoreapp2.0/System.Runtime.Loader.xml",
-        "ref/netcoreapp2.0/System.Runtime.Numerics.dll",
-        "ref/netcoreapp2.0/System.Runtime.Numerics.xml",
-        "ref/netcoreapp2.0/System.Runtime.Serialization.Formatters.dll",
-        "ref/netcoreapp2.0/System.Runtime.Serialization.Formatters.xml",
-        "ref/netcoreapp2.0/System.Runtime.Serialization.Json.dll",
-        "ref/netcoreapp2.0/System.Runtime.Serialization.Json.xml",
-        "ref/netcoreapp2.0/System.Runtime.Serialization.Primitives.dll",
-        "ref/netcoreapp2.0/System.Runtime.Serialization.Primitives.xml",
-        "ref/netcoreapp2.0/System.Runtime.Serialization.Xml.dll",
-        "ref/netcoreapp2.0/System.Runtime.Serialization.Xml.xml",
-        "ref/netcoreapp2.0/System.Runtime.Serialization.dll",
-        "ref/netcoreapp2.0/System.Runtime.dll",
-        "ref/netcoreapp2.0/System.Runtime.xml",
-        "ref/netcoreapp2.0/System.Security.Claims.dll",
-        "ref/netcoreapp2.0/System.Security.Claims.xml",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Algorithms.dll",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Algorithms.xml",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Csp.dll",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Csp.xml",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Encoding.dll",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Encoding.xml",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Primitives.dll",
-        "ref/netcoreapp2.0/System.Security.Cryptography.Primitives.xml",
-        "ref/netcoreapp2.0/System.Security.Cryptography.X509Certificates.dll",
-        "ref/netcoreapp2.0/System.Security.Cryptography.X509Certificates.xml",
-        "ref/netcoreapp2.0/System.Security.Principal.dll",
-        "ref/netcoreapp2.0/System.Security.Principal.xml",
-        "ref/netcoreapp2.0/System.Security.SecureString.dll",
-        "ref/netcoreapp2.0/System.Security.SecureString.xml",
-        "ref/netcoreapp2.0/System.Security.dll",
-        "ref/netcoreapp2.0/System.ServiceModel.Web.dll",
-        "ref/netcoreapp2.0/System.ServiceProcess.dll",
-        "ref/netcoreapp2.0/System.Text.Encoding.Extensions.dll",
-        "ref/netcoreapp2.0/System.Text.Encoding.Extensions.xml",
-        "ref/netcoreapp2.0/System.Text.Encoding.dll",
-        "ref/netcoreapp2.0/System.Text.Encoding.xml",
-        "ref/netcoreapp2.0/System.Text.RegularExpressions.dll",
-        "ref/netcoreapp2.0/System.Text.RegularExpressions.xml",
-        "ref/netcoreapp2.0/System.Threading.Overlapped.dll",
-        "ref/netcoreapp2.0/System.Threading.Overlapped.xml",
-        "ref/netcoreapp2.0/System.Threading.Tasks.Dataflow.dll",
-        "ref/netcoreapp2.0/System.Threading.Tasks.Dataflow.xml",
-        "ref/netcoreapp2.0/System.Threading.Tasks.Extensions.dll",
-        "ref/netcoreapp2.0/System.Threading.Tasks.Extensions.xml",
-        "ref/netcoreapp2.0/System.Threading.Tasks.Parallel.dll",
-        "ref/netcoreapp2.0/System.Threading.Tasks.Parallel.xml",
-        "ref/netcoreapp2.0/System.Threading.Tasks.dll",
-        "ref/netcoreapp2.0/System.Threading.Tasks.xml",
-        "ref/netcoreapp2.0/System.Threading.Thread.dll",
-        "ref/netcoreapp2.0/System.Threading.Thread.xml",
-        "ref/netcoreapp2.0/System.Threading.ThreadPool.dll",
-        "ref/netcoreapp2.0/System.Threading.ThreadPool.xml",
-        "ref/netcoreapp2.0/System.Threading.Timer.dll",
-        "ref/netcoreapp2.0/System.Threading.Timer.xml",
-        "ref/netcoreapp2.0/System.Threading.dll",
-        "ref/netcoreapp2.0/System.Threading.xml",
-        "ref/netcoreapp2.0/System.Transactions.Local.dll",
-        "ref/netcoreapp2.0/System.Transactions.Local.xml",
-        "ref/netcoreapp2.0/System.Transactions.dll",
-        "ref/netcoreapp2.0/System.ValueTuple.dll",
-        "ref/netcoreapp2.0/System.ValueTuple.xml",
-        "ref/netcoreapp2.0/System.Web.HttpUtility.dll",
-        "ref/netcoreapp2.0/System.Web.HttpUtility.xml",
-        "ref/netcoreapp2.0/System.Web.dll",
-        "ref/netcoreapp2.0/System.Windows.dll",
-        "ref/netcoreapp2.0/System.Xml.Linq.dll",
-        "ref/netcoreapp2.0/System.Xml.ReaderWriter.dll",
-        "ref/netcoreapp2.0/System.Xml.ReaderWriter.xml",
-        "ref/netcoreapp2.0/System.Xml.Serialization.dll",
-        "ref/netcoreapp2.0/System.Xml.XDocument.dll",
-        "ref/netcoreapp2.0/System.Xml.XDocument.xml",
-        "ref/netcoreapp2.0/System.Xml.XPath.XDocument.dll",
-        "ref/netcoreapp2.0/System.Xml.XPath.XDocument.xml",
-        "ref/netcoreapp2.0/System.Xml.XPath.dll",
-        "ref/netcoreapp2.0/System.Xml.XPath.xml",
-        "ref/netcoreapp2.0/System.Xml.XmlDocument.dll",
-        "ref/netcoreapp2.0/System.Xml.XmlDocument.xml",
-        "ref/netcoreapp2.0/System.Xml.XmlSerializer.dll",
-        "ref/netcoreapp2.0/System.Xml.XmlSerializer.xml",
-        "ref/netcoreapp2.0/System.Xml.dll",
-        "ref/netcoreapp2.0/System.dll",
-        "ref/netcoreapp2.0/WindowsBase.dll",
-        "ref/netcoreapp2.0/mscorlib.dll",
-        "ref/netcoreapp2.0/netstandard.dll",
+        "ref/netcoreapp2.1/Microsoft.CSharp.dll",
+        "ref/netcoreapp2.1/Microsoft.CSharp.xml",
+        "ref/netcoreapp2.1/Microsoft.VisualBasic.dll",
+        "ref/netcoreapp2.1/Microsoft.VisualBasic.xml",
+        "ref/netcoreapp2.1/Microsoft.Win32.Primitives.dll",
+        "ref/netcoreapp2.1/Microsoft.Win32.Primitives.xml",
+        "ref/netcoreapp2.1/System.AppContext.dll",
+        "ref/netcoreapp2.1/System.Buffers.dll",
+        "ref/netcoreapp2.1/System.Buffers.xml",
+        "ref/netcoreapp2.1/System.Collections.Concurrent.dll",
+        "ref/netcoreapp2.1/System.Collections.Concurrent.xml",
+        "ref/netcoreapp2.1/System.Collections.Immutable.dll",
+        "ref/netcoreapp2.1/System.Collections.Immutable.xml",
+        "ref/netcoreapp2.1/System.Collections.NonGeneric.dll",
+        "ref/netcoreapp2.1/System.Collections.NonGeneric.xml",
+        "ref/netcoreapp2.1/System.Collections.Specialized.dll",
+        "ref/netcoreapp2.1/System.Collections.Specialized.xml",
+        "ref/netcoreapp2.1/System.Collections.dll",
+        "ref/netcoreapp2.1/System.Collections.xml",
+        "ref/netcoreapp2.1/System.ComponentModel.Annotations.dll",
+        "ref/netcoreapp2.1/System.ComponentModel.Annotations.xml",
+        "ref/netcoreapp2.1/System.ComponentModel.DataAnnotations.dll",
+        "ref/netcoreapp2.1/System.ComponentModel.EventBasedAsync.dll",
+        "ref/netcoreapp2.1/System.ComponentModel.EventBasedAsync.xml",
+        "ref/netcoreapp2.1/System.ComponentModel.Primitives.dll",
+        "ref/netcoreapp2.1/System.ComponentModel.Primitives.xml",
+        "ref/netcoreapp2.1/System.ComponentModel.TypeConverter.dll",
+        "ref/netcoreapp2.1/System.ComponentModel.TypeConverter.xml",
+        "ref/netcoreapp2.1/System.ComponentModel.dll",
+        "ref/netcoreapp2.1/System.ComponentModel.xml",
+        "ref/netcoreapp2.1/System.Configuration.dll",
+        "ref/netcoreapp2.1/System.Console.dll",
+        "ref/netcoreapp2.1/System.Console.xml",
+        "ref/netcoreapp2.1/System.Core.dll",
+        "ref/netcoreapp2.1/System.Data.Common.dll",
+        "ref/netcoreapp2.1/System.Data.Common.xml",
+        "ref/netcoreapp2.1/System.Data.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.Contracts.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.Contracts.xml",
+        "ref/netcoreapp2.1/System.Diagnostics.Debug.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.Debug.xml",
+        "ref/netcoreapp2.1/System.Diagnostics.DiagnosticSource.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.DiagnosticSource.xml",
+        "ref/netcoreapp2.1/System.Diagnostics.FileVersionInfo.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.FileVersionInfo.xml",
+        "ref/netcoreapp2.1/System.Diagnostics.Process.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.Process.xml",
+        "ref/netcoreapp2.1/System.Diagnostics.StackTrace.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.StackTrace.xml",
+        "ref/netcoreapp2.1/System.Diagnostics.TextWriterTraceListener.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/netcoreapp2.1/System.Diagnostics.Tools.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.Tools.xml",
+        "ref/netcoreapp2.1/System.Diagnostics.TraceSource.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.TraceSource.xml",
+        "ref/netcoreapp2.1/System.Diagnostics.Tracing.dll",
+        "ref/netcoreapp2.1/System.Diagnostics.Tracing.xml",
+        "ref/netcoreapp2.1/System.Drawing.Primitives.dll",
+        "ref/netcoreapp2.1/System.Drawing.Primitives.xml",
+        "ref/netcoreapp2.1/System.Drawing.dll",
+        "ref/netcoreapp2.1/System.Dynamic.Runtime.dll",
+        "ref/netcoreapp2.1/System.Globalization.Calendars.dll",
+        "ref/netcoreapp2.1/System.Globalization.Extensions.dll",
+        "ref/netcoreapp2.1/System.Globalization.dll",
+        "ref/netcoreapp2.1/System.IO.Compression.Brotli.dll",
+        "ref/netcoreapp2.1/System.IO.Compression.FileSystem.dll",
+        "ref/netcoreapp2.1/System.IO.Compression.ZipFile.dll",
+        "ref/netcoreapp2.1/System.IO.Compression.ZipFile.xml",
+        "ref/netcoreapp2.1/System.IO.Compression.dll",
+        "ref/netcoreapp2.1/System.IO.Compression.xml",
+        "ref/netcoreapp2.1/System.IO.FileSystem.DriveInfo.dll",
+        "ref/netcoreapp2.1/System.IO.FileSystem.DriveInfo.xml",
+        "ref/netcoreapp2.1/System.IO.FileSystem.Primitives.dll",
+        "ref/netcoreapp2.1/System.IO.FileSystem.Watcher.dll",
+        "ref/netcoreapp2.1/System.IO.FileSystem.Watcher.xml",
+        "ref/netcoreapp2.1/System.IO.FileSystem.dll",
+        "ref/netcoreapp2.1/System.IO.FileSystem.xml",
+        "ref/netcoreapp2.1/System.IO.IsolatedStorage.dll",
+        "ref/netcoreapp2.1/System.IO.IsolatedStorage.xml",
+        "ref/netcoreapp2.1/System.IO.MemoryMappedFiles.dll",
+        "ref/netcoreapp2.1/System.IO.MemoryMappedFiles.xml",
+        "ref/netcoreapp2.1/System.IO.Pipes.dll",
+        "ref/netcoreapp2.1/System.IO.Pipes.xml",
+        "ref/netcoreapp2.1/System.IO.UnmanagedMemoryStream.dll",
+        "ref/netcoreapp2.1/System.IO.dll",
+        "ref/netcoreapp2.1/System.Linq.Expressions.dll",
+        "ref/netcoreapp2.1/System.Linq.Expressions.xml",
+        "ref/netcoreapp2.1/System.Linq.Parallel.dll",
+        "ref/netcoreapp2.1/System.Linq.Parallel.xml",
+        "ref/netcoreapp2.1/System.Linq.Queryable.dll",
+        "ref/netcoreapp2.1/System.Linq.Queryable.xml",
+        "ref/netcoreapp2.1/System.Linq.dll",
+        "ref/netcoreapp2.1/System.Linq.xml",
+        "ref/netcoreapp2.1/System.Memory.dll",
+        "ref/netcoreapp2.1/System.Memory.xml",
+        "ref/netcoreapp2.1/System.Net.Http.dll",
+        "ref/netcoreapp2.1/System.Net.Http.xml",
+        "ref/netcoreapp2.1/System.Net.HttpListener.dll",
+        "ref/netcoreapp2.1/System.Net.HttpListener.xml",
+        "ref/netcoreapp2.1/System.Net.Mail.dll",
+        "ref/netcoreapp2.1/System.Net.Mail.xml",
+        "ref/netcoreapp2.1/System.Net.NameResolution.dll",
+        "ref/netcoreapp2.1/System.Net.NameResolution.xml",
+        "ref/netcoreapp2.1/System.Net.NetworkInformation.dll",
+        "ref/netcoreapp2.1/System.Net.NetworkInformation.xml",
+        "ref/netcoreapp2.1/System.Net.Ping.dll",
+        "ref/netcoreapp2.1/System.Net.Ping.xml",
+        "ref/netcoreapp2.1/System.Net.Primitives.dll",
+        "ref/netcoreapp2.1/System.Net.Primitives.xml",
+        "ref/netcoreapp2.1/System.Net.Requests.dll",
+        "ref/netcoreapp2.1/System.Net.Requests.xml",
+        "ref/netcoreapp2.1/System.Net.Security.dll",
+        "ref/netcoreapp2.1/System.Net.Security.xml",
+        "ref/netcoreapp2.1/System.Net.ServicePoint.dll",
+        "ref/netcoreapp2.1/System.Net.ServicePoint.xml",
+        "ref/netcoreapp2.1/System.Net.Sockets.dll",
+        "ref/netcoreapp2.1/System.Net.Sockets.xml",
+        "ref/netcoreapp2.1/System.Net.WebClient.dll",
+        "ref/netcoreapp2.1/System.Net.WebClient.xml",
+        "ref/netcoreapp2.1/System.Net.WebHeaderCollection.dll",
+        "ref/netcoreapp2.1/System.Net.WebHeaderCollection.xml",
+        "ref/netcoreapp2.1/System.Net.WebProxy.dll",
+        "ref/netcoreapp2.1/System.Net.WebProxy.xml",
+        "ref/netcoreapp2.1/System.Net.WebSockets.Client.dll",
+        "ref/netcoreapp2.1/System.Net.WebSockets.Client.xml",
+        "ref/netcoreapp2.1/System.Net.WebSockets.dll",
+        "ref/netcoreapp2.1/System.Net.WebSockets.xml",
+        "ref/netcoreapp2.1/System.Net.dll",
+        "ref/netcoreapp2.1/System.Numerics.Vectors.dll",
+        "ref/netcoreapp2.1/System.Numerics.Vectors.xml",
+        "ref/netcoreapp2.1/System.Numerics.dll",
+        "ref/netcoreapp2.1/System.ObjectModel.dll",
+        "ref/netcoreapp2.1/System.ObjectModel.xml",
+        "ref/netcoreapp2.1/System.Reflection.DispatchProxy.dll",
+        "ref/netcoreapp2.1/System.Reflection.DispatchProxy.xml",
+        "ref/netcoreapp2.1/System.Reflection.Emit.ILGeneration.dll",
+        "ref/netcoreapp2.1/System.Reflection.Emit.ILGeneration.xml",
+        "ref/netcoreapp2.1/System.Reflection.Emit.Lightweight.dll",
+        "ref/netcoreapp2.1/System.Reflection.Emit.Lightweight.xml",
+        "ref/netcoreapp2.1/System.Reflection.Emit.dll",
+        "ref/netcoreapp2.1/System.Reflection.Emit.xml",
+        "ref/netcoreapp2.1/System.Reflection.Extensions.dll",
+        "ref/netcoreapp2.1/System.Reflection.Metadata.dll",
+        "ref/netcoreapp2.1/System.Reflection.Metadata.xml",
+        "ref/netcoreapp2.1/System.Reflection.Primitives.dll",
+        "ref/netcoreapp2.1/System.Reflection.Primitives.xml",
+        "ref/netcoreapp2.1/System.Reflection.TypeExtensions.dll",
+        "ref/netcoreapp2.1/System.Reflection.TypeExtensions.xml",
+        "ref/netcoreapp2.1/System.Reflection.dll",
+        "ref/netcoreapp2.1/System.Resources.Reader.dll",
+        "ref/netcoreapp2.1/System.Resources.ResourceManager.dll",
+        "ref/netcoreapp2.1/System.Resources.ResourceManager.xml",
+        "ref/netcoreapp2.1/System.Resources.Writer.dll",
+        "ref/netcoreapp2.1/System.Resources.Writer.xml",
+        "ref/netcoreapp2.1/System.Runtime.CompilerServices.VisualC.dll",
+        "ref/netcoreapp2.1/System.Runtime.CompilerServices.VisualC.xml",
+        "ref/netcoreapp2.1/System.Runtime.Extensions.dll",
+        "ref/netcoreapp2.1/System.Runtime.Extensions.xml",
+        "ref/netcoreapp2.1/System.Runtime.Handles.dll",
+        "ref/netcoreapp2.1/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "ref/netcoreapp2.1/System.Runtime.InteropServices.RuntimeInformation.xml",
+        "ref/netcoreapp2.1/System.Runtime.InteropServices.WindowsRuntime.dll",
+        "ref/netcoreapp2.1/System.Runtime.InteropServices.WindowsRuntime.xml",
+        "ref/netcoreapp2.1/System.Runtime.InteropServices.dll",
+        "ref/netcoreapp2.1/System.Runtime.InteropServices.xml",
+        "ref/netcoreapp2.1/System.Runtime.Loader.dll",
+        "ref/netcoreapp2.1/System.Runtime.Loader.xml",
+        "ref/netcoreapp2.1/System.Runtime.Numerics.dll",
+        "ref/netcoreapp2.1/System.Runtime.Numerics.xml",
+        "ref/netcoreapp2.1/System.Runtime.Serialization.Formatters.dll",
+        "ref/netcoreapp2.1/System.Runtime.Serialization.Formatters.xml",
+        "ref/netcoreapp2.1/System.Runtime.Serialization.Json.dll",
+        "ref/netcoreapp2.1/System.Runtime.Serialization.Json.xml",
+        "ref/netcoreapp2.1/System.Runtime.Serialization.Primitives.dll",
+        "ref/netcoreapp2.1/System.Runtime.Serialization.Primitives.xml",
+        "ref/netcoreapp2.1/System.Runtime.Serialization.Xml.dll",
+        "ref/netcoreapp2.1/System.Runtime.Serialization.Xml.xml",
+        "ref/netcoreapp2.1/System.Runtime.Serialization.dll",
+        "ref/netcoreapp2.1/System.Runtime.dll",
+        "ref/netcoreapp2.1/System.Runtime.xml",
+        "ref/netcoreapp2.1/System.Security.Claims.dll",
+        "ref/netcoreapp2.1/System.Security.Claims.xml",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Algorithms.dll",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Algorithms.xml",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Csp.dll",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Csp.xml",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Encoding.dll",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Encoding.xml",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Primitives.dll",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Primitives.xml",
+        "ref/netcoreapp2.1/System.Security.Cryptography.X509Certificates.dll",
+        "ref/netcoreapp2.1/System.Security.Cryptography.X509Certificates.xml",
+        "ref/netcoreapp2.1/System.Security.Principal.dll",
+        "ref/netcoreapp2.1/System.Security.Principal.xml",
+        "ref/netcoreapp2.1/System.Security.SecureString.dll",
+        "ref/netcoreapp2.1/System.Security.dll",
+        "ref/netcoreapp2.1/System.ServiceModel.Web.dll",
+        "ref/netcoreapp2.1/System.ServiceProcess.dll",
+        "ref/netcoreapp2.1/System.Text.Encoding.Extensions.dll",
+        "ref/netcoreapp2.1/System.Text.Encoding.Extensions.xml",
+        "ref/netcoreapp2.1/System.Text.Encoding.dll",
+        "ref/netcoreapp2.1/System.Text.RegularExpressions.dll",
+        "ref/netcoreapp2.1/System.Text.RegularExpressions.xml",
+        "ref/netcoreapp2.1/System.Threading.Overlapped.dll",
+        "ref/netcoreapp2.1/System.Threading.Overlapped.xml",
+        "ref/netcoreapp2.1/System.Threading.Tasks.Dataflow.dll",
+        "ref/netcoreapp2.1/System.Threading.Tasks.Dataflow.xml",
+        "ref/netcoreapp2.1/System.Threading.Tasks.Extensions.dll",
+        "ref/netcoreapp2.1/System.Threading.Tasks.Extensions.xml",
+        "ref/netcoreapp2.1/System.Threading.Tasks.Parallel.dll",
+        "ref/netcoreapp2.1/System.Threading.Tasks.Parallel.xml",
+        "ref/netcoreapp2.1/System.Threading.Tasks.dll",
+        "ref/netcoreapp2.1/System.Threading.Tasks.xml",
+        "ref/netcoreapp2.1/System.Threading.Thread.dll",
+        "ref/netcoreapp2.1/System.Threading.Thread.xml",
+        "ref/netcoreapp2.1/System.Threading.ThreadPool.dll",
+        "ref/netcoreapp2.1/System.Threading.ThreadPool.xml",
+        "ref/netcoreapp2.1/System.Threading.Timer.dll",
+        "ref/netcoreapp2.1/System.Threading.Timer.xml",
+        "ref/netcoreapp2.1/System.Threading.dll",
+        "ref/netcoreapp2.1/System.Threading.xml",
+        "ref/netcoreapp2.1/System.Transactions.Local.dll",
+        "ref/netcoreapp2.1/System.Transactions.Local.xml",
+        "ref/netcoreapp2.1/System.Transactions.dll",
+        "ref/netcoreapp2.1/System.ValueTuple.dll",
+        "ref/netcoreapp2.1/System.Web.HttpUtility.dll",
+        "ref/netcoreapp2.1/System.Web.HttpUtility.xml",
+        "ref/netcoreapp2.1/System.Web.dll",
+        "ref/netcoreapp2.1/System.Windows.dll",
+        "ref/netcoreapp2.1/System.Xml.Linq.dll",
+        "ref/netcoreapp2.1/System.Xml.ReaderWriter.dll",
+        "ref/netcoreapp2.1/System.Xml.ReaderWriter.xml",
+        "ref/netcoreapp2.1/System.Xml.Serialization.dll",
+        "ref/netcoreapp2.1/System.Xml.XDocument.dll",
+        "ref/netcoreapp2.1/System.Xml.XDocument.xml",
+        "ref/netcoreapp2.1/System.Xml.XPath.XDocument.dll",
+        "ref/netcoreapp2.1/System.Xml.XPath.XDocument.xml",
+        "ref/netcoreapp2.1/System.Xml.XPath.dll",
+        "ref/netcoreapp2.1/System.Xml.XPath.xml",
+        "ref/netcoreapp2.1/System.Xml.XmlDocument.dll",
+        "ref/netcoreapp2.1/System.Xml.XmlSerializer.dll",
+        "ref/netcoreapp2.1/System.Xml.XmlSerializer.xml",
+        "ref/netcoreapp2.1/System.Xml.dll",
+        "ref/netcoreapp2.1/System.dll",
+        "ref/netcoreapp2.1/WindowsBase.dll",
+        "ref/netcoreapp2.1/mscorlib.dll",
+        "ref/netcoreapp2.1/netstandard.dll",
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.DotNetAppHost/2.0.0": {
-      "sha512": "L4GGkcI/Mxl8PKLRpFdGmLb5oI8sGIR05bDTGkzCoamAjdUl1Zhkov2swjEsZvKYT8kkdiz39LtwyGYuCJxm1A==",
+    "Microsoft.NETCore.DotNetAppHost/2.1.0": {
+      "sha512": "f/47I60Wg3SrveTvnecCQhCZCAMYlUujWF15EQ/AZTqF/54qeEJjbCIAxKcZI8ToUYzSg6JdfrHggsgjCyCE9Q==",
       "type": "package",
-      "path": "microsoft.netcore.dotnetapphost/2.0.0",
+      "path": "microsoft.netcore.dotnetapphost/2.1.0",
       "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
+        "microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",
         "microsoft.netcore.dotnetapphost.nuspec",
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.DotNetHostPolicy/2.0.0": {
-      "sha512": "rm7mMn0A93fwyAwVhbyOCcPuu2hZNL0A0dAur9sNG9pEkONPfCEQeF7m2mC8KpqZO0Ol6tpV5J0AF3HTXT3GXA==",
+    "Microsoft.NETCore.DotNetHostPolicy/2.1.0": {
+      "sha512": "p50yZYKzhH64lmArJgoKjtvsNehECa+/sAuOQzZh5uDNBTbRKxjN8IXP1e517xdVsgrFcSNxSEVDKZIOWVjGcQ==",
       "type": "package",
-      "path": "microsoft.netcore.dotnethostpolicy/2.0.0",
+      "path": "microsoft.netcore.dotnethostpolicy/2.1.0",
       "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
+        "microsoft.netcore.dotnethostpolicy.2.1.0.nupkg.sha512",
         "microsoft.netcore.dotnethostpolicy.nuspec",
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.DotNetHostResolver/2.0.0": {
-      "sha512": "uBbjpeSrwsaTCADZCzRk+3aBzNnMqkC4zftJWBsL+Zk+8u+W+/lMb2thM5Y4hiVrv1YQg9t6dKldXzOKkY+pQw==",
+    "Microsoft.NETCore.DotNetHostResolver/2.1.0": {
+      "sha512": "fS9D8a+y55n6mHMbNqgHXaPGkjmpVH9h97OyrBxsCuo3Z8aQaFMJ5xIfmzji2ntUd/3truhMbSgSfIelHOkQpg==",
       "type": "package",
-      "path": "microsoft.netcore.dotnethostresolver/2.0.0",
+      "path": "microsoft.netcore.dotnethostresolver/2.1.0",
       "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
+        "microsoft.netcore.dotnethostresolver.2.1.0.nupkg.sha512",
         "microsoft.netcore.dotnethostresolver.nuspec",
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.Platforms/2.0.0": {
-      "sha512": "VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
+    "Microsoft.NETCore.Platforms/2.1.0": {
+      "sha512": "TT+QCi9LcxGTjBssH7S7n5+8DVcwfG4DYgXX7Dk7+BfZ4oVHj8Q0CbYk9glzAlHLsSt3bYzol+fOdra2iu6GOw==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/2.0.0",
+      "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
-        "Microsoft.NETCore.Platforms.2.0.0.nupkg.sha512",
-        "Microsoft.NETCore.Platforms.nuspec",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.2.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "Microsoft.NETCore.Targets/1.1.0": {
-      "sha512": "aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+    "Microsoft.NETCore.Targets/2.1.0": {
+      "sha512": "etaYwrLZQUS+b3UWTpCnUggd6SQ/ZIkZ5pHnoR7+dIWt/wp2Rv3CvMKOZISsrt7FYCHKwCxfcepuuyEWkQxADg==",
       "type": "package",
-      "path": "microsoft.netcore.targets/1.1.0",
+      "path": "microsoft.netcore.targets/2.1.0",
       "files": [
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.targets.1.1.0.nupkg.sha512",
+        "microsoft.netcore.targets.2.1.0.nupkg.sha512",
         "microsoft.netcore.targets.nuspec",
-        "runtime.json"
+        "runtime.json",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "MySqlConnector/0.42.1": {
@@ -1924,14 +2070,13 @@
         "mysqlconnector.nuspec"
       ]
     },
-    "NETStandard.Library/2.0.0": {
-      "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
+    "NETStandard.Library/2.0.3": {
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
-      "path": "netstandard.library/2.0.0",
+      "path": "netstandard.library/2.0.3",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "build/NETStandard.Library.targets",
         "build/netstandard2.0/NETStandard.Library.targets",
         "build/netstandard2.0/ref/Microsoft.Win32.Primitives.dll",
         "build/netstandard2.0/ref/System.AppContext.dll",
@@ -2048,7 +2193,7 @@
         "build/netstandard2.0/ref/netstandard.dll",
         "build/netstandard2.0/ref/netstandard.xml",
         "lib/netstandard1.0/_._",
-        "netstandard.library.2.0.0.nupkg.sha512",
+        "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
     },
@@ -2181,11 +2326,12 @@
         "system.appcontext.nuspec"
       ]
     },
-    "System.Buffers/4.4.0": {
-      "sha512": "AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
+    "System.Buffers/4.5.0": {
+      "sha512": "xpHYjjtyTEpzMwtSQBWdVc3dPjLdQtvyUg6fBlBqcLl1r2Y7gDG/W/enAYOB98nG3oD3Q153Y2FBO8JDWd+0Xw==",
       "type": "package",
-      "path": "system.buffers/4.4.0",
+      "path": "system.buffers/4.5.0",
       "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netcoreapp2.0/_._",
@@ -2193,21 +2339,25 @@
         "lib/netstandard1.1/System.Buffers.xml",
         "lib/netstandard2.0/System.Buffers.dll",
         "lib/netstandard2.0/System.Buffers.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net45/System.Buffers.dll",
+        "ref/net45/System.Buffers.xml",
         "ref/netcoreapp2.0/_._",
         "ref/netstandard1.1/System.Buffers.dll",
         "ref/netstandard1.1/System.Buffers.xml",
         "ref/netstandard2.0/System.Buffers.dll",
         "ref/netstandard2.0/System.Buffers.xml",
-        "system.buffers.4.4.0.nupkg.sha512",
+        "ref/uap10.0.16299/_._",
+        "system.buffers.4.5.0.nupkg.sha512",
         "system.buffers.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Collections/4.3.0": {
-      "sha512": "3Dcj85/TBdVpL5Zr+gEEBUuFe2icOnLalmEh9hfck1PTYbbyWuZgh4fmm2ysCLTrqLQw6t3TgTyJ+VLp+Qb+Lw==",
+    "System.Collections/4.0.11": {
+      "sha512": "YUJGz6eFKqS0V//mLt25vFGrrCvOnsXjlvFQs+KimpwNxug9x0Pzy4PlFMU3Q2IzqAa9G2L4LsK3+9vCBK7oTg==",
       "type": "package",
-      "path": "system.collections/4.3.0",
+      "path": "system.collections/4.0.11",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -2266,7 +2416,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.collections.4.3.0.nupkg.sha512",
+        "system.collections.4.0.11.nupkg.sha512",
         "system.collections.nuspec"
       ]
     },
@@ -3518,10 +3668,10 @@
         "system.resources.resourcemanager.nuspec"
       ]
     },
-    "System.Runtime/4.3.0": {
-      "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+    "System.Runtime/4.1.0": {
+      "sha512": "v6c/4Yaa9uWsq+JMhnOFewrYkgdNHNG2eMKuNqRn8P733rNXeRCGvV5FkkjBXn2dbVkPXOsO0xjsEeM1q2zC0g==",
       "type": "package",
-      "path": "system.runtime/4.3.0",
+      "path": "system.runtime/4.1.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -3604,7 +3754,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.runtime.4.3.0.nupkg.sha512",
+        "system.runtime.4.1.0.nupkg.sha512",
         "system.runtime.nuspec"
       ]
     },
@@ -4070,6 +4220,24 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
+    "System.Text.Encodings.Web/4.5.0": {
+      "sha512": "JF+wDdfFiRl3rz3dPMfR6aR568AW2J5CUMmhSflgHDz4zbVK4/00ax8UHnHyEMvblPewgNugjuA4oyoL8Pex2g==",
+      "type": "package",
+      "path": "system.text.encodings.web/4.5.0",
+      "files": [
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/System.Text.Encodings.Web.dll",
+        "lib/netstandard1.0/System.Text.Encodings.Web.xml",
+        "lib/netstandard2.0/System.Text.Encodings.Web.dll",
+        "lib/netstandard2.0/System.Text.Encodings.Web.xml",
+        "system.text.encodings.web.4.5.0.nupkg.sha512",
+        "system.text.encodings.web.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Text.RegularExpressions/4.1.0": {
       "sha512": "i88YCXpRTjCnoSQZtdlHkAOx4KNNik4hMy83n0+Ftlb7jvV6ZiZWMpnEZHhjBp6hQVh8gWd/iKNPzlPF7iyA2g==",
       "type": "package",
@@ -4220,10 +4388,10 @@
         "system.threading.nuspec"
       ]
     },
-    "System.Threading.Tasks/4.3.0": {
-      "sha512": "LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
+    "System.Threading.Tasks/4.0.11": {
+      "sha512": "k1S4Gc6IGwtHGT8188RSeGaX86Qw/wnrgNLshJvsdNUOPP9etMmo8S07c+UlOAx4K/xLuN9ivA1bD0LVurtIxQ==",
       "type": "package",
-      "path": "system.threading.tasks/4.3.0",
+      "path": "system.threading.tasks/4.0.11",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -4282,14 +4450,14 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.threading.tasks.4.3.0.nupkg.sha512",
+        "system.threading.tasks.4.0.11.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
     },
-    "System.Threading.Tasks.Extensions/4.3.0": {
-      "sha512": "npvJkVKl5rKXrtl1Kkm6OhOUaYGEiF9wFbppFRWSMoApKzt2PiPHT2Bb8a5sAWxprvdOAtvaARS9QYMznEUtug==",
+    "System.Threading.Tasks.Extensions/4.0.0": {
+      "sha512": "pH4FZDsZQ/WmgJtN4LWYmRdJAEeVkyriSwrv2Teoe5FOU0Yxlb6II6GL8dBPOfRmutHGATduj3ooMt7dJ2+i+w==",
       "type": "package",
-      "path": "system.threading.tasks.extensions/4.3.0",
+      "path": "system.threading.tasks.extensions/4.0.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -4297,7 +4465,7 @@
         "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
-        "system.threading.tasks.extensions.4.3.0.nupkg.sha512",
+        "system.threading.tasks.extensions.4.0.0.nupkg.sha512",
         "system.threading.tasks.extensions.nuspec"
       ]
     },
@@ -4444,11 +4612,11 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v2.0": [
+    ".NETCoreApp,Version=v2.1": [
       "Microsoft.EntityFrameworkCore >= 2.1.1",
       "Microsoft.EntityFrameworkCore.Tools >= 2.1.1",
       "Microsoft.Extensions.Logging >= 2.1.1",
-      "Microsoft.NETCore.App >= 2.0.0",
+      "Microsoft.NETCore.App >= 2.1.0",
       "Pomelo.EntityFrameworkCore.MySql >= 2.1.1",
       "Sunny.Common >= 1.0.0"
     ]
@@ -4480,14 +4648,14 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp2.0"
+        "netcoreapp2.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp2.0": {
+        "netcoreapp2.1": {
           "projectReferences": {
             "D:\\Work\\Code\\Sunny\\Sunny.Common\\Sunny.Common.csproj": {
               "projectPath": "D:\\Work\\Code\\Sunny\\Sunny.Common\\Sunny.Common.csproj"
@@ -4502,7 +4670,7 @@
       }
     },
     "frameworks": {
-      "netcoreapp2.0": {
+      "netcoreapp2.1": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -4519,7 +4687,7 @@
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.0, )",
+            "version": "[2.1.0, )",
             "autoReferenced": true
           },
           "Pomelo.EntityFrameworkCore.MySql": {

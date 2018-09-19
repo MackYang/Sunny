@@ -55,7 +55,7 @@ namespace Sunny.Api.Controllers
 
             //db.SaveChanges();
 
-
+ 
             var x=db.Student.FirstOrDefault();
 
             Console.WriteLine("hello");

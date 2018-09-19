@@ -6,4 +6,4 @@ D:\Work\Code\Sunny\Sunny.Service\obj\Debug\netcoreapp2.0\Sunny.Service.AssemblyI
 D:\Work\Code\Sunny\Sunny.Service\obj\Debug\netcoreapp2.0\Sunny.Service.AssemblyInfo.cs
 D:\Work\Code\Sunny\Sunny.Service\obj\Debug\netcoreapp2.0\Sunny.Service.dll
 D:\Work\Code\Sunny\Sunny.Service\obj\Debug\netcoreapp2.0\Sunny.Service.pdb
-D:\Work\Code\Sunny\Sunny.Service\obj\Debug\netcoreapp2.0\Sunny.Service.csprojAssemblyReference.cache
+D:\Work\Code\Sunny\Sunny.Service\obj\Debug\netcoreapp2.0\Sunny.Service.csprojResolveAssemblyReference.cache

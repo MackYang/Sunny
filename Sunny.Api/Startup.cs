@@ -48,9 +48,10 @@ namespace Sunny.Api
             var connection = Configuration.GetConnectionString("MySql");
             services.AddDbContext<EfDbContext>(options =>
                 options.UseMySql(connection));
-               
-            //services.Configure<TestOption>(Configuration.GetSection("ConfigOption:Person"));
 
+            //services.Configure<NetLoggerOption>(Configuration.GetSection("ConfigOptions:NetLoggerOption"));
+
+            
             DIHelper.AutoRegister(services);
 
             services.AddMvc();
@@ -66,14 +67,14 @@ namespace Sunny.Api
                 app.UseDeveloperExceptionPage();
             }
 
-
+            //loggerFactory.AddDebug();
             //loggerFactory.AddProvider(new MyFilteredLoggerProvider());
-            // loggerFactory.AddDebug((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
+            //loggerFactory.AddConsole((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
             //loggerFactory.AddConsole((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == "Microsoft.EntityFrameworkCore.Database.Command"));
 
             //loggerFactory.AddConsole();
-            //loggerFactory.AddNetLogger((categoryName,logLevel)=>true);
-            loggerFactory.AddNetLogger((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
+            loggerFactory.AddNetLogger(Configuration.GetSection("ConfigOptions:NetLoggerOption").Get<NetLoggerOption>());
+            //loggerFactory.AddNetLogger((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
 
             //app.Use(async (ctx, next) =>
             //{

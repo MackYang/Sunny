@@ -9,5 +9,7 @@ namespace Sunny.Common.Helper.Log
         public string Message { get; set; }
 
         public string LevelString { get; set; }
+
+        public Exception Exception { get; set; }
     }
 }

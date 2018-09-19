@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Sunny.Common.ConfigOption;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Sunny.Common.Helper.Log
 
         private readonly Func<string, LogLevel, bool> _filter;
         
-        private readonly NetLoggerProcessor _messageQueue = new NetLoggerProcessor();
+        private readonly NetLoggerProcessor _messageQueue;
 
         private static readonly Func<string, LogLevel, bool> trueFilter = (cat, level) => true;
         private static readonly Func<string, LogLevel, bool> falseFilter = (cat, level) => false;
@@ -21,13 +22,14 @@ namespace Sunny.Common.Helper.Log
         private bool _disableColors;
         private IExternalScopeProvider _scopeProvider;
 
-        public NetLoggerProvider() : this(null, false) { }
+        public NetLoggerProvider(NetLoggerOption option) : this(option,null, false) { }
 
-        public NetLoggerProvider(Func<string, LogLevel, bool> filter, bool includeScopes)
+        public NetLoggerProvider(NetLoggerOption option,Func<string, LogLevel, bool> filter, bool includeScopes)
         {
             _filter = filter;
             _includeScopes = includeScopes;
-            
+            _messageQueue = new NetLoggerProcessor(option);
+
         }
 
        

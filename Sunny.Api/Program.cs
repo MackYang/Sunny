@@ -19,6 +19,11 @@ namespace Sunny.Api
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .ConfigureLogging(logging =>
+            {
+                //logging.SetMinimumLevel(LogLevel.Warning);
+                logging.ClearProviders();
+            })
                 .UseStartup<Startup>()
                 .Build();
     }

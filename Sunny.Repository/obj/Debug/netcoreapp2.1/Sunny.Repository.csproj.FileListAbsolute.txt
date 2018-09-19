@@ -1,0 +1,13 @@
+D:\Work\Code\Sunny\Sunny.Repository\bin\Debug\netcoreapp2.1\Sunny.Repository.deps.json
+D:\Work\Code\Sunny\Sunny.Repository\bin\Debug\netcoreapp2.1\Sunny.Repository.runtimeconfig.json
+D:\Work\Code\Sunny\Sunny.Repository\bin\Debug\netcoreapp2.1\Sunny.Repository.runtimeconfig.dev.json
+D:\Work\Code\Sunny\Sunny.Repository\bin\Debug\netcoreapp2.1\Sunny.Repository.dll
+D:\Work\Code\Sunny\Sunny.Repository\bin\Debug\netcoreapp2.1\Sunny.Repository.pdb
+D:\Work\Code\Sunny\Sunny.Repository\bin\Debug\netcoreapp2.1\Sunny.Common.dll
+D:\Work\Code\Sunny\Sunny.Repository\bin\Debug\netcoreapp2.1\Sunny.Common.pdb
+D:\Work\Code\Sunny\Sunny.Repository\obj\Debug\netcoreapp2.1\Sunny.Repository.csprojResolveAssemblyReference.cache
+D:\Work\Code\Sunny\Sunny.Repository\obj\Debug\netcoreapp2.1\Sunny.Repository.csproj.CoreCompileInputs.cache
+D:\Work\Code\Sunny\Sunny.Repository\obj\Debug\netcoreapp2.1\Sunny.Repository.AssemblyInfoInputs.cache
+D:\Work\Code\Sunny\Sunny.Repository\obj\Debug\netcoreapp2.1\Sunny.Repository.AssemblyInfo.cs
+D:\Work\Code\Sunny\Sunny.Repository\obj\Debug\netcoreapp2.1\Sunny.Repository.dll
+D:\Work\Code\Sunny\Sunny.Repository\obj\Debug\netcoreapp2.1\Sunny.Repository.pdb
