@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Sunny.Common.Helper.Net
@@ -436,11 +437,11 @@ namespace Sunny.Common.Helper.Net
             //            }, opRes, throwException);
         }
 
-        public static string PostWithJson(string url, string data)
+        public static async Task<string> PostWithJson(string url, string data)
         {
             HttpContent content = new StringContent(data);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            return new HttpClient().PostAsync(url, content).Result.Content.ReadAsStringAsync().Result;
+            return await new HttpClient().PostAsync(url, content).Result.Content.ReadAsStringAsync();
         }
 
        

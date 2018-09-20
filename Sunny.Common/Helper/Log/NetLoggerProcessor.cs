@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Sunny.Common.ConfigOption;
 using Sunny.Common.Enum;
+using Sunny.Common.Helper.File;
 using Sunny.Common.Helper.Net;
 using Sunny.Common.Helper.String;
 using System;
@@ -42,7 +43,7 @@ namespace Sunny.Common.Helper.Log
                     _messageQueue.Add(message);
                     return;
                 }
-                catch (InvalidOperationException) { }
+                catch (InvalidOperationException ex) { WriteOffLineLog("AddLogQueue Err", ex); }
             }
 
             // Adding is completed so just log the message
@@ -50,11 +51,11 @@ namespace Sunny.Common.Helper.Log
         }
 
         // for testing
-        internal virtual void WriteMessage(LogData log)
+        internal virtual async void WriteMessage(LogData log)
         {
             //Console.WriteLine($"NetXXX:Message{message.Message},Level:{message.LevelString}")
 
-            AddLog(log.LevelString, log.Message, null, log.Exception?.StackTrace);
+            await AddLog(log.LevelString, log.Message, null, log.Exception?.StackTrace);
         }
 
 
@@ -72,10 +73,10 @@ namespace Sunny.Common.Helper.Log
                 attData = attData,
                 stackInfo = stackInfo
             };
-
+            string json = JsonHelper.ToJsonString(jsonObj);
             try
             {
-                var res = NetHelper.PostWithJson(option.Url, JsonHelper.ToJsonString(jsonObj));
+                var res = await NetHelper.PostWithJson(option.Url, json);
                 OPResult opRes = JsonHelper.FromJsonString<OPResult>(res);
                 if (opRes.State == 1)
                 {
@@ -83,20 +84,44 @@ namespace Sunny.Common.Helper.Log
                 }
                 else
                 {
-                    //TODO
-                    // Logger.Error("调用日志系统失败:" + res + ",extensionData=" + JsonConvert.SerializeObject(dicArgs));
+                    WriteOffLineLog(json);
                 }
             }
             catch (Exception ex)
             {
-                //TODO
-                // Logger.Error("调用日志系统失败:" + ex.Message + ",extensionData=" + JsonConvert.SerializeObject(dicArgs), ex);
+                WriteOffLineLog(json, ex);
             }
 
             return flag;
 
         }
 
+
+
+        private void WriteOffLineLog(string originalLogInfo, Exception offlineExInfo = null)
+        {
+
+            try
+            {
+                string offlineFilePath = $@"C:\SunnyOfflineLog\{DateTime.Now.ToString("yyyy-MM-dd")}.txt";
+
+                string data = $"Time:{DateTime.Now.ToNormalString()}\r\n\r\nOriginalLogInfo:{originalLogInfo}";
+                if (offlineExInfo != null)
+                {
+                    data += $"\r\n\r\nOfflineExceptionInfo:{JsonHelper.ToJsonString(offlineExInfo)}";
+                }
+                data += "\r\n\r\n\r\n\r\n\r\n";
+
+                FileHelper.WriteFile(offlineFilePath, data);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(JsonHelper.ToJsonString(ex));
+
+            }
+
+        }
 
         private class OPResult
         {
@@ -124,7 +149,7 @@ namespace Sunny.Common.Helper.Log
                 {
                     _messageQueue.CompleteAdding();
                 }
-                catch { }
+                catch (Exception ex){ WriteOffLineLog("AddLogQueue Err",ex); }
             }
         }
 
