@@ -12784,14 +12784,10 @@
   },
   "packageFolders": {
     "C:\\Users\\Administrator\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\Work\\Code\\Sunny\\Sunny.Api\\Sunny.Api.csproj",
       "projectName": "Sunny.Api",
@@ -12800,13 +12796,11 @@
       "outputPath": "D:\\Work\\Code\\Sunny\\Sunny.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -12818,11 +12812,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\Work\\Code\\Sunny\\Sunny.Repository\\Sunny.Repository.csproj": {
-              "projectPath": "D:\\Work\\Code\\Sunny\\Sunny.Repository\\Sunny.Repository.csproj"
-            },
             "D:\\Work\\Code\\Sunny\\Sunny.Common\\Sunny.Common.csproj": {
               "projectPath": "D:\\Work\\Code\\Sunny\\Sunny.Common\\Sunny.Common.csproj"
+            },
+            "D:\\Work\\Code\\Sunny\\Sunny.Repository\\Sunny.Repository.csproj": {
+              "projectPath": "D:\\Work\\Code\\Sunny\\Sunny.Repository\\Sunny.Repository.csproj"
             },
             "D:\\Work\\Code\\Sunny\\Sunny.Service\\Sunny.Service.csproj": {
               "projectPath": "D:\\Work\\Code\\Sunny\\Sunny.Service\\Sunny.Service.csproj"

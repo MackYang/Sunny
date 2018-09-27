@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunny.Api", "Sunny.Api\Sunny.Api.csproj", "{913AE651-2048-4BE1-9199-63C8AB3B8299}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateT4", "TemplateT4\TemplateT4.csproj", "{1B813AAE-92C9-4AE5-869C-87AC1B3519CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{913AE651-2048-4BE1-9199-63C8AB3B8299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{913AE651-2048-4BE1-9199-63C8AB3B8299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{913AE651-2048-4BE1-9199-63C8AB3B8299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B813AAE-92C9-4AE5-869C-87AC1B3519CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B813AAE-92C9-4AE5-869C-87AC1B3519CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B813AAE-92C9-4AE5-869C-87AC1B3519CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B813AAE-92C9-4AE5-869C-87AC1B3519CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{1F8A0634-DAFC-49FC-9E4E-BF93A4BE1683} = {25C48BCE-DBD6-4261-A047-AA8AB47F5EA6}
 		{D040749F-0AEF-4263-9A99-908D53EE5E46} = {25C48BCE-DBD6-4261-A047-AA8AB47F5EA6}
 		{913AE651-2048-4BE1-9199-63C8AB3B8299} = {25C48BCE-DBD6-4261-A047-AA8AB47F5EA6}
+		{1B813AAE-92C9-4AE5-869C-87AC1B3519CD} = {25C48BCE-DBD6-4261-A047-AA8AB47F5EA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFBAF3FC-372F-4113-B957-F789D18BD6BE}

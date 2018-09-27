@@ -1,0 +1,25 @@
+﻿<#@ template debug="false" hostspecific="false"  language="C#"  #>  
+<#@ output extension=".cs" #>
+<#@ import namespace="System.IO" #>
+
+
+<# var properties = new string [] {"P1", "P2", "P3"}; #>  
+// This is generated code:  
+class MyGeneratedClass {  
+<# // This code runs in the text template:  
+  foreach (string propertyName in properties)   { #>  
+  // Generated code:  
+  private int <#= propertyName #> = 0;  
+ 
+<# } #>  
+
+
+ <#for(int x=0;x<9;x++)
+  {
+  
+  
+  #>
+  ss
+  <#}
+#>
+}  

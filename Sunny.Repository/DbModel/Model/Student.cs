@@ -16,6 +16,10 @@ namespace Sunny.Repository.DbModel
         public string AAA { get; set; }
 
         public StudentAddress Address { get; set; }
+
+        public decimal Score { get; set; }
+
+
         
     }
 }

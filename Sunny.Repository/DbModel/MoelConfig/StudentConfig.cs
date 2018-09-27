@@ -17,6 +17,8 @@ namespace Sunny.Repository.DbModel.MoelConfig
         public void Configure(EntityTypeBuilder<Student> builder)
         {
             builder.Property(x => x.StudentName).HasMaxLength(15);
+            builder.Property(x => x.Score).HasColumnName("sss").IsRowVersion();
+             
         }
     }
 }

@@ -1,0 +1,16 @@
+D:\Work\Code\Sunny\TemplateT4\bin\Debug\netcoreapp2.1\TemplateT4.deps.json
+D:\Work\Code\Sunny\TemplateT4\bin\Debug\netcoreapp2.1\TemplateT4.runtimeconfig.json
+D:\Work\Code\Sunny\TemplateT4\bin\Debug\netcoreapp2.1\TemplateT4.runtimeconfig.dev.json
+D:\Work\Code\Sunny\TemplateT4\bin\Debug\netcoreapp2.1\TemplateT4.dll
+D:\Work\Code\Sunny\TemplateT4\bin\Debug\netcoreapp2.1\TemplateT4.pdb
+D:\Work\Code\Sunny\TemplateT4\obj\Debug\netcoreapp2.1\TemplateT4.csproj.CoreCompileInputs.cache
+D:\Work\Code\Sunny\TemplateT4\obj\Debug\netcoreapp2.1\TemplateT4.AssemblyInfoInputs.cache
+D:\Work\Code\Sunny\TemplateT4\obj\Debug\netcoreapp2.1\TemplateT4.AssemblyInfo.cs
+D:\Work\Code\Sunny\TemplateT4\obj\Debug\netcoreapp2.1\TemplateT4.dll
+D:\Work\Code\Sunny\TemplateT4\obj\Debug\netcoreapp2.1\TemplateT4.pdb
+D:\Work\Code\Sunny\TemplateT4\obj\Debug\netcoreapp2.1\TemplateT4.csprojAssemblyReference.cache
+D:\Work\Code\Sunny\TemplateT4\bin\Debug\netcoreapp2.1\Sunny.Common.dll
+D:\Work\Code\Sunny\TemplateT4\bin\Debug\netcoreapp2.1\Sunny.Repository.dll
+D:\Work\Code\Sunny\TemplateT4\bin\Debug\netcoreapp2.1\Sunny.Repository.pdb
+D:\Work\Code\Sunny\TemplateT4\bin\Debug\netcoreapp2.1\Sunny.Common.pdb
+D:\Work\Code\Sunny\TemplateT4\obj\Debug\netcoreapp2.1\TemplateT4.csproj.CopyComplete
