@@ -49,9 +49,14 @@ namespace Sunny.Api
             services.AddDbContext<EfDbContext>(options =>
                 options.UseMySql(connection));
 
+            ////同时使用多个数据库的DEMO
+            //var connection2 = Configuration.GetConnectionString("MySq2");
+            //services.AddDbContext<TDbContext>(options =>
+            //   options.UseMySql(connection2));
+
             //services.Configure<NetLoggerOption>(Configuration.GetSection("ConfigOptions:NetLoggerOption"));
 
-            
+
             DIHelper.AutoRegister(services);
 
             services.AddMvc();

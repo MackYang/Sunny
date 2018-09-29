@@ -10,10 +10,8 @@ namespace Sunny.Repository.DbModel
     {
 
         public long Id { get; set; }
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
 
-        public DateTime CreateTime { get; set; }
+        public DateTime CreateTime { get; set; } = DateTime.Now;
 
         public long CreaterId { get; set; }
 

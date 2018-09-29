@@ -14,7 +14,6 @@ namespace Sunny.Repository.DbModel.MoelConfig
             builder.Property(x => x.Id).HasColumnName("id");
 builder.Property(x => x.CategoryId).HasColumnName("category_id");
 builder.Property(x => x.PassageId).HasColumnName("passage_id");
-builder.Property(x => x.RowVersion).HasColumnName("row_version");
 builder.Property(x => x.CreateTime).HasColumnName("create_time");
 builder.Property(x => x.CreaterId).HasColumnName("creater_id");
 builder.Property(x => x.UpdateTime).HasColumnName("update_time").IsRowVersion();

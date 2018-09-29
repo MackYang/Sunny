@@ -16,10 +16,12 @@ namespace Sunny.Api.Controllers
 
         EfDbContext db;
         ILogger logger;
-        public ValuesController(EfDbContext efDbContext,ILogger<ValuesController> logger)
+        //TDbContext tDbContex;
+        public ValuesController(EfDbContext efDbContext, ILogger<ValuesController> logger)
         {
             this.db = efDbContext;
             this.logger = logger;
+            //this.tDbContex = tDbContext;
         }
 
         // GET api/values
@@ -32,14 +34,14 @@ namespace Sunny.Api.Controllers
             //builder.UseMySql("server=localhost;database=test;user=root;password=myAdmin.;");
             //EfDbContext db = new EfDbContext(builder.Options);
 
-
+          // var t= tDbContex.Student.FirstOrDefault();
 
             //// var b = db.Query<User>();
             //var c = db.Uesr2s.First();
 
-            //Student student = new Student();
-            //student.Id = 23;
-            //student.StudentName = "YH";
+            Student student = new Student();
+            student.Id = 23;
+            student.StudentName = "YH";
 
             //StudentAddress address = new StudentAddress();
             //address.Student = student;
@@ -52,10 +54,11 @@ namespace Sunny.Api.Controllers
             //address2.Id = 222;
 
             //db.AddRange(student, address, address2);
+            //db.Add(student);
 
             //db.SaveChanges();
 
- 
+
             var x=db.Student.FirstOrDefault();
 
             Console.WriteLine("hello");
