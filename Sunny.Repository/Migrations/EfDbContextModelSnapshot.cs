@@ -20,21 +20,31 @@ namespace Sunny.Repository.Migrations
             modelBuilder.Entity("Sunny.Repository.DbModel.Category", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id");
 
-                    b.Property<string>("CategoryName");
+                    b.Property<string>("CategoryName")
+                        .HasColumnName("category_name")
+                        .HasMaxLength(30);
 
-                    b.Property<DateTime>("CreateTime");
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnName("create_time");
 
-                    b.Property<long>("CreaterId");
+                    b.Property<long>("CreaterId")
+                        .HasColumnName("creater_id");
 
                     b.Property<DateTime?>("RowVersion")
                         .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("row_version");
 
-                    b.Property<DateTime>("UpdateTime");
+                    b.Property<DateTime>("UpdateTime")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("update_time");
 
-                    b.Property<long>("UpdaterId");
+                    b.Property<long>("UpdaterId")
+                        .HasColumnName("updater_id");
 
                     b.HasKey("Id");
 
@@ -44,23 +54,34 @@ namespace Sunny.Repository.Migrations
             modelBuilder.Entity("Sunny.Repository.DbModel.Passage", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id");
 
-                    b.Property<DateTime>("CreateTime");
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnName("create_time");
 
-                    b.Property<long>("CreaterId");
+                    b.Property<long>("CreaterId")
+                        .HasColumnName("creater_id");
 
-                    b.Property<DateTime>("LastEditTime");
+                    b.Property<DateTime>("LastEditTime")
+                        .HasColumnName("last_edit_time");
 
                     b.Property<DateTime?>("RowVersion")
                         .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("row_version");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .HasColumnName("title")
+                        .HasMaxLength(30);
 
-                    b.Property<DateTime>("UpdateTime");
+                    b.Property<DateTime>("UpdateTime")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("update_time");
 
-                    b.Property<long>("UpdaterId");
+                    b.Property<long>("UpdaterId")
+                        .HasColumnName("updater_id");
 
                     b.HasKey("Id");
 
@@ -70,23 +91,33 @@ namespace Sunny.Repository.Migrations
             modelBuilder.Entity("Sunny.Repository.DbModel.PassageCategory", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id");
 
-                    b.Property<long>("CategoryId");
+                    b.Property<long>("CategoryId")
+                        .HasColumnName("category_id");
 
-                    b.Property<DateTime>("CreateTime");
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnName("create_time");
 
-                    b.Property<long>("CreaterId");
+                    b.Property<long>("CreaterId")
+                        .HasColumnName("creater_id");
 
-                    b.Property<long>("PassageId");
+                    b.Property<long>("PassageId")
+                        .HasColumnName("passage_id");
 
                     b.Property<DateTime?>("RowVersion")
                         .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("row_version");
 
-                    b.Property<DateTime>("UpdateTime");
+                    b.Property<DateTime>("UpdateTime")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("update_time");
 
-                    b.Property<long>("UpdaterId");
+                    b.Property<long>("UpdaterId")
+                        .HasColumnName("updater_id");
 
                     b.HasKey("Id");
 
@@ -100,26 +131,43 @@ namespace Sunny.Repository.Migrations
             modelBuilder.Entity("Sunny.Repository.DbModel.Student", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id");
 
-                    b.Property<string>("AAA");
+                    b.Property<string>("AAA")
+                        .HasColumnName("a_a_a")
+                        .HasMaxLength(30);
 
-                    b.Property<DateTime>("CreateTime");
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnName("create_time");
 
-                    b.Property<long>("CreaterId");
+                    b.Property<long>("CreaterId")
+                        .HasColumnName("creater_id");
 
                     b.Property<DateTime?>("RowVersion")
                         .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("row_version");
+
+                    b.Property<decimal>("Score")
+                        .HasColumnName("score")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("StudentName")
-                        .HasMaxLength(15);
+                        .HasColumnName("student_name")
+                        .HasMaxLength(30);
 
-                    b.Property<string>("Test");
+                    b.Property<string>("Test")
+                        .HasColumnName("test")
+                        .HasMaxLength(30);
 
-                    b.Property<DateTime>("UpdateTime");
+                    b.Property<DateTime>("UpdateTime")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("update_time");
 
-                    b.Property<long>("UpdaterId");
+                    b.Property<long>("UpdaterId")
+                        .HasColumnName("updater_id");
 
                     b.HasKey("Id");
 
@@ -129,29 +177,45 @@ namespace Sunny.Repository.Migrations
             modelBuilder.Entity("Sunny.Repository.DbModel.StudentAddress", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id");
 
-                    b.Property<string>("Address1");
+                    b.Property<string>("Address1")
+                        .HasColumnName("address1")
+                        .HasMaxLength(30);
 
-                    b.Property<string>("Country");
+                    b.Property<string>("Country")
+                        .HasColumnName("country")
+                        .HasMaxLength(30);
 
-                    b.Property<DateTime>("CreateTime");
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnName("create_time");
 
-                    b.Property<long>("CreaterId");
+                    b.Property<long>("CreaterId")
+                        .HasColumnName("creater_id");
 
                     b.Property<DateTime?>("RowVersion")
                         .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("row_version");
 
-                    b.Property<string>("State");
+                    b.Property<string>("State")
+                        .HasColumnName("state")
+                        .HasMaxLength(30);
 
-                    b.Property<long>("StudentId");
+                    b.Property<long>("StudentId")
+                        .HasColumnName("student_id");
 
-                    b.Property<DateTime>("UpdateTime");
+                    b.Property<DateTime>("UpdateTime")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnName("update_time");
 
-                    b.Property<long>("UpdaterId");
+                    b.Property<long>("UpdaterId")
+                        .HasColumnName("updater_id");
 
-                    b.Property<int>("Zipcode");
+                    b.Property<int>("Zipcode")
+                        .HasColumnName("zipcode");
 
                     b.HasKey("Id");
 
@@ -159,6 +223,40 @@ namespace Sunny.Repository.Migrations
                         .IsUnique();
 
                     b.ToTable("StudentAddress");
+                });
+
+            modelBuilder.Entity("Sunny.Repository.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Password");
+
+                    b.Property<decimal?>("PuaId");
+
+                    b.Property<string>("UserName");
+
+                    b.Property<string>("test");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Uesrs");
+                });
+
+            modelBuilder.Entity("Sunny.Repository.UserB", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Password");
+
+                    b.Property<decimal>("PuaId");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Uesr2s");
                 });
 
             modelBuilder.Entity("Sunny.Repository.DbModel.PassageCategory", b =>

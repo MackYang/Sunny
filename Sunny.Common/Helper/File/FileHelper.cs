@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 
 
 
@@ -16,12 +12,21 @@ namespace Sunny.Common.Helper.File
         /// </summary>  
         /// <param name="filePath">文件名</param>  
         /// <param name="content">文件内容</param>  
-        public static void WriteFile(string filePath, string content)
+        /// <param name="isAppend">默认是追加,如果要替换原内容传flase</param>
+        public static void WriteFile(string filePath, string content, bool isAppend = true)
         {
             var dirInfo = Directory.GetParent(filePath).ToString();
             CreatePathIfNotExists(dirInfo);
-            System.IO.File.AppendAllText(filePath, content);
- 
+            if (isAppend)
+            {
+                System.IO.File.AppendAllText(filePath, content);
+            }
+            else
+            {
+                System.IO.File.WriteAllText(filePath, content);
+            }
+
+
         }
 
         /// <summary>  
