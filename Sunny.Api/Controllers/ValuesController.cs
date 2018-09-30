@@ -28,7 +28,7 @@ namespace Sunny.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-
+            throw new Exception("Test EEEEE!");
             //var builder = new DbContextOptionsBuilder<EfDbContext>();
 
             //builder.UseMySql("server=localhost;database=test;user=root;password=myAdmin.;");

@@ -1,13 +1,9 @@
-﻿using Microsoft.Extensions.Options;
-using Sunny.Common.ConfigOption;
-using Sunny.Common.Enum;
+﻿using Sunny.Common.ConfigOption;
 using Sunny.Common.Helper.File;
 using Sunny.Common.Helper.Net;
 using Sunny.Common.Helper.String;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -71,7 +67,7 @@ namespace Sunny.Common.Helper.Log
                 logLevel = logLevel,
                 logMessage = logMessage,
                 attData = attData,
-                stackInfo = stackInfo
+                // stackInfo = stackInfo 如果是异常,消息里已经包含了堆栈了,不用再添加
             };
             string json = JsonHelper.ToJsonString(jsonObj);
             try
@@ -149,7 +145,7 @@ namespace Sunny.Common.Helper.Log
                 {
                     _messageQueue.CompleteAdding();
                 }
-                catch (Exception ex){ WriteOffLineLog("AddLogQueue Err",ex); }
+                catch (Exception ex) { WriteOffLineLog("AddLogQueue Err", ex); }
             }
         }
 
