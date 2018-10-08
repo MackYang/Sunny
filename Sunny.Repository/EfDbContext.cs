@@ -17,7 +17,6 @@ namespace Sunny.Repository
         public EfDbContext(DbContextOptions<EfDbContext> options)
             : base(options)
         {
-            
             Database.EnsureCreated();
           
         }

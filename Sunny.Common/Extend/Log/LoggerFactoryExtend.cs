@@ -1,10 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Sunny.Common.ConfigOption;
+﻿using Sunny.Common.ConfigOption;
 using Sunny.Common.Helper.Log;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Extensions.Logging
 {
@@ -19,6 +15,19 @@ namespace Microsoft.Extensions.Logging
 
         public static ILoggerFactory AddNetLogger(this ILoggerFactory factory, NetLoggerOption option, Func<string, LogLevel, bool> filter)
         {
+            factory.AddProvider(new NetLoggerProvider(option, filter, false));
+            return factory;
+        }
+
+        public static ILoggerFactory AddNetLoggerUseingDefaultFilter(this ILoggerFactory factory, NetLoggerOption option)
+        {
+            Func<string, LogLevel, bool> filter = (category, level) =>
+            {
+
+                return (level >= LogLevel.Information && !category.StartsWith("Microsoft")) || (level > LogLevel.Warning);
+
+            };
+
             factory.AddProvider(new NetLoggerProvider(option, filter, false));
             return factory;
         }

@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyModel;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Sunny.Api.Midware;
 using Sunny.Common.ConfigOption;
 using Sunny.Common.DependencyInjection;
 using Sunny.Repository;
+using System.IO;
 
 namespace Sunny.Api
 {
@@ -43,8 +36,8 @@ namespace Sunny.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-             
-            
+
+
             var connection = Configuration.GetConnectionString("MySql");
             services.AddDbContext<EfDbContext>(options =>
                 options.UseMySql(connection));
@@ -68,12 +61,17 @@ namespace Sunny.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
-            app.UseMiddleware<ErrorHandlingMiddleware>(loggerFactory);
-            
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
+            loggerFactory.AddNetLoggerUseingDefaultFilter(Configuration.GetSection("ConfigOptions:NetLoggerOption").Get<NetLoggerOption>());
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseMiddleware<ErrorHandlingMiddleware>(loggerFactory);
+            }
+
 
             //loggerFactory.AddDebug();
             //loggerFactory.AddProvider(new MyFilteredLoggerProvider());
@@ -81,7 +79,7 @@ namespace Sunny.Api
             //loggerFactory.AddConsole((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == "Microsoft.EntityFrameworkCore.Database.Command"));
 
             //loggerFactory.AddConsole();
-            loggerFactory.AddNetLogger(Configuration.GetSection("ConfigOptions:NetLoggerOption").Get<NetLoggerOption>());
+
             //loggerFactory.AddNetLogger((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
 
             //app.Use(async (ctx, next) =>
@@ -92,7 +90,7 @@ namespace Sunny.Api
             //});
 
             app.UseMvc();
-           
+
         }
     }
 }
