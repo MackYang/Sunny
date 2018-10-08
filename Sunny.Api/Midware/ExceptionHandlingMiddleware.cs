@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Sunny.Api.DTO.Response;
+using Sunny.Common.Enum;
 using Sunny.Common.Helper.String;
 using System;
 using System.Threading.Tasks;
@@ -44,8 +46,8 @@ namespace Sunny.Api.Midware
             context.Response.StatusCode = StatusCodes.Status500InternalServerError;
             var logger = loggerFactory.CreateLogger(ex.TargetSite.DeclaringType);
             logger.LogError(ex, ex.Message);
-
-            var data = new { code = context.Response.StatusCode, is_success = false, msg = "我们已经收到此次未处理的异常,将尽快解决!" };
+            
+            var data = new Result{ Code = Enums.OperationStatus.Exception.GetHashCode(),Msg = "我们已经收到此次异常信息,将尽快解决!" };
             var result = JsonHelper.ToJsonString(data);
             context.Response.ContentType = "application/json;charset=utf-8";
             return context.Response.WriteAsync(result);
@@ -69,7 +71,7 @@ namespace Sunny.Api.Midware
                     break;
             }
 
-            var data = new { code = statusCode.ToString(), is_success = false, msg = msg };
+            var data = new Result { Code = Enums.OperationStatus.Fail.GetHashCode(),Msg = msg };
             var result = JsonHelper.ToJsonString(data);
             context.Response.ContentType = "application/json;charset=utf-8";
             return context.Response.WriteAsync(result);

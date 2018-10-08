@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DTO\Request\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
