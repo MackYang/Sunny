@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Sunny.Api.DTO.Response;
 using Sunny.Repository;
 using Sunny.Repository.DbModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Sunny.Api.Controllers
 {
@@ -22,24 +21,64 @@ namespace Sunny.Api.Controllers
             this.db = efDbContext;
             this.logger = logger;
             //this.tDbContex = tDbContext;
-
-            this.GetResult(new { }, 1, "");
-            this.Fail("");
-            this.Success(2);
-            this.Success();
         }
+
+
+        // GET api/values
+        [HttpGet("Get1")]
+        public Result Get1()
+        {
+
+            return this.Success();
+        }
+
+        public class A
+        {
+
+            public string FullName { get; set; }
+            public decimal Age { get; set; }
+
+            public long MFF { get; set; }
+        }
+
+        [HttpGet("Get2")]
+        public Result<A> Get2()
+        {
+
+            return this.Success(new A { FullName = "AbcYH", Age = 123.123456789m,MFF=long.MaxValue });
+        }
+
+        [HttpGet("Get3")]
+        public Result Get3()
+        {
+
+            return this.Fail("我也不知道为什么");
+        }
+
+
+
+        [HttpGet]
+        public Result Get5()
+        {
+
+            return this.Fail("我也不知道为什么");
+        }
+
 
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            throw new Exception("Test EEEEE!");
+
+
+
+            //throw new Exception("Test EEEEE!");
             //var builder = new DbContextOptionsBuilder<EfDbContext>();
 
             //builder.UseMySql("server=localhost;database=test;user=root;password=myAdmin.;");
             //EfDbContext db = new EfDbContext(builder.Options);
 
-          // var t= tDbContex.Student.FirstOrDefault();
+            // var t= tDbContex.Student.FirstOrDefault();
 
             //// var b = db.Query<User>();
             //var c = db.Uesr2s.First();
@@ -64,13 +103,13 @@ namespace Sunny.Api.Controllers
             //db.SaveChanges();
 
 
-            var x=db.Student.FirstOrDefault();
+            var x = db.Student.FirstOrDefault();
 
             Console.WriteLine("hello");
             logger.LogInformation("this is test AAAA");
             logger.LogWarning("QWWWWWWW");
 
-            return new string[] { "value1", "value2",x.ToString() };
+            return new string[] { "value1", "value2", x.ToString() };
         }
 
         // GET api/values/5

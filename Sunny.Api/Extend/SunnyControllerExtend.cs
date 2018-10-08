@@ -19,14 +19,14 @@ namespace Sunny.Api.Controllers
             return r;
         }
 
-        public static Result<object> Success(this SunnyController controller)
+        public static Result Success(this SunnyController controller)
         {
-            return new Result<object>();
+            return new Result();
         }
 
-        public static Result<object> Fail(this SunnyController controller, string msg)
+        public static Result Fail(this SunnyController controller, string msg)
         {
-            return new Result<object> { Code = Enums.OperationStatus.Fail.GetHashCode(), Msg = msg };
+            return new Result { Code = Enums.OperationStatus.Fail.GetHashCode(), Msg = msg };
         }
 
         #endregion
