@@ -11,7 +11,7 @@ using Sunny.Repository.DbModel;
 namespace Sunny.Api.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class ValuesController : SunnyController
     {
 
         EfDbContext db;
@@ -22,6 +22,11 @@ namespace Sunny.Api.Controllers
             this.db = efDbContext;
             this.logger = logger;
             //this.tDbContex = tDbContext;
+
+            this.GetResult(new { }, 1, "");
+            this.Fail("");
+            this.Success(2);
+            this.Success();
         }
 
         // GET api/values

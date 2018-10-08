@@ -47,7 +47,7 @@ namespace Sunny.Api.Midware
             var logger = loggerFactory.CreateLogger(ex.TargetSite.DeclaringType);
             logger.LogError(ex, ex.Message);
             
-            var data = new Result{ Code = Enums.OperationStatus.Exception.GetHashCode(),Msg = "我们已经收到此次异常信息,将尽快解决!" };
+            var data = new Result<object>{ Code = Enums.OperationStatus.Exception.GetHashCode(),Msg = "我们已经收到此次异常信息,将尽快解决!" };
             var result = JsonHelper.ToJsonString(data);
             context.Response.ContentType = "application/json;charset=utf-8";
             return context.Response.WriteAsync(result);
@@ -71,7 +71,7 @@ namespace Sunny.Api.Midware
                     break;
             }
 
-            var data = new Result { Code = Enums.OperationStatus.Fail.GetHashCode(),Msg = msg };
+            var data = new Result<object> { Code = Enums.OperationStatus.Fail.GetHashCode(),Msg = msg };
             var result = JsonHelper.ToJsonString(data);
             context.Response.ContentType = "application/json;charset=utf-8";
             return context.Response.WriteAsync(result);
