@@ -61,7 +61,7 @@ namespace Sunny.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
-            loggerFactory.AddNetLoggerUseingDefaultFilter(Configuration.GetSection("ConfigOptions:NetLoggerOption").Get<NetLoggerOption>());
+            loggerFactory.AddNetLoggerUseDefaultFilter(Configuration.GetSection("ConfigOptions:NetLoggerOption").Get<NetLoggerOption>());
 
             if (env.IsDevelopment())
             {
@@ -72,22 +72,7 @@ namespace Sunny.Api
                 app.UseMiddleware<ErrorHandlingMiddleware>(loggerFactory);
             }
 
-
-            //loggerFactory.AddDebug();
-            //loggerFactory.AddProvider(new MyFilteredLoggerProvider());
-            //loggerFactory.AddConsole((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
-            //loggerFactory.AddConsole((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == "Microsoft.EntityFrameworkCore.Database.Command"));
-
-            //loggerFactory.AddConsole();
-
-            //loggerFactory.AddNetLogger((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
-
-            //app.Use(async (ctx, next) =>
-            //{
-            //    IGreeter greeter = ctx.RequestServices.GetService<IGreeter>();
-            //    await ctx.Response.WriteAsync(greeter.Greet());
-            //    await next();
-            //});
+             
 
             app.UseMvc();
 

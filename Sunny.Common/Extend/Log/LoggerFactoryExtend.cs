@@ -19,7 +19,7 @@ namespace Microsoft.Extensions.Logging
             return factory;
         }
 
-        public static ILoggerFactory AddNetLoggerUseingDefaultFilter(this ILoggerFactory factory, NetLoggerOption option)
+        public static ILoggerFactory AddNetLoggerUseDefaultFilter(this ILoggerFactory factory, NetLoggerOption option)
         {
             Func<string, LogLevel, bool> filter = (category, level) =>
             {
