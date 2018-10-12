@@ -16,3 +16,6 @@ D:\Work\Code\Sunny\Sunny.Api\obj\Debug\netcoreapp2.1\Sunny.Api.AssemblyInfo.cs
 D:\Work\Code\Sunny\Sunny.Api\obj\Debug\netcoreapp2.1\Sunny.Api.csproj.CopyComplete
 D:\Work\Code\Sunny\Sunny.Api\obj\Debug\netcoreapp2.1\Sunny.Api.dll
 D:\Work\Code\Sunny\Sunny.Api\obj\Debug\netcoreapp2.1\Sunny.Api.pdb
+D:\Work\Code\Sunny\Sunny.Api\obj\Debug\netcoreapp2.1\Sunny.Api.RazorAssemblyInfo.cache
+D:\Work\Code\Sunny\Sunny.Api\obj\Debug\netcoreapp2.1\Sunny.Api.RazorAssemblyInfo.cs
+D:\Work\Code\Sunny\Sunny.Api\obj\Debug\netcoreapp2.1\Sunny.Api.RazorTargetAssemblyInfo.cache

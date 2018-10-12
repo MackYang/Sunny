@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace Sunny.Api.Controllers
 {
+
     [Route("api/[controller]")]
     public class ValuesController : SunnyController
     {
@@ -39,6 +40,8 @@ namespace Sunny.Api.Controllers
             public decimal Age { get; set; }
 
             public long MFF { get; set; }
+
+            public DateTime Now { get; set; } = DateTime.Now;
         }
 
         [HttpGet("Get2")]
@@ -49,19 +52,32 @@ namespace Sunny.Api.Controllers
         }
 
         [HttpGet("Get3")]
-        public Result Get3()
+        public Result Get3(string abc,int age)
         {
 
             return this.Fail("我也不知道为什么");
         }
 
 
-
-        [HttpGet]
-        public Result Get5()
+        [HttpGet("Get4")]
+        public Result Get3(string abc, [FromQuery]A a)
         {
 
             return this.Fail("我也不知道为什么");
+        }
+
+        [HttpPost("Get6/{id}")]
+        public Result<A> Get6(A a,int id)
+        {
+
+            return this.Success(a);
+        }
+
+        [HttpPost,Route("Get5")]
+        public Result<A> Get5(  A a)
+        {
+            
+            return this.Success(a);
         }
 
 
@@ -127,7 +143,7 @@ namespace Sunny.Api.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]string value,[FromHeader] string f)
         {
         }
 

@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Sunny.Api.Midware;
 using Sunny.Common.ConfigOption;
 using Sunny.Common.DependencyInjection;
@@ -27,11 +30,7 @@ namespace Sunny.Api
 
         public IConfiguration Configuration { get; }
 
-        ////创建日志工厂
-        //private static ILoggerFactory MyLoggerProvider => new LoggerFactory()
-        //         .AddDebug((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name))
-        //        .AddConsole((categoryName, logLevel) => (logLevel == LogLevel.Information) && (categoryName == DbLoggerCategory.Database.Command.Name));
-
+         
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -51,8 +50,9 @@ namespace Sunny.Api
 
 
             DIHelper.AutoRegister(services);
-
+       
             services.AddMvc();
+            
 
 
         }
@@ -71,11 +71,9 @@ namespace Sunny.Api
             {
                 app.UseMiddleware<ErrorHandlingMiddleware>(loggerFactory);
             }
-
-             
-
             app.UseMvc();
-
+            app.UseStaticFiles();
+            
         }
     }
 }

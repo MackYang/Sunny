@@ -5,16 +5,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\Request\" />
-    <Folder Include="wwwroot\" />
+    <Content Remove="wwwroot\h.html" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <Folder Include="DTO\Request\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\h.html" />
   </ItemGroup>
 
   <ItemGroup>
