@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Sunny.Common.Enum;
-using Sunny.Common.Helper.String;
+using Sunny.Common.Helper;
 using System;
 using System.Collections.Generic;
 using System.IO;

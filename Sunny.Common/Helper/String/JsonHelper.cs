@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
-namespace Sunny.Common.Helper.String
+namespace Sunny.Common.Helper
 {
     public class JsonHelper
     {

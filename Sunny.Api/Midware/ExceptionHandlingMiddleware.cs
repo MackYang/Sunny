@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Sunny.Api.DTO.Response;
 using Sunny.Common.Enum;
-using Sunny.Common.Helper.String;
+using Sunny.Common.Helper;
 using System;
 using System.Threading.Tasks;
 

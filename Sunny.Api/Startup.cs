@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 using Sunny.Api.Midware;
 using Sunny.Common.ConfigOption;
 using Sunny.Common.DependencyInjection;
+using Sunny.Common.Helper;
 using Sunny.Repository;
 using System.IO;
 
@@ -60,8 +61,11 @@ namespace Sunny.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            
             loggerFactory.AddConsole();
-            loggerFactory.AddNetLoggerUseDefaultFilter(Configuration.GetSection("ConfigOptions:NetLoggerOption").Get<NetLoggerOption>());
+            loggerFactory.AddNetLoggerUseDefaultFilter(Configuration.GetSection("SunnyOptions:NetLoggerOption").Get<NetLoggerOption>());
+            IdHelper.InitSnowflake(Configuration.GetSection("SunnyOptions:SnowflakeOption").Get<SnowflakeOption>());
+            //services.Configure<TopClientOptions>(Configuration.GetSection("topClient"));
 
             if (env.IsDevelopment())
             {

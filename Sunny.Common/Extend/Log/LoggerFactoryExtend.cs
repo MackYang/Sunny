@@ -1,5 +1,5 @@
 ﻿using Sunny.Common.ConfigOption;
-using Sunny.Common.Helper.Log;
+using Sunny.Common.Log;
 using System;
 
 namespace Microsoft.Extensions.Logging
