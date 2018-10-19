@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Sunny.Api.DTO.Response;
+using Sunny.Api.FluentValidation;
+using Sunny.Common.Helper;
 using Sunny.Repository;
 using Sunny.Repository.DbModel;
+using Sunny.Repository.DbModel.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,8 +58,13 @@ namespace Sunny.Api.Controllers
         [HttpGet("Get3")]
         public Result Get3(string abc,int age)
         {
+            IdTest model = new IdTest();
+            model.Id = IdHelper.GenId();
 
-            return this.Fail("我也不知道为什么");
+            db.IdTest.Add(model);
+            db.SaveChanges();
+
+            return this.Success();
         }
 
 
@@ -83,7 +92,20 @@ namespace Sunny.Api.Controllers
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public Result Get()
+        {
+            var customer = new Customer();
+            var validator = new CustomerValidator();
+            ValidationResult results = validator.Validate(customer);
+
+            bool success = results.IsValid;
+            IList<ValidationFailure> failures = results.Errors;
+
+            return this.Success();
+        }
+        // GET api/values
+        [HttpGet("GetOld")]
+        public IEnumerable<string> GetOld()
         {
 
 
@@ -125,7 +147,7 @@ namespace Sunny.Api.Controllers
             logger.LogInformation("this is test AAAA");
             logger.LogWarning("QWWWWWWW");
 
-            return new string[] { "value1", "value2", x.ToString() };
+            return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5

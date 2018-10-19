@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sunny.Repository.DbModel;
+using Sunny.Repository.DbModel.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,5 +20,7 @@ namespace Sunny.Repository
         public DbSet<Student> Student { get; set; }
 
         public DbSet<StudentAddress> StudentAddress { get; set; }
+
+        public DbSet<IdTest> IdTest { get; set; }
     }
 }
