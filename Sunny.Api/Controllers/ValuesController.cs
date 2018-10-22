@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Sunny.Api.DTO.Response;
-using Sunny.Api.FluentValidation;
+
+using Sunny.Api.FluentValidation2;
 using Sunny.Common.Helper;
 using Sunny.Repository;
 using Sunny.Repository.DbModel;
@@ -92,7 +93,7 @@ namespace Sunny.Api.Controllers
 
         // GET api/values
         [HttpGet]
-        public Result Get()
+        public Result Get(Customer c)
         {
             var customer = new Customer();
             var validator = new CustomerValidator();
@@ -103,6 +104,32 @@ namespace Sunny.Api.Controllers
 
             return this.Success();
         }
+
+        [HttpPost("D")]
+        public Result<bool> D(MemPua c)
+        {
+             
+
+            return this.Success(ModelState.IsValid);
+        }
+
+        [HttpPost("C")]
+        public Result<IList<ValidationFailure>> C(Customer c)
+        {
+
+            
+            
+            var validator = new CustomerValidator();
+            ValidationResult results = validator.Validate(c);
+
+            bool success = results.IsValid;
+            IList<ValidationFailure> failures = results.Errors;
+
+            return this.Success(failures);
+        }
+
+
+
         // GET api/values
         [HttpGet("GetOld")]
         public IEnumerable<string> GetOld()

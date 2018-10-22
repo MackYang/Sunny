@@ -1,12 +1,14 @@
 ﻿using FluentValidation;
+using Sunny.Api.FluentValidation;
+using Sunny.Common.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sunny.Api.FluentValidation
+namespace Sunny.Api.FluentValidation2
 {
-    public class CustomerValidator : AbstractValidator<Customer>
+    public class CustomerValidator : Validator<Customer>
     {
         public CustomerValidator()
         {

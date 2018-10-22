@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sunny.Api.FluentValidation
+namespace Sunny.Api.FluentValidation2
 {
     public class Customer
     {

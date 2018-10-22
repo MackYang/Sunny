@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Sunny.Api.FluentValidation2;
 using Sunny.Api.Midware;
 using Sunny.Common.ConfigOption;
 using Sunny.Common.DependencyInjection;
@@ -51,9 +54,10 @@ namespace Sunny.Api
 
 
             DIHelper.AutoRegister(services);
-       
-            services.AddMvc();
+
             
+            services.AddMvcCore().AddFluentValidation( ).AddJsonFormatters().AddCors().AddFormatterMappings().AddCacheTagHelper().AddDataAnnotations();
+
 
 
         }
@@ -66,7 +70,7 @@ namespace Sunny.Api
             loggerFactory.AddNetLoggerUseDefaultFilter(Configuration.GetSection("SunnyOptions:NetLoggerOption").Get<NetLoggerOption>());
             IdHelper.InitSnowflake(Configuration.GetSection("SunnyOptions:SnowflakeOption").Get<SnowflakeOption>());
             //services.Configure<TopClientOptions>(Configuration.GetSection("topClient"));
-
+             
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
