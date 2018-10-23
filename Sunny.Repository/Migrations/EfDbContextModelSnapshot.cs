@@ -51,6 +51,8 @@ namespace Sunny.Repository.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("requestType");
+
                     b.HasKey("Id");
 
                     b.ToTable("IdTest");

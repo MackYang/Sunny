@@ -7,9 +7,9 @@ namespace System
     static public class EnumExtend
     {
 
-        public static string GetDescribe<T>(this T t, object data = null) where T : Enum
+        public static string GetDescribe<T>(this T t) where T : Enum
         {
-            string describe = "";
+            string describe = t.ToString();
 
             MemberInfo[] memInfo = typeof(T).GetMember(t.ToString());
 

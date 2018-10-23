@@ -12,21 +12,22 @@ namespace Sunny.Api.Controllers
             return new Result<T> { Data = responseData, Code = code, Msg = msg };
         }
 
-        public static Result<T> Success<T>(this SunnyController controller, T responseData)
+        public static Result<T> Success<T>(this SunnyController controller, T responseData) 
         {
             Result<T> r = new Result<T>();
             r.Data = responseData;
             return r;
         }
 
+        
         public static Result Success(this SunnyController controller)
         {
             return new Result();
         }
 
-        public static Result Fail(this SunnyController controller, string msg)
+        public static Result<object> Fail(this SunnyController controller, string msg)
         {
-            return new Result { Code = Enums.OperationStatus.Fail.GetHashCode(), Msg = msg };
+            return new Result<object> { Code = Enums.OperationStatus.Fail.GetHashCode(), Msg = msg };
         }
 
         #endregion

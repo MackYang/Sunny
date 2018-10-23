@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Sunny.Api.DTO.Response;
 
 using Sunny.Api.FluentValidation2;
+using Sunny.Common.Enum;
 using Sunny.Common.Helper;
 using Sunny.Repository;
 using Sunny.Repository.DbModel;
@@ -57,22 +58,27 @@ namespace Sunny.Api.Controllers
         }
 
         [HttpGet("Get3")]
-        public Result Get3(string abc,int age)
+        public Result<IdTest> Get3(string abc,int age)
         {
             IdTest model = new IdTest();
             model.Id = IdHelper.GenId();
+            model.requestType = Enums.RequestType.Post;
+
+            IdTest model2 = new IdTest();
+            model2.Id = IdHelper.GenId();
+            model2.requestType = Enums.RequestType.Get;
 
             db.IdTest.Add(model);
+            db.IdTest.Add(model2);
             db.SaveChanges();
 
-            return this.Success();
+            return this.Success(db.IdTest.FirstOrDefault());
         }
 
 
         [HttpGet("Get4")]
         public Result Get3(string abc, [FromQuery]A a)
         {
-
             return this.Fail("我也不知道为什么");
         }
 
@@ -93,16 +99,44 @@ namespace Sunny.Api.Controllers
 
         // GET api/values
         [HttpGet]
-        public Result Get(Customer c)
+        public Result<dynamic> Get()
         {
             var customer = new Customer();
-            var validator = new CustomerValidator();
-            ValidationResult results = validator.Validate(customer);
 
-            bool success = results.IsValid;
-            IList<ValidationFailure> failures = results.Errors;
+            
 
-            return this.Success();
+            //dynamic a = new{ };
+            //for (var i = 0; i < 3; i++)
+            //{
+            //    a.i = 3;
+               
+            //}
+
+            return this.SuccessDynamic(customer.Extend(new { Des=customer.LocalType.GetDescribe()}));
+        }
+ 
+
+        // GET api/values
+        [HttpGet("GetAAA")]
+        public IResult<Customer> GetB()
+        {
+            var customer = new Customer();
+
+             
+            //dynamic a = new{ };
+            //for (var i = 0; i < 3; i++)
+            //{
+            //    a.i = 3;
+
+            //}
+            if (DateTime.Now.Second%2==0)
+            {
+                return this.Success(customer);
+            }
+            
+            return this.Fail("ss");
+
+            
         }
 
         [HttpPost("D")]

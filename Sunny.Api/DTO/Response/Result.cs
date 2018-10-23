@@ -3,16 +3,13 @@ using System;
 
 namespace Sunny.Api.DTO.Response
 {
-    public class Result<T>
+    public interface IResult<in T> { }
+
+    public class Result<T>:Result,IResult<T>
     {
-        public int Code { get; set; } = Enums.OperationStatus.Success.GetHashCode();
-
-        public string Msg { get; set; } = Enums.OperationStatus.Success.GetDescribe();
-
-        public T Data { get; set; } = default(T);
+        public new T Data { get; set; } = default(T);
     }
 
- 
     /// <summary>
     /// 不带返回数据的,
     /// 但为了提供给前端的数据更规范,还是要返回Data字段,
