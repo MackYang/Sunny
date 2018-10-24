@@ -148,18 +148,10 @@ namespace Sunny.Api.Controllers
         }
 
         [HttpPost("C")]
-        public Result<IList<ValidationFailure>> C(Customer c)
+        public Result<Customer> C(Customer c)
         {
-
             
-            
-            var validator = new CustomerValidator();
-            ValidationResult results = validator.Validate(c);
-
-            bool success = results.IsValid;
-            IList<ValidationFailure> failures = results.Errors;
-
-            return this.Success(failures);
+            return this.Success(c);
         }
 
 

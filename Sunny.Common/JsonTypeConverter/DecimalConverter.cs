@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Sunny.Common.JsonTypeConverter
 {
@@ -9,12 +7,17 @@ namespace Sunny.Common.JsonTypeConverter
     {
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof(decimal)|| objectType == typeof(decimal?);
+            return objectType == typeof(decimal) || objectType == typeof(decimal?);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            return long.Parse(reader.Value.ToString());
+            decimal result = 0;
+            if (reader.Value != null)
+            {
+                decimal.TryParse(reader.Value.ToString(), out result);
+            }
+            return result;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
