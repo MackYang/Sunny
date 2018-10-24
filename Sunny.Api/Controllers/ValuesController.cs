@@ -29,17 +29,16 @@ namespace Sunny.Api.Controllers
             this.logger = logger;
             //this.tDbContex = tDbContext;
         }
-
-
+         
         // GET api/values
         [HttpGet("Get1")]
         public Result Get1()
         {
-
+            
             return this.Success();
         }
 
-        public class A
+        public class A:Customer
         {
 
             public string FullName { get; set; }
@@ -79,6 +78,7 @@ namespace Sunny.Api.Controllers
         [HttpGet("Get4")]
         public Result Get3(string abc, [FromQuery]A a)
         {
+            
             return this.Fail("我也不知道为什么");
         }
 
@@ -201,7 +201,7 @@ namespace Sunny.Api.Controllers
 
             //db.SaveChanges();
 
-
+          
             var x = db.Student.FirstOrDefault();
 
             Console.WriteLine("hello");

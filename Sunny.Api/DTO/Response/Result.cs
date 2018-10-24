@@ -3,7 +3,9 @@ using System;
 
 namespace Sunny.Api.DTO.Response
 {
-    public interface IResult<in T> { }
+    public interface IResult<in T> {
+
+    }
 
     public class Result<T>:Result,IResult<T>
     {

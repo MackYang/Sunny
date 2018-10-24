@@ -9,11 +9,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using Sunny.Api.FluentValidation2;
 using Sunny.Api.Midware;
 using Sunny.Common.ConfigOption;
 using Sunny.Common.DependencyInjection;
 using Sunny.Common.Helper;
+using Sunny.Common.JsonTypeConverter;
 using Sunny.Repository;
 using System.IO;
 
@@ -56,7 +59,18 @@ namespace Sunny.Api
             DIHelper.AutoRegister(services);
 
             
-            services.AddMvcCore().AddFluentValidation( ).AddJsonFormatters().AddCors().AddFormatterMappings().AddCacheTagHelper().AddDataAnnotations();
+            services.AddMvcCore()
+                .AddFluentValidation( )
+                .AddJsonFormatters(x=> {
+                    x.Converters.Add(new LongConverter());
+                    x.Converters.Add(new DecimalConverter());
+                    x.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                    x.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                })
+                .AddCors()
+                .AddFormatterMappings()
+                .AddCacheTagHelper()
+                .AddDataAnnotations();
 
 
 
