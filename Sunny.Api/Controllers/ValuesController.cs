@@ -5,6 +5,7 @@ using Sunny.Api.DTO.Response;
 
 using Sunny.Api.FluentValidation2;
 using Sunny.Common.Enum;
+using Sunny.Common.Extend.CollectionQuery;
 using Sunny.Common.Helper;
 using Sunny.Repository;
 using Sunny.Repository.DbModel;
@@ -56,8 +57,14 @@ namespace Sunny.Api.Controllers
             return this.Success(new A { FullName = "AbcYH", Age = 123.123456789m,MFF=long.MaxValue });
         }
 
-        [HttpGet("Get3")]
-        public Result<IdTest> Get3(string abc,int age)
+
+        IQueryable<T> ttt<T, TKey>( IQueryable<T> list,Func<T, TKey> func)
+        {
+            return list;
+        }
+
+       [HttpGet("Get3")]
+        public Result<PageData<dynamic>> Get3(string abc,int age)
         {
             IdTest model = new IdTest();
             model.Id = IdHelper.GenId();
@@ -67,11 +74,19 @@ namespace Sunny.Api.Controllers
             model2.Id = IdHelper.GenId();
             model2.requestType = Enums.RequestType.Get;
 
-            db.IdTest.Add(model);
-            db.IdTest.Add(model2);
+         
+
+            db.IdTest.AddRange(model,model2);
             db.SaveChanges();
 
-            return this.Success(db.IdTest.FirstOrDefault());
+            PageInfo pageInfo = new PageInfo { PageIndex = 2, PageSize = 3 };
+
+
+            var ttt = db.IdTest.Pagination(pageInfo);
+            
+            
+
+            return this.Success(ttt.ToDynamic(x=>x.Extend(new { At=DateTime.Now,Sort=DateTime.Now.Millisecond})));
         }
 
 
@@ -102,15 +117,7 @@ namespace Sunny.Api.Controllers
         public Result<dynamic> Get()
         {
             var customer = new Customer();
-
-            
-
-            //dynamic a = new{ };
-            //for (var i = 0; i < 3; i++)
-            //{
-            //    a.i = 3;
-               
-            //}
+ 
 
             return this.SuccessDynamic(customer.Extend(new { Des=customer.LocalType.GetDescribe()}));
         }

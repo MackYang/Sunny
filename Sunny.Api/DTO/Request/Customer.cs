@@ -16,6 +16,8 @@ namespace Sunny.Api.FluentValidation2
         public IntEnum LocalType { get; set; } = IntEnum.GPS;
 
         public decimal Price { get; set; } = decimal.MaxValue;
+        public decimal? PriceNull { get; set; }
+        public decimal PriceDefault { get; set; }
 
         public string PriceCN { get; set; } = decimal.MaxValue.ToString();
 
