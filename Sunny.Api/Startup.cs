@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -74,6 +75,13 @@ namespace Sunny.Api
                 .AddDataAnnotations();
 
             services.AddAutoMapper();
+            services.AddDistributedRedisCache(options =>
+            {
+                var configOption = Configuration.GetSection("SunnyOptions:RedisOptions").Get<RedisOption>();
+                options.Configuration = configOption.ConnectionString;
+                options.InstanceName = configOption.InstanceName;
+                IDistributedCacheExtend.DefaultSlidingExpiration = configOption.DefaultSlidingExpiration;
+            });
 
         }
 

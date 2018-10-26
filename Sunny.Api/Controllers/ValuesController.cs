@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using Sunny.Api.DTO.Request.Demo;
 using Sunny.Api.DTO.Response;
-
 using Sunny.Api.FluentValidation2;
 using Sunny.Common.Enum;
 using Sunny.Common.Extend.CollectionQuery;
@@ -14,6 +14,7 @@ using Sunny.Repository.DbModel.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Sunny.Api.Controllers
 {
@@ -21,23 +22,40 @@ namespace Sunny.Api.Controllers
     [Route("api/[controller]")]
     public class ValuesController : SunnyController
     {
-
+        IDistributedCache cache;
         EfDbContext db;
         ILogger logger;
         IMapper mapper;
         //TDbContext tDbContex;
-        public ValuesController(EfDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper)
+        public ValuesController(EfDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache)
         {
             this.db = efDbContext;
             this.logger = logger;
             this.mapper = mapper;
+            this.cache = cache;
             //this.tDbContex = tDbContext;
         }
 
         [HttpGet]
-        public Result<dynamic> Get()
+        public async Task<Result<dynamic>> Get()
         {
             return this.SuccessDynamic(new { });
+        }
+
+        [HttpGet("GetRedis")]
+        public async Task<Result<dynamic>> GetRedis()
+        {
+            cache.SetString("aaa", "A杨家勇A");
+
+            cache.Set("customer", new Customer());
+
+            await cache.SetAsync("customerAsync", new Customer() { Address = "Async" });
+
+            var cus = cache.Get<Customer>("customer");
+
+            var cusAsync = await cache.GetAsync<Customer>("customerAsync");
+
+            return this.SuccessDynamic(new { Cus = cus, CusAsync = cusAsync });
         }
 
 
@@ -94,7 +112,7 @@ namespace Sunny.Api.Controllers
             Customer c = mapper.Map<Customer>(db.IdTest.First());
 
             IdTest id = mapper.Map<IdTest>(new Customer { Id = 123 });
- 
+
 
             return this.Success(ttt.ToDynamic(x => x.Extend(new { At = DateTime.Now, Sort = DateTime.Now.Millisecond })));
         }
@@ -120,7 +138,7 @@ namespace Sunny.Api.Controllers
 
             return this.Success(a);
         }
-       
+
         // GET api/values
         [HttpGet("GetAutoMapper")]
         public Result<dynamic> GetAutoMapper()
@@ -144,7 +162,7 @@ namespace Sunny.Api.Controllers
                 SellTime = DateTime.Now,
                 Order = order
                 ,
-                Comment = new SellerComment { Content = 1119999}
+                Comment = new SellerComment { Content = 1119999 }
             };
 
 
@@ -170,7 +188,7 @@ namespace Sunny.Api.Controllers
                 SellTime = DateTime.Now,
                 Order = order
                     ,
-                Comment = new SellerComment { Content = 111555},
+                Comment = new SellerComment { Content = 111555 },
                 Address = "SSS Address"
             };
 
