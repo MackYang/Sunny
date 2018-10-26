@@ -32,9 +32,7 @@ namespace Sunny.Common.Extend.CollectionQuery
             result.PageInfo = PageInfo;
             if (List != null && List.Count > 0)
             {
-                List<dynamic> listDynamic = new List<dynamic>();
-                List.ForEach(x => listDynamic.Add(func.Invoke(x)));
-                result.List = listDynamic;
+                result.List = List.ToDynamic(func);
             }
             return result;
         }
