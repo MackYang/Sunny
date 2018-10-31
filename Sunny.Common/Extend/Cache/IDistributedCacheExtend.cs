@@ -75,13 +75,26 @@ namespace Microsoft.Extensions.Caching.Distributed
         public static async Task<T> GetAsync<T>(this IDistributedCache cache, string key, T defaultValue = default)
         {
             var jsonStr =await cache.GetStringAsync(key);
-
+            
             if (string.IsNullOrWhiteSpace(jsonStr))
             {
                 return defaultValue;
             }
 
             return  await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(jsonStr));
+        }
+
+        /// <summary>
+        /// 指定的key是否存在
+        /// </summary>
+        /// <param name="cache"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static async Task<bool> ExistsAsync(this IDistributedCache cache, string key)
+        {
+            var bytes = await cache.GetAsync(key);
+
+            return bytes != null && bytes.Length > 0;
         }
 
     }

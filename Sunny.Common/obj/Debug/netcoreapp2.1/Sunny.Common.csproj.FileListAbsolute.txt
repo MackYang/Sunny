@@ -1,9 +1,0 @@
-D:\Work\Code\Sunny\Sunny.Common\bin\Debug\netcoreapp2.1\Sunny.Common.deps.json
-D:\Work\Code\Sunny\Sunny.Common\bin\Debug\netcoreapp2.1\Sunny.Common.dll
-D:\Work\Code\Sunny\Sunny.Common\bin\Debug\netcoreapp2.1\Sunny.Common.pdb
-D:\Work\Code\Sunny\Sunny.Common\obj\Debug\netcoreapp2.1\Sunny.Common.csproj.CoreCompileInputs.cache
-D:\Work\Code\Sunny\Sunny.Common\obj\Debug\netcoreapp2.1\Sunny.Common.AssemblyInfoInputs.cache
-D:\Work\Code\Sunny\Sunny.Common\obj\Debug\netcoreapp2.1\Sunny.Common.AssemblyInfo.cs
-D:\Work\Code\Sunny\Sunny.Common\obj\Debug\netcoreapp2.1\Sunny.Common.dll
-D:\Work\Code\Sunny\Sunny.Common\obj\Debug\netcoreapp2.1\Sunny.Common.pdb
-D:\Work\Code\Sunny\Sunny.Common\obj\Debug\netcoreapp2.1\Sunny.Common.csprojAssemblyReference.cache

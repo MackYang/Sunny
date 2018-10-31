@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
@@ -37,9 +38,11 @@ namespace Sunny.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<Result<dynamic>> Get()
+        public Result<string> Get()
         {
-            return this.SuccessDynamic(new { });
+            HttpContext.Session.Set("a",new byte[] { 1,3,4});
+            HttpContext.Session.SetString("bbb", "bxxx");
+            return this.Success(HttpContext.Session.GetString("bbb"));
         }
 
         [HttpGet("GetRedis")]
