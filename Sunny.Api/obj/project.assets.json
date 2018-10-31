@@ -5407,16 +5407,6 @@
         "runtime": {
           "bin/placeholder/Sunny.Repository.dll": {}
         }
-      },
-      "Sunny.Service/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.1",
-        "compile": {
-          "bin/placeholder/Sunny.Service.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Sunny.Service.dll": {}
-        }
       }
     }
   },
@@ -13925,11 +13915,6 @@
       "type": "project",
       "path": "../Sunny.Repository/Sunny.Repository.csproj",
       "msbuildProject": "../Sunny.Repository/Sunny.Repository.csproj"
-    },
-    "Sunny.Service/1.0.0": {
-      "type": "project",
-      "path": "../Sunny.Service/Sunny.Service.csproj",
-      "msbuildProject": "../Sunny.Service/Sunny.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13941,8 +13926,7 @@
       "Microsoft.Extensions.Caching.Redis >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
       "Sunny.Common >= 1.0.0",
-      "Sunny.Repository >= 1.0.0",
-      "Sunny.Service >= 1.0.0"
+      "Sunny.Repository >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -13981,9 +13965,6 @@
             },
             "D:\\Work\\Code\\Sunny\\Sunny.Repository\\Sunny.Repository.csproj": {
               "projectPath": "D:\\Work\\Code\\Sunny\\Sunny.Repository\\Sunny.Repository.csproj"
-            },
-            "D:\\Work\\Code\\Sunny\\Sunny.Service\\Sunny.Service.csproj": {
-              "projectPath": "D:\\Work\\Code\\Sunny\\Sunny.Service\\Sunny.Service.csproj"
             }
           }
         }

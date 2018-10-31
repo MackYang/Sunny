@@ -27,7 +27,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Sunny.Common\Sunny.Common.csproj" />
     <ProjectReference Include="..\Sunny.Repository\Sunny.Repository.csproj" />
-    <ProjectReference Include="..\Sunny.Service\Sunny.Service.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
