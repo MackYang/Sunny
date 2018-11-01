@@ -4678,9 +4678,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work\\Code\\Sunny\\TemplateT4\\TemplateT4.csproj",
-      "projectName": "TemplateT4",
-      "projectPath": "D:\\Work\\Code\\Sunny\\TemplateT4\\TemplateT4.csproj",
+      "projectUniqueName": "D:\\Work\\Code\\Sunny\\TemplateT4\\Sunny.TemplateT4.csproj",
+      "projectName": "Sunny.TemplateT4",
+      "projectPath": "D:\\Work\\Code\\Sunny\\TemplateT4\\Sunny.TemplateT4.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
       "outputPath": "D:\\Work\\Code\\Sunny\\TemplateT4\\obj\\",
       "projectStyle": "PackageReference",
@@ -4718,6 +4718,7 @@
       "netcoreapp2.1": {
         "dependencies": {
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true

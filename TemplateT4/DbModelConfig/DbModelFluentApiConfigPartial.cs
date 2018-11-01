@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace TemplateT4.DbModelConfig
+namespace Sunny.TemplateT4.DbModelConfig
 {
     public partial class DbModelFluentApiConfig
     {

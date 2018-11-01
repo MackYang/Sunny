@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunny.TemplateT4.DbModelConfig;
+using System;
 using TemplateT4.DbModelConfig;
 
 namespace TemplateT4

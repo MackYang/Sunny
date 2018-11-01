@@ -6,20 +6,17 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace TemplateT4.DbModelConfig
+namespace Sunny.TemplateT4.DbModelConfig
 {
     public class DbModelFluentApiConfigProcesser
     {
-        //DbModel所在的程序集名称
-        static string assemblyName = "Sunny.Repository";
-        //生成文件的命名空间
-        static string outputFileNamespace = "Sunny.Repository.DbModel.MoelConfig";
-        //生成文件的输出目录
-         static string outputDir = @"D:\SunnyFramework\Output\DbConfig\";
-
-
-
-        static public  void GenerateFiles()
+        /// <summary>
+        /// 生成DbModel的FluentApi配置文件
+        /// </summary>
+        /// <param name="assemblyName">DbModel所在的程序集名称,如Sunny.Repository</param>
+        /// <param name="outputFileNamespace">所生成的配置文件的命名空间,如Sunny.Repository.DbModel.MoelConfig</param>
+        /// <param name="outputDir">生成文件的输出目录,默认是D:\SunnyFramework\Output\DbConfig\</param>
+        static public  void GenerateFiles(string assemblyName,string outputFileNamespace,string outputDir = @"D:\SunnyFramework\Output\DbConfig\")
         {
             Assembly assembly = Assembly.Load(assemblyName);
             List<Type> ts = assembly.GetTypes().ToList();

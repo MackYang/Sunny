@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TemplateT4\Sunny.TemplateT4.csproj" />
+    <ProjectReference Include="..\RepositoryDemo\RepositoryDemo.csproj" />
+  </ItemGroup>
+
+</Project>

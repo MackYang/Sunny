@@ -7,7 +7,7 @@
 //     重新生成代码，这些更改将会丢失。
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace TemplateT4.DbModelConfig
+namespace Sunny.TemplateT4.DbModelConfig
 {
     using System.Linq;
     using System.Text;
