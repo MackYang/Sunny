@@ -13,7 +13,8 @@ namespace Sunny.Repository
         /// 对DbModel应用FlentApi字段配置
         /// </summary>
         /// <param name="modelBuilder"></param>
-        public static void ApplyDbModelFluentApiConfig(ModelBuilder modelBuilder)
+        /// <param name="dbModelAssemblyName">DbModel所在的程序集名称</param>
+        public static void ApplyDbModelFluentApiConfig(ModelBuilder modelBuilder,string dbModelAssemblyName)
         {
              
             /*下边这段代码,如果项目中使用了2个以上的DbContext,也就是使用2个数据库,那么在CodeFirst场景中,
@@ -26,7 +27,7 @@ namespace Sunny.Repository
              */
 
             //查找所有FluentAPI配置
-            var typesToRegister = Assembly.GetExecutingAssembly().GetTypes().Where(q => q.GetInterface(typeof(IEntityTypeConfiguration<>).FullName) != null);
+            var typesToRegister = Assembly.Load(dbModelAssemblyName).GetTypes().Where(q => q.GetInterface(typeof(IEntityTypeConfiguration<>).FullName) != null);
 
             //应用FluentAPI
             foreach (var type in typesToRegister)

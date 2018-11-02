@@ -11,6 +11,7 @@ namespace RepositoryDemo.DbModel.ModelConfig
         
         public void Configure(EntityTypeBuilder<Passage> builder)
         {
+            builder.ToTable("passage");
             builder.Property(x => x.Id).HasColumnName("id");
 builder.Property(x => x.Title).HasColumnName("title").HasMaxLength(30);
 builder.Property(x => x.LastEditTime).HasColumnName("last_edit_time");

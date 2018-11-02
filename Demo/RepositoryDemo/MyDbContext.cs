@@ -11,14 +11,13 @@ namespace RepositoryDemo
         public MyDbContext(DbContextOptions<MyDbContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            FluentApiTools.ApplyDbModelFluentApiConfig(modelBuilder);
+            FluentApiTools.ApplyDbModelFluentApiConfig(modelBuilder, "RepositoryDemo");
         }
     }
 

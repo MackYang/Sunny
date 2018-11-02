@@ -11,6 +11,7 @@ namespace RepositoryDemo.DbModel.ModelConfig
         
         public void Configure(EntityTypeBuilder<StudentAddress> builder)
         {
+            builder.ToTable("student_address");
             builder.Property(x => x.Id).HasColumnName("id");
 builder.Property(x => x.Address1).HasColumnName("address1").HasMaxLength(30);
 builder.Property(x => x.Zipcode).HasColumnName("zipcode");

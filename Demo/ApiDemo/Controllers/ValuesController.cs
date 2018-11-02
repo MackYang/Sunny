@@ -7,6 +7,7 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using RepositoryDemo;
 using RepositoryDemo.DbModel;
+using ServiceDemo;
 using Sunny.Api.Controllers;
 
 using Sunny.Api.DTO.Response;
@@ -32,13 +33,15 @@ namespace ApiDemo.Api.Controllers
         MyDbContext db;
         ILogger logger;
         IMapper mapper;
+        IStudentServic studentServic;
         //TDbContext tDbContex;
-        public ValuesController(MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache)
+        public ValuesController(MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache, IStudentServic studentServic)
         {
             this.db = efDbContext;
             this.logger = logger;
             this.mapper = mapper;
             this.cache = cache;
+            this.studentServic = studentServic;
             //this.tDbContex = tDbContext;
         }
 
@@ -290,7 +293,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetOld")]
-        public IResult<Student> GetOld()
+        public object GetOld()
         {
 
 
@@ -302,7 +305,7 @@ namespace ApiDemo.Api.Controllers
            
 
             Student student = new Student();
-            student.Id = 23;
+            student.Id = IdHelper.GenId();
             student.StudentName = "YH";
 
             //StudentAddress address = new StudentAddress();
@@ -316,18 +319,24 @@ namespace ApiDemo.Api.Controllers
             //address2.Id = 222;
 
             //db.AddRange(student, address, address2);
-            //db.Add(student);
+            db.Add(student);
 
-            //db.SaveChanges();
+            db.SaveChanges();
 
 
-            var x = db.Student.FirstOrDefault();
+            var x = studentServic.GetStudent();
 
-            Console.WriteLine("hello");
+            DateTime now = DateTime.Now;
+
             logger.LogInformation("this is test AAAA");
-            logger.LogWarning("QWWWWWWW");
 
-            return this.Success(x);
+            var log1 = DateTime.Now - now;
+            logger.LogWarning("QWWWWWWW");
+            var log2= DateTime.Now - now;
+
+            
+
+            return this.Success(new { Student=x,log1Time=log1.Seconds,log2Time=log2.Seconds});
         }
 
       

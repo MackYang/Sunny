@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Sunny.Api\Sunny.Api.csproj" />
     <ProjectReference Include="..\RepositoryDemo\RepositoryDemo.csproj" />
+    <ProjectReference Include="..\ServiceDemo\ServiceDemo.csproj" />
   </ItemGroup>
 
 </Project>

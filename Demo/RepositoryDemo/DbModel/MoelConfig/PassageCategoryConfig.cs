@@ -11,6 +11,7 @@ namespace RepositoryDemo.DbModel.ModelConfig
         
         public void Configure(EntityTypeBuilder<PassageCategory> builder)
         {
+            builder.ToTable("passage_category");
             builder.Property(x => x.Id).HasColumnName("id");
 builder.Property(x => x.CategoryId).HasColumnName("category_id");
 builder.Property(x => x.PassageId).HasColumnName("passage_id");

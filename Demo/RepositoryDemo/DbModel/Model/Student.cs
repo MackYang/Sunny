@@ -14,7 +14,9 @@ namespace RepositoryDemo.DbModel
 
         public string Test { get; set; }
 
-        public string AAA { get; set; }
+        public string AA2 { get; set; }
+
+        
 
         public StudentAddress Address { get; set; }
 
