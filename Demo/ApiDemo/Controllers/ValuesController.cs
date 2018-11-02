@@ -30,10 +30,13 @@ namespace ApiDemo.Api.Controllers
     public class ValuesController : SunnyController
     {
         IDistributedCache cache;
+        //这里只是为了演示,实际使用时建议使用各业务的Service
         MyDbContext db;
+        //学生业务的Service
+        IStudentServic studentServic;
         ILogger logger;
         IMapper mapper;
-        IStudentServic studentServic;
+        
         //TDbContext tDbContex;
         public ValuesController(MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache, IStudentServic studentServic)
         {

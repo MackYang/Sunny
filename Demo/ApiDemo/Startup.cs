@@ -37,8 +37,6 @@ namespace ApiDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
             var connection = Configuration.GetConnectionString("MySql");
             services.AddDbContext<MyDbContext>(options =>
                 options.UseMySql(connection));
@@ -50,7 +48,9 @@ namespace ApiDemo
 
             //services.Configure<NetLoggerOption>(Configuration.GetSection("ConfigOptions:NetLoggerOption"));
 
+            //根据需要在这里配置要使用的Option,然后在要使用的地方通过构造器注入IOptions<TOption>得到TOption
             services.Configure<TokenValidateOption>(Configuration.GetSection("SunnyOptions:TokenValidateOption"));
+
 
             DIHelper.AutoRegister(services);
 
