@@ -105,11 +105,11 @@ namespace ApiDemo.Api.Controllers
         }
 
         /// <summary>
-        /// 带返回值的成功场景测试
+        /// 带返回值的成功场景测试,测试模型验证
         /// </summary>
         /// <returns></returns>
-        [HttpGet("Get2")]
-        public Result<A> Get2()
+        [HttpPost("Get2")]
+        public Result<A> Get2(Customer customer)
         {
 
             return this.Success(new A { FullName = "AbcYH", Age = 123.123456789m, MFF = long.MaxValue });
