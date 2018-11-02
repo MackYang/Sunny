@@ -2,7 +2,7 @@
 
 
 
-namespace Sunny.Common.Helper.File
+namespace Sunny.Common.Helper
 {
 
     public class FileHelper
