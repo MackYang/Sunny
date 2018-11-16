@@ -1324,6 +1324,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.1.1",
           "Microsoft.Extensions.Caching.Abstractions": "2.1.2",
+          "Microsoft.Extensions.DependencyInjection": "2.1.1",
           "Microsoft.Extensions.DependencyModel": "2.1.0",
           "Microsoft.Extensions.Logging": "2.1.1",
           "System.Drawing.Common": "4.5.1"

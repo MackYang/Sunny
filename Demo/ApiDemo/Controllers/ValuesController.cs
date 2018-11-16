@@ -1,10 +1,12 @@
 ﻿using ApiDemo.DTO.Request.Demo;
 using ApiDemo.FluentValidation2;
+using ApiDemo.Job;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
+using Quartz;
 using RepositoryDemo;
 using RepositoryDemo.DbModel;
 using ServiceDemo;
@@ -15,11 +17,8 @@ using Sunny.Api.DTO.Response;
 using Sunny.Common.Enum;
 using Sunny.Common.Extend.CollectionQuery;
 using Sunny.Common.Helper;
-using Sunny.Repository;
-using Sunny.Repository.DbModel;
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -36,9 +35,9 @@ namespace ApiDemo.Api.Controllers
         IStudentServic studentServic;
         ILogger logger;
         IMapper mapper;
-        
+        ISchedulerFactory schedulerFactory;
         //TDbContext tDbContex;
-        public ValuesController(MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache, IStudentServic studentServic)
+        public ValuesController(ISchedulerFactory schedulerFactory, MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache, IStudentServic studentServic)
         {
             this.db = efDbContext;
             this.logger = logger;
@@ -46,17 +45,26 @@ namespace ApiDemo.Api.Controllers
             this.cache = cache;
             this.studentServic = studentServic;
             //this.tDbContex = tDbContext;
+            this.schedulerFactory = schedulerFactory;
         }
 
 
+
+        [HttpGet]
+        public Result Get()
+        {
+            JobDemo jobDemo = new JobDemo(schedulerFactory);
+            jobDemo.EnableJob();
+            return this.Success();
+        }
         /// <summary>
         /// Session测试
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        public Result<string> Get()
+        [HttpGet("GetSession")]
+        public Result<string> GetSession()
         {
-            HttpContext.Session.Set("a",new byte[] { 1,3,4});
+            HttpContext.Session.Set("a", new byte[] { 1, 3, 4 });
             HttpContext.Session.SetString("bbb", "bxxx");
             return this.Success(HttpContext.Session.GetString("bbb"));
         }
@@ -267,7 +275,7 @@ namespace ApiDemo.Api.Controllers
         {
             var customer = new Customer();
 
- 
+
             if (DateTime.Now.Second % 2 == 0)
             {
                 return this.Success(customer);
@@ -288,7 +296,7 @@ namespace ApiDemo.Api.Controllers
         {
             return this.Success(ModelState.IsValid);
         }
-         
+
 
 
         /// <summary>
@@ -303,9 +311,9 @@ namespace ApiDemo.Api.Controllers
 
             //throw new Exception("Test EEEEE!");
             //var builder = new DbContextOptionsBuilder<EfDbContext>();
- 
 
-           
+
+
 
             Student student = new Student();
             student.Id = IdHelper.GenId();
@@ -335,13 +343,13 @@ namespace ApiDemo.Api.Controllers
 
             var log1 = DateTime.Now - now;
             logger.LogWarning("QWWWWWWW");
-            var log2= DateTime.Now - now;
+            var log2 = DateTime.Now - now;
 
-            
 
-            return this.Success(new { Student=x,log1Time=log1.Seconds,log2Time=log2.Seconds});
+
+            return this.Success(new { Student = x, log1Time = log1.Seconds, log2Time = log2.Seconds });
         }
 
-      
+
     }
 }

@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using Quartz;
+using Quartz.Impl;
 using RepositoryDemo;
 using Sunny.Api.Midware;
 using Sunny.Common.ConfigOption;
@@ -33,10 +35,11 @@ namespace ApiDemo
         public IConfiguration Configuration { get; }
 
 
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            DiHelper.AutoRegister(services);
+
             var connection = Configuration.GetConnectionString("MySql");
             services.AddDbContext<MyDbContext>(options =>
                 options.UseMySql(connection));
@@ -50,10 +53,6 @@ namespace ApiDemo
 
             //根据需要在这里配置要使用的Option,然后在要使用的地方通过构造器注入IOptions<TOption>得到TOption
             services.Configure<TokenValidateOption>(Configuration.GetSection("SunnyOptions:TokenValidateOption"));
-
-
-            DIHelper.AutoRegister(services);
-
 
             services.AddMvcCore()
                 .AddFluentValidation()
@@ -78,11 +77,13 @@ namespace ApiDemo
                 IDistributedCacheExtend.DefaultSlidingExpiration = configOption.DefaultSlidingExpiration;
             });
             services.AddSession();
+            services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();//注册ISchedulerFactory的实例。
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.InitServiceProvider();
             loggerFactory.AddConsole();
             loggerFactory.AddNetLoggerUseDefaultFilter(Configuration.GetSection("SunnyOptions:NetLoggerOption").Get<NetLoggerOption>());
             IdHelper.InitSnowflake(Configuration.GetSection("SunnyOptions:SnowflakeOption").Get<SnowflakeOption>());
@@ -96,13 +97,11 @@ namespace ApiDemo
             {
                 app.UseMiddleware<ErrorHandlingMiddleware>();
             }
+
             app.UseStaticFiles();
             app.UseSession();
             app.UseMiddleware<TokenValidateMiddleware>();
             app.UseMvc();
-
-
-
 
         }
     }
