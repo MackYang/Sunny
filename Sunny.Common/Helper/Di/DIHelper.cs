@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyModel;
-using Microsoft.Extensions.Logging;
 using Sunny.Common.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -26,13 +25,77 @@ namespace Sunny.Common.Helper
         }
 
         /// <summary>
-        /// 创建一个类型实例,自动进行构造函数依赖注入
+        /// 获取一个实现了T接口的类对象,如果该类构造函数有其他接口参数,自动注入需要的接口实例
         /// </summary>
-        /// <param name="arguments">DI 容器中未提供构造函数参数</param>
+        /// <typeparam name="T">某接口的类型</typeparam>
+        /// <returns>某接口的实例</returns>
+        static public T GetService<T>()
+        {
+            T t = default;
+            try
+            {
+                t = ServiceProvider.GetService<T>();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("from root provider"))
+                {
+                    t = CreateScope().ServiceProvider.GetService<T>();
+                }
+            }
+
+
+            return t;
+        }
+
+        /// <summary>
+        /// 从实现ISupportRequiredService接口的IServiceProvider获取实现了T接口的类对象,如果该类构造函数有其他接口参数,自动注入需要的接口实例
+        /// </summary>
+        /// <typeparam name="T">某接口的类型</typeparam>
+        /// <returns>某接口的实例</returns>
+        static public T GetRequiredService<T>()
+        {
+            T t = default;
+
+            try
+            {
+                t = ServiceProvider.GetRequiredService<T>();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("from root provider"))
+                {
+                    t = CreateScope().ServiceProvider.GetRequiredService<T>();
+                }
+            }
+
+            return t;
+        }
+
+
+
+        /// <summary>
+        /// 创建一个某类的实例,会自动为该类的构造函数注入需要的接口实例
+        /// </summary>
+        /// <param name="arguments">构造函数参数</param>
         /// <returns>通过 DI 构造的实例</returns>
         static public T CreateInstance<T>(params object[] arguments)
         {
-            return ActivatorUtilities.CreateInstance<T>(ServiceProvider, arguments);
+            T t = default;
+
+            try
+            {
+                t = ActivatorUtilities.CreateInstance<T>(ServiceProvider, arguments);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("from root provider"))
+                {
+                    t = ActivatorUtilities.CreateInstance<T>(CreateScope().ServiceProvider, arguments);
+                }
+
+            }
+            return t;
         }
 
         /// <summary>

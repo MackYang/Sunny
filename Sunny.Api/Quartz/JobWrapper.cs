@@ -16,7 +16,7 @@ namespace Sunny.Api.Quartz
 
         public JobWrapper()
         {
-            logger = DiHelper.ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger(typeof(T));
+            logger = DiHelper.GetService<ILoggerFactory>().CreateLogger(typeof(T));
             job = DiHelper.CreateInstance<T>();
            
         }

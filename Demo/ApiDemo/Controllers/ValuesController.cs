@@ -32,7 +32,7 @@ namespace ApiDemo.Api.Controllers
         //这里只是为了演示,实际使用时建议使用各业务的Service
         MyDbContext db;
         //学生业务的Service
-        IStudentServic studentServic;
+        public IStudentServic studentServic;
         ILogger logger;
         IMapper mapper;
         ISchedulerFactory schedulerFactory;

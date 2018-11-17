@@ -1,4 +1,5 @@
 ﻿using Quartz;
+using ServiceDemo;
 using Sunny.Api.Quartz;
 using Sunny.Common.ConfigOption;
 using System;
@@ -18,12 +19,12 @@ namespace ApiDemo.Job
             this._schedulerFactory = schedulerFactory;
         }
 
-        public async  void EnableJob()
+        public async void EnableJob()
         {
             var t = new Dictionary<string, object>();
             t.Add("aaa", 123);
 
-            var option = new JobOption { Args =t, JobName="Test Job", RunAtCron= "/10 * * * * ?" };
+            var option = new JobOption { Args = t, JobName = "Test Job", RunAtCron = "/10 * * * * ?" };
 
             var wrapperType = typeof(JobWrapper<>).MakeGenericType(typeof(JobA));
 
@@ -64,16 +65,30 @@ namespace ApiDemo.Job
         }
     }
 
-    public class JobB : IJob
+    public class JobB : IJobEntity
     {
-        public JobB()
+        public string JobId => "this job B Id";
+
+        public string JobName => "this job B Name";
+
+        public string Describe => "this job B Describe";
+
+        IStudentServic studentServic;
+
+        public JobB(IStudentServic studentServic)
         {
-            Console.WriteLine("cccoonnn");
+            this.studentServic = studentServic;
+
         }
 
-        public Task Execute(IJobExecutionContext context)
+
+        public async Task ExecuteAsync()
         {
-            return Task.Run(() => Console.WriteLine("job .. hello"));
+            Console.WriteLine("hello job 这有中 execing...");
+            Console.WriteLine(studentServic.GetStudent().StudentName);
+            Thread.Sleep(3000);
+            Console.WriteLine("job end");
+
         }
     }
 }
