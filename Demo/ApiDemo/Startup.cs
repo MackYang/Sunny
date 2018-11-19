@@ -15,7 +15,6 @@ using Sunny.Api.Midware;
 using Sunny.Common.ConfigOption;
 using Sunny.Common.Helper;
 using Sunny.Common.JsonTypeConverter;
-using Sunny.Repository;
 using System.IO;
 
 namespace ApiDemo
@@ -81,10 +80,11 @@ namespace ApiDemo
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ISchedulerFactory schedulerFactory)
         {
             app.InitServiceProvider();
-            loggerFactory.AddConsole();
+            app.EnableJob(Configuration, schedulerFactory);
+            loggerFactory.AddConsoleLoggerUseDefaultFilter();
             loggerFactory.AddNetLoggerUseDefaultFilter(Configuration.GetSection("SunnyOptions:NetLoggerOption").Get<NetLoggerOption>());
             IdHelper.InitSnowflake(Configuration.GetSection("SunnyOptions:SnowflakeOption").Get<SnowflakeOption>());
 

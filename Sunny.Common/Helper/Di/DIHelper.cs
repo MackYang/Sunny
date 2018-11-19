@@ -120,13 +120,45 @@ namespace Sunny.Common.Helper
             //指定控制台输出编辑为UTF8,不然中文会有乱码
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             var deps = DependencyContext.Default;
-            var libs = deps.CompileLibraries.Where(lib => !lib.Serviceable && lib.Type != "package");//排除所有的系统程序集、Nuget下载包
+            var libs = GetCustomizeCompilationLibraries();
 
             foreach (var item in libs)
             {
                 DiHelper.RegisterByAssemblyName(services, item.Name);
             }
         }
+
+        /// <summary>
+        /// 获取自定义的程序集,排除所有的系统程序集、Nuget下载包的程序集
+        /// </summary>
+        /// <returns></returns>
+        static public IEnumerable<CompilationLibrary> GetCustomizeCompilationLibraries()
+        {
+            var deps = DependencyContext.Default;
+            return deps.CompileLibraries.Where(lib => !lib.Serviceable && lib.Type != "package");
+        }
+
+
+        /// <summary>
+        /// 获取自定义类型集合
+        /// </summary>
+        /// <param name="filter">过虑器</param>
+        /// <returns>符合过滤条件的类型集合</returns>
+        static public IEnumerable<Type> GetCustomizeTypes(Func<Type, bool> filter = null)
+        {
+            var libs = GetCustomizeCompilationLibraries();
+
+            List<Type> types = new List<Type>();
+
+            foreach (var item in libs)
+            {
+                Assembly assembly = Assembly.Load(item.Name);
+                types.AddRange(assembly.GetTypes().ToList());
+            }
+            return filter == null ? types : types.Where(filter);
+
+        }
+
 
         /// <summary>
         /// 注册指定程序集的DI

@@ -53,8 +53,7 @@ namespace ApiDemo.Api.Controllers
         [HttpGet]
         public Result Get()
         {
-            JobDemo jobDemo = new JobDemo(schedulerFactory);
-            jobDemo.EnableJob();
+           
             return this.Success();
         }
         /// <summary>

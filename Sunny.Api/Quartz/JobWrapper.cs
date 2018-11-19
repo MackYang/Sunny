@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sunny.Api.Quartz
 {
+    [PersistJobDataAfterExecution]
     public class JobWrapper<T> : IJob where T : IJobEntity
     {
         ILogger logger;
@@ -28,16 +29,16 @@ namespace Sunny.Api.Quartz
             try
             {
                 sw.Start();
-                await job.ExecuteAsync();
+                await job.ExecuteAsync(context);
                 sw.Stop();
 
-                logger.LogInformation($"Job（Id: {job.JobId} , Name: {job.JobName} , Describe:{job.Describe}）已执行,耗时:{sw.ElapsedMilliseconds} 毫秒.");
+                logger.LogInformation($"Job（ Name: {job.JobName} , Describe:{job.Describe}）已执行,耗时:{sw.ElapsedMilliseconds} 毫秒.");
 
             }
             catch (Exception ex)
             {
                 sw.Stop();
-                logger.LogError($"Job（Id: {job.JobId} , Name: {job.JobName} , Describe:{job.Describe}）执行时发生异常.", ex);
+                logger.LogError($"Job（ Name: {job.JobName} , Describe:{job.Describe}）执行时发生异常.", ex);
             }
             finally
             {
