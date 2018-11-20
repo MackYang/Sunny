@@ -303,7 +303,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetOld")]
-        public object GetOld()
+        public async Task<object> GetOld()
         {
 
 
@@ -334,7 +334,7 @@ namespace ApiDemo.Api.Controllers
             db.SaveChanges();
 
 
-            var x = studentServic.GetStudent();
+            var x = await studentServic.GetStudent();
 
             DateTime now = DateTime.Now;
 

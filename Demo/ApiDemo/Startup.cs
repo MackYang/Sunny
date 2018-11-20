@@ -15,6 +15,7 @@ using Sunny.Api.Midware;
 using Sunny.Common.ConfigOption;
 using Sunny.Common.Helper;
 using Sunny.Common.JsonTypeConverter;
+using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
 
 namespace ApiDemo
@@ -64,8 +65,8 @@ namespace ApiDemo
                 })
                 .AddCors()
                 .AddFormatterMappings()
-                .AddCacheTagHelper()
-                .AddDataAnnotations();
+                .AddDataAnnotations()
+                .AddApiExplorer();
 
             services.AddAutoMapper();
             services.AddDistributedRedisCache(options =>
@@ -77,6 +78,15 @@ namespace ApiDemo
             });
             services.AddSession();
             services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();//注册ISchedulerFactory的实例。
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "ApiDemo Project Swagger API", Version = "v1" });
+                // 为 Swagger JSON and UI设置xml文档注释路径
+                var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录（绝对，不受工作目录影响，建议采用此方法获取路径）
+                var xmlPath = Path.Combine(basePath, "ApiDemo.xml");
+                c.IncludeXmlComments(xmlPath);
+            });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -101,7 +111,18 @@ namespace ApiDemo
             app.UseStaticFiles();
             app.UseSession();
             app.UseMiddleware<TokenValidateMiddleware>();
+           
             app.UseMvc();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
         }
     }

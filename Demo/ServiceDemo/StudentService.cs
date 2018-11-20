@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using RepositoryDemo;
 using RepositoryDemo.DbModel;
 
@@ -13,9 +14,9 @@ namespace ServiceDemo
             this.db = db;
         }
 
-        public Student GetStudent()
+        public async Task<Student> GetStudent()
         {
-            return db.Student.FirstOrDefault();
+            return await Task.Run(()=>db.Student.FirstOrDefault());
         }
     }
 }

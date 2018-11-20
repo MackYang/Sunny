@@ -14,7 +14,9 @@ using System.Threading.Tasks;
 
 namespace ApiDemo.Api.Controllers
 {
-
+    /// <summary>
+    /// 不需要验证登录即可访问的API
+    /// </summary>
     [Route("unAuthApi/[controller]")]
     public class UnAuthController : SunnyController
     {
@@ -37,27 +39,7 @@ namespace ApiDemo.Api.Controllers
             //this.tDbContex = tDbContext;
         }
 
-        interface IB : ITransient
-        {
-
-            Student GetStudent();
-
-        }
-
-        class B : IB
-        {
-            public IStudentServic studentServic;
-            public B(IStudentServic studentServic)
-            {
-                this.studentServic = studentServic;
-            }
-
-            public Student GetStudent()
-            {
-                return studentServic.GetStudent();
-            }
-        }
-
+      
         /// <summary>
         /// 设置Token,使以/api开头的方法可以通过验证
         /// </summary>

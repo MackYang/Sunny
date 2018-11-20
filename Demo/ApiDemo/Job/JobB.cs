@@ -27,7 +27,7 @@ namespace ApiDemo.Job
         public async Task ExecuteAsync(IJobExecutionContext jobContext)
         {
             Console.WriteLine(jobContext.JobDetail.JobDataMap["pxxx"]);//使用了配置中传来的参数,参数的名称要和配置里的一样
-            Console.WriteLine( studentServic.GetStudent().StudentName);
+            Console.WriteLine( (await studentServic.GetStudent()).StudentName);
 
         }
 

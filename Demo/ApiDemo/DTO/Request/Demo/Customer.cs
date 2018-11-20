@@ -11,6 +11,9 @@ namespace ApiDemo.FluentValidation2
         public String Surname { get; set; }
         public String Forename { get; set; }
         public int Discount { get; set; }
+        /// <summary>
+        /// 地址
+        /// </summary>
         public String Address { get; set; }
         public String Postcode { get; set; }
         public bool HasDiscount { get; set; }

@@ -36,7 +36,7 @@ namespace Sunny.Common.Helper
             {
                 t = ServiceProvider.GetService<T>();
             }
-            catch (Exception ex)
+            catch (InvalidOperationException ex)
             {
                 if (ex.Message.Contains("from root provider"))
                 {
@@ -61,7 +61,7 @@ namespace Sunny.Common.Helper
             {
                 t = ServiceProvider.GetRequiredService<T>();
             }
-            catch (Exception ex)
+            catch (InvalidOperationException ex)
             {
                 if (ex.Message.Contains("from root provider"))
                 {
@@ -87,7 +87,7 @@ namespace Sunny.Common.Helper
             {
                 t = ActivatorUtilities.CreateInstance<T>(ServiceProvider, arguments);
             }
-            catch (Exception ex)
+            catch (InvalidOperationException ex)
             {
                 if (ex.Message.Contains("from root provider"))
                 {
@@ -98,17 +98,7 @@ namespace Sunny.Common.Helper
             return t;
         }
 
-        /// <summary>
-        /// 创建一个类型实例,自动进行构造函数依赖注入
-        /// </summary>
-        /// <param name="instanceType">要创建的实力类型</param>
-        /// <param name="arguments">DI 容器中未提供构造函数参数</param>
-        /// <returns>通过 DI 构造的实例</returns>
-        static public object CreateInstance(Type instanceType, params object[] arguments)
-        {
-            return ActivatorUtilities.CreateInstance(ServiceProvider, instanceType, arguments);
-        }
-
+   
 
 
         /// <summary>
