@@ -27,7 +27,6 @@ namespace ApiDemo.Api.Controllers
         IMapper mapper;
 
 
-        private IScheduler _scheduler;
         //TDbContext tDbContex;
         public UnAuthController(MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache)
         {

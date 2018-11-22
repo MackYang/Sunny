@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Sunny.Api\Sunny.Api.csproj" />
+    <ProjectReference Include="..\..\Framework\Sunny.Api\Sunny.Api.csproj" />
     <ProjectReference Include="..\RepositoryDemo\RepositoryDemo.csproj" />
     <ProjectReference Include="..\ServiceDemo\ServiceDemo.csproj" />
   </ItemGroup>

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Sunny.Repository\Sunny.Repository.csproj" />
+    <ProjectReference Include="..\..\Framework\Sunny.Repository\Sunny.Repository.csproj" />
   </ItemGroup>
 
 </Project>

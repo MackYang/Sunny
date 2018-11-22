@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TemplateT4\Sunny.TemplateT4.csproj" />
+    <ProjectReference Include="..\..\Framework\TemplateT4\Sunny.TemplateT4.csproj" />
     <ProjectReference Include="..\RepositoryDemo\RepositoryDemo.csproj" />
   </ItemGroup>
 

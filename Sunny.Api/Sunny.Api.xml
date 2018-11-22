@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sunny.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Sunny.Api.Controllers.SunnyController.SuccessDynamic(System.Object)">
+            <summary>
+            返回一个动态类型的值,通常用于想返回扩展类型的场景,比如在源对象上增加一个枚举值描述的动态属性
+            </summary>
+            <param name="responseData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sunny.Api.DTO.Response.Result">
+            <summary>
+            不带返回数据的,
+            但为了提供给前端的数据更规范,还是要返回Data字段,
+            如果要给前端返回数据时,请用泛型版本,这样看API时就知道返回的数据长什么样子
+            </summary>
+        </member>
+        <member name="T:Sunny.Api.FluentValidation.Validator`1">
+            <summary>
+            需要验证的实体请继承自这个类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Sunny.Api.Quartz.IJobEntity">
+            <summary>
+            任务信息
+            </summary>
+        </member>
+        <member name="P:Sunny.Api.Quartz.IJobEntity.JobName">
+            <summary>
+            任务的名称
+            </summary>
+        </member>
+        <member name="P:Sunny.Api.Quartz.IJobEntity.Describe">
+            <summary>
+            任务的描述
+            </summary>
+        </member>
+        <member name="M:Sunny.Api.Quartz.IJobEntity.ExecuteAsync(Quartz.IJobExecutionContext)">
+            <summary>
+            任务内容
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.IApplicationBuilderExtend.InitServiceProvider(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            初始化DiHelper中的ServiceProvider
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.IApplicationBuilderExtend.EnableJob(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,Quartz.ISchedulerFactory)">
+            <summary>
+            启用Job
+            </summary>
+            <param name="builder"></param>
+            <param name="configuration"></param>
+            <param name="schedulerFactory"></param>
+        </member>
+    </members>
+</doc>

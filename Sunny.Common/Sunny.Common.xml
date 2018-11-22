@@ -1,0 +1,924 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sunny.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Sunny.Common.ConfigOption.IpInfoQueryOption">
+            <summary>
+            查询IP信息的配置
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.IpInfoQueryOption.ApiUrl">
+            <summary>
+            IP查询的API
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.ConfigOption.JobOption">
+            <summary>
+            任务的配置项
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.JobOption.JobClassName">
+            <summary>
+            任务类的名称
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.JobOption.JobGroup">
+             <summary>
+            任务所属的组名称,同一组类不能有2个相同的任务 
+             </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.JobOption.RunAtCron">
+            <summary>
+            在什么时候运行,用Cron表达式
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.JobOption.Args">
+             <summary>
+            任务的参数
+             </summary>
+        </member>
+        <member name="T:Sunny.Common.ConfigOption.MailOption">
+            <summary>
+            邮件配置信息
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.MailOption.EmailHost">
+            <summary>
+            邮件服务器地址
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.MailOption.EmailUserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.MailOption.EmailPassword">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.MailOption.IPWhiteList">
+            <summary>
+            IP白名单列表,在列表中的IP发邮件前不执行检查事件
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.SmsOption.ApiUrl">
+            <summary>
+            短信网关的API地址
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.SmsOption.IPWhiteList">
+            <summary>
+            IP白名单列表,在列表中的IP发短信前不执行检查事件
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.SnowflakeOption.DatacenterId">
+            <summary>
+            数据中心ID,1到31之间
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.SnowflakeOption.MachineId">
+            <summary>
+            机器ID,1到31之间
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.TokenValidateOption.TokenKey">
+            <summary>
+            根据TokenKey的值从HttpHeader中获取对应的字符串,默认是"token"
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.ConfigOption.TokenValidateOption.AuthApiStartWith">
+            <summary>
+            以此开头的API都需要验证Token
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.DependencyInjection.IDependency">
+            <summary>
+            用于标记需要批量注入的接口
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.DependencyInjection.ITransient">
+            <summary>
+            每次使用时都实例化一次
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.DependencyInjection.IScoped">
+            <summary>
+            每个请求中只实例化一次
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.DependencyInjection.ISingleton">
+            <summary>
+            整个系统中只实例化一次
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.Extend.CollectionQuery.PageData`1">
+            <summary>
+            包含分页信息的数据
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Sunny.Common.Extend.CollectionQuery.PageData`1.List">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Extend.CollectionQuery.PageData`1.PageInfo">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="M:Sunny.Common.Extend.CollectionQuery.PageData`1.ToDynamic(System.Func{`0,System.Object})">
+            <summary>
+            将数据中的每一项转为dynamic,并返回一个新实例,
+            通常用于要对数据项进行扩展时,比如为数据项添加枚举的中文意思并返回给前端
+            如ToDynamic(x=>{x.Extend(new{EnumCn=x.EnumX.GetDescribe()})})
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sunny.Common.Extend.CollectionQuery.PageInfo">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Extend.CollectionQuery.PageInfo.PageIndex">
+            <summary>
+            当前页索引
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Extend.CollectionQuery.PageInfo.PageSize">
+            <summary>
+            页大小
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Extend.CollectionQuery.PageInfo.RecordTotal">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Extend.CollectionQuery.PageInfo.PageTotal">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="M:Sunny.Common.Helper.CalcHelper.CalcDifferenceRate(System.Decimal,System.Decimal)">
+            <summary>
+            计算增减率返回%比形式字符串,保留2位小数
+            </summary>
+            <param name="a">本期</param>
+            <param name="b">同期</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.CalcHelper.CalcDifferenceRateReturnDecimal(System.Decimal,System.Decimal)">
+            <summary>
+            计算增减率返回转成百分比后的decimal
+            </summary>
+            <param name="a">本期</param>
+            <param name="b">同期</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.CalcHelper.CalcDivision(System.Decimal,System.Decimal,System.Int32)">
+            <summary>
+            除法计算保留几位小数
+            </summary>
+            <param name="a">被除数</param>
+            <param name="b">除数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.DiHelper.CreateScope">
+            <summary>
+            创建一个 DI 容器的 Scope
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.DiHelper.GetService``1">
+            <summary>
+            获取一个实现了T接口的类对象,如果该类构造函数有其他接口参数,自动注入需要的接口实例
+            </summary>
+            <typeparam name="T">某接口的类型</typeparam>
+            <returns>某接口的实例</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.DiHelper.GetRequiredService``1">
+            <summary>
+            从实现ISupportRequiredService接口的IServiceProvider获取实现了T接口的类对象,如果该类构造函数有其他接口参数,自动注入需要的接口实例
+            </summary>
+            <typeparam name="T">某接口的类型</typeparam>
+            <returns>某接口的实例</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.DiHelper.CreateInstance``1(System.Object[])">
+            <summary>
+            创建一个某类的实例,会自动为该类的构造函数注入需要的接口实例
+            </summary>
+            <param name="arguments">构造函数参数</param>
+            <returns>通过 DI 构造的实例</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.DiHelper.AutoRegister(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            自动为实现了ITransient,IScoped,ISingleton的类型注入实例
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Sunny.Common.Helper.DiHelper.GetCustomizeCompilationLibraries">
+            <summary>
+            获取自定义的程序集,排除所有的系统程序集、Nuget下载包的程序集
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.DiHelper.GetCustomizeTypes(System.Func{System.Type,System.Boolean})">
+            <summary>
+            获取自定义类型集合
+            </summary>
+            <param name="filter">过虑器</param>
+            <returns>符合过滤条件的类型集合</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.DiHelper.RegisterByAssemblyName(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            注册指定程序集的DI
+            </summary>
+            <param name="services"></param>
+            <param name="assemblyName"></param>
+        </member>
+        <member name="M:Sunny.Common.Helper.DiHelper.GetDIMapping(System.String)">
+            <summary>  
+            获取程序集中的实现类对应的多个接口
+            </summary>  
+            <param name="assemblyName">程序集</param>
+        </member>
+        <member name="M:Sunny.Common.Helper.FileHelper.WriteFile(System.String,System.String,System.Boolean)">
+            <summary>  
+            写入文件  
+            </summary>  
+            <param name="filePath">文件名</param>  
+            <param name="content">文件内容</param>  
+            <param name="isAppend">默认是追加,如果要替换原内容传flase</param>
+        </member>
+        <member name="M:Sunny.Common.Helper.FileHelper.ReadFile(System.String)">
+            <summary>  
+            读取文件  
+            </summary>  
+            <param name="filePath">文件路径</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:Sunny.Common.Helper.FileHelper.CreatePathIfNotExists(System.String)">
+            <summary>
+            创建目录(如果目录不存在)
+            </summary>
+            <param name="path">要创建的目录</param>
+        </member>
+        <member name="M:Sunny.Common.Helper.IdHelper.InitSnowflake(Sunny.Common.ConfigOption.SnowflakeOption)">
+            <summary>
+            程序启动时调用一次就OK
+            </summary>
+        </member>
+        <member name="M:Sunny.Common.Helper.IdHelper.GenId">
+            <summary>
+            获取ID
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sunny.Common.Helper.ImageHelper">
+            <summary>
+            图像辅助类
+            </summary>
+        </member>
+        <member name="M:Sunny.Common.Helper.ImageHelper.ImageToBase64(System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+            <summary>  
+            图像转换为Base64编码  
+            </summary>  
+            <param name="image">图像</param>  
+            <param name="format">图像格式</param>  
+            <param name="throwException">出现异常时是否抛出</param>
+            <returns>转换成功返回其Base64编码；失败返回空串</returns>  
+        </member>
+        <member name="M:Sunny.Common.Helper.ImageHelper.Base64ToImage(System.String)">
+            <summary>  
+            Base64编码转换为图像  
+            </summary>  
+            <param name="base64String">Base64字符串</param>  
+            <param name="throwException">出现异常时是否抛出</param>
+            <returns>转换成功返回图像；失败返回null</returns>  
+        </member>
+        <member name="M:Sunny.Common.Helper.ImageHelper.CreateThumbnail(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            创建缩略图
+            </summary>
+            <param name="sourceFile">源图片完整路径</param>
+            <param name="destFile">缩略图存放目录</param>
+            <param name="width">缩略图宽度</param>
+            <param name="height">缩略图高度</param>
+            <param name="throwException">出现异常时是否抛出</param>
+            <returns>创建成功返回True</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.ImageHelper.PngThumbnail(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            生成PNG缩略图
+            </summary>
+            <param name="sourceFile"></param>
+            <param name="destFile"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.ImageHelper.IsImage(System.String)">
+            <summary>
+            判断一个文件名是否是图片格式
+            </summary>
+            <param name="fileName">文件名</param>
+            <returns>true表示是</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.ImageHelper.GetFormat(System.String)">
+            <summary>
+            根据扩展名获取图片格式类型
+            </summary>
+            <param name="exName">扩展名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.ImageHelper.GenThumbnail(System.String,System.String,System.Int32,System.Int32)">
+            <summary> 
+             生成普通缩略图
+            </summary> 
+            <param name="sourceFile"> 源图的路径(含文件名及扩展名) </param> 
+            <param name="destFile"> 生成的缩略图所保存的路径(含文件名及扩展名)</param> 
+            <param name="width"> 欲生成的缩略图的宽度(像素值) </param> 
+            <param name="height"> 欲生成的缩略图的高度(像素值) </param> 
+        </member>
+        <member name="M:Sunny.Common.Helper.ImageHelper.AddWatermarkText(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            给图片添加文字水印
+            </summary>
+            <param name="srcFile">源图片存放路径</param>
+            <param name="destFile">目标图片存放路径</param>
+            <param name="fontSize">字号，可超过72号的</param>
+            <param name="throwException">出现异常时是否抛出</param>
+            <param name="text">要添加的文字</param>
+        </member>
+        <member name="M:Sunny.Common.Helper.ImageHelper.CreateVerificationImage(System.String,System.Int32,System.Int32)">
+            <summary>
+            创建验证码图片
+            </summary>
+            <param name="verificationText">验证码字符串</param>
+            <param name="width">图片宽度</param>
+            <param name="height">图片长度</param>
+            <returns>图片base64字符串</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.ImageHelper.GetSaveJPEGImage(System.Drawing.Image)">
+            <summary>
+            jpg,jpeg图片在反序列化后直接保存会报GDI一般错误,所以有了此方法
+            </summary>
+            <param name="imageFrom">返序列化出来的图片</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sunny.Common.Helper.NetHelper">
+            <summary>
+            网络相关的辅助类
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.Helper.NetHelper.CheckMail">
+            <summary>
+            可定义符合此委托的方法传递给OnCheckMail事件,在邮件发送前,被传递的方法将被调用,以检查是否能发送该邮件,仅当返回结果为true时才发送
+            </summary>
+            <param name="mailInfo">邮件信息实体</param>
+        </member>
+        <member name="E:Sunny.Common.Helper.NetHelper.OnCheckMail">
+            <summary>
+            检查能否发送邮件的事件,如果订阅,将在邮件发送前被调用
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.Helper.NetHelper.CheckSMS">
+            <summary>
+            可定义符合此委托的方法传递给OnCheckSMS事件,在邮件发送前,被传递的方法将被调用,以检查是否能发送该邮件,仅当返回结果为true时才发送
+            </summary>
+            <param name="smsInfo">短信信息实体</param>
+        </member>
+        <member name="E:Sunny.Common.Helper.NetHelper.OnCheckSMS">
+            <summary>
+            检查能否发送短信的事件,如果订阅,将在短信发前后被调用
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.Helper.NetHelper.RecordMail">
+            <summary>
+            可定义符合此委托的方法传递给OnRecordMail事件,当邮件发送后,所定义的方法将被调用以记录所发送的邮件
+            </summary>
+            <param name="mailInfo">邮件信息实体</param>
+        </member>
+        <member name="E:Sunny.Common.Helper.NetHelper.OnRecordMail">
+            <summary>
+            记录邮件的事件,如果订阅,将在邮件发送后被调用
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.Helper.NetHelper.RecordSMS">
+            <summary>
+            可定义符合此委托的方法传递给OnRecordSMS事件,当短信发送后,所定义的方法将被调用以记录所发送的短信
+            </summary>
+            <param name="smsInfo">短信信息实体</param>
+        </member>
+        <member name="E:Sunny.Common.Helper.NetHelper.OnRecordSMS">
+            <summary>
+            记录短信的事件,如果订阅,将在短信发送后被调用
+            </summary>
+        </member>
+        <member name="M:Sunny.Common.Helper.NetHelper.GetClientIP(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取IP的方法
+            </summary>
+            <returns>失败返回null</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.NetHelper.SendSMS(Sunny.Common.Helper.NetHelper.SMSInfo,Sunny.Common.ConfigOption.SmsOption)">
+            <summary>
+            发送短信
+            </summary>
+            <param name="smsInfo">短信实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.NetHelper.SendEmail(Sunny.Common.Helper.NetHelper.MailInfo,Sunny.Common.ConfigOption.MailOption)">
+             <summary>
+             发送邮件，为异步发送邮件而写的内部方法
+             </summary>
+            <param name="miData">邮件信息实体</param>
+             <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.NetHelper.AsyncSendEmail(Sunny.Common.Helper.NetHelper.MailInfo,Sunny.Common.ConfigOption.MailOption)">
+             <summary>
+             异步发送邮件
+             </summary>
+            <param name="mi">邮件信息实体</param>
+        </member>
+        <member name="M:Sunny.Common.Helper.NetHelper.AsyncSendSMS(Sunny.Common.Helper.NetHelper.SMSInfo,Sunny.Common.ConfigOption.SmsOption)">
+             <summary>
+             异步发送短信
+             </summary>
+            <param name="smsInfo">短信信息实体</param>
+        </member>
+        <member name="M:Sunny.Common.Helper.NetHelper.QueryIpInfo(System.String,Sunny.Common.ConfigOption.IpInfoQueryOption)">
+            <summary>
+            查询IP信息
+            </summary>
+            <param name="ip">要查询的IP</param>
+            <returns>IP信息实体</returns>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.IPInfo.District">
+            <summary>
+            区县名称
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.IPInfo.Street">
+            <summary>
+            街道名称
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.IPInfo.StreetNum">
+            <summary>
+            门牌号
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.IPInfo.FullAddress">
+            <summary>
+            IP所在地址,就是将省,市..等拼起来
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.Helper.NetHelper.MailInfo">
+            <summary>
+            邮件信息类,供异步发送邮件时对邮件信息的封装,使其满足线程参数的要求
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.MailInfo.ToMail">
+            <summary>
+            邮件接收者
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.MailInfo.Title">
+            <summary>
+            邮件标题
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.MailInfo.Content">
+            <summary>
+            邮件内容
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.MailInfo.OperaterID">
+            <summary>
+            操作者ID
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.MailInfo.OperaterIP">
+            <summary>
+            操作者IP
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.Helper.NetHelper.SMSInfo">
+            <summary>
+            短信信息类,代异步发送短信时对短信数据的封装,使其满足线程参数的要求
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.SMSInfo.SMSContent">
+            <summary>
+            短信内容
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.SMSInfo.ToPhone">
+            <summary>
+            接收号码
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.SMSInfo.OperaterID">
+            <summary>
+            操作者ID
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Helper.NetHelper.SMSInfo.OperaterIP">
+            <summary>
+            操作者IP
+            </summary>
+        </member>
+        <member name="T:Sunny.Common.Helper.SecurityHelper">
+            <summary>安全策略</summary>
+        </member>
+        <member name="M:Sunny.Common.Helper.SecurityHelper.DesEncrypt(System.String,System.String)">
+            <summary>
+            DES加密字符串
+            </summary>
+            <param name="input">源字符串</param>
+            <param name="key">用于加解密的key</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.SecurityHelper.DesDecrypt(System.String,System.String)">
+            <summary>
+            解密DES字符串
+            </summary>
+            <param name="DESString">DES字符串</param>
+            <param name="key">用于加解密的key</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.SecurityHelper.MD5Encrypt(System.String)">
+            <summary>
+            以MD5的方式加密字符串
+            </summary>
+            <param name="input">源字符串</param>
+            <returns>加密后的MD5格式字符串</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.SecurityHelper.SHA1Encrypt(System.String)">
+            <summary>
+            对字符串进行SHA1加密
+            </summary>
+            <param name="input">需要加密的字符串</param>
+            <returns>密文</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.SerializeHelper.SerializeObject(System.Object)">
+            <summary>
+            将对象序列化为Base64字符串
+            </summary>
+            <param name="obj">需要序列化的对象</param>
+            <returns>Base64字符串</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.SerializeHelper.Desrialize``1(System.String)">
+            <summary>
+            将Base64字符串反序列化为指定类型的对象
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="base64Str">Base64字符串</param>
+            <param name="throwException">出现异常时是否抛出</param>
+            <returns>T类型的对象</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.JsonHelper.ToJsonString(System.Object)">
+            <summary>
+            将对象转换成json字符串
+            </summary>
+            <param name="obj">要转换的对象</param>
+            <returns>json字符串</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.JsonHelper.FromJsonString``1(System.String)">
+            <summary>
+            将json字符串转换成指定类型的对象
+            </summary>
+            <typeparam name="T">指定类型</typeparam>
+            <param name="jsonString">json字符串</param>
+            <returns>指定类型的对象</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.JsonHelper.FromJsonString(System.String)">
+            <summary>
+            将json字符串转换成dynamic类型的对象
+            </summary>
+            <param name="jsonString">json字符串</param>
+            <returns>动态解析类型的对象</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.StringHelper.ToBase64(System.String)">
+            <summary>
+            转为Base64字符串
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.StringHelper.FromBase64(System.String)">
+            <summary>
+            从base64字符串转成普通字符串
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.StringHelper.GetMaxSameString(System.String,System.String,System.Boolean)">
+            <summary>
+            获取AB两个字符串中最大的相同部分
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="diffCaps">是否区分大小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.StringHelper.CreateValidCode(System.Int32)">
+            <summary>
+            根据长度参数，生成随机字符串
+            </summary>
+            <param name="codeLen">长度</param>
+            <returns>返回随机字符串</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.XMLHelper.GetXmlNodeAttribute(System.String,System.String,System.String)">
+            <summary>
+            获取XML节点的属性值
+            </summary>
+            <param name="filePath">xml文件路径</param>
+            <param name="xpath">Xpath路径</param>
+            <param name="key">属性名称</param>
+            <returns>属性值</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.XMLHelper.SetXmlNodeAttribute(System.String,System.String,System.String,System.String)">
+            <summary>
+            设置XML节点的属性值
+            </summary>
+            <param name="filePath">xml文件路径</param>
+            <param name="xpath">Xpath路径</param>
+            <param name="key">属性名称</param>
+            <param name="value">要赋的值</param>
+            <returns>true表示设置成功</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.XMLHelper.GetXmlNodeValue(System.String,System.String)">
+            <summary>
+            获取xml节点值
+            </summary>
+            <param name="xmlFile">xml文件</param>
+            <param name="xpath">xpath访问路径</param>
+            <returns>节点值</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.XMLHelper.SetXmlNodeValue(System.String,System.String,System.String)">
+            <summary>
+            设置xml节点值
+            </summary>
+            <param name="xmlFile">xml文件</param>
+            <param name="xpath">xpath访问路径</param>
+            <param name="value">要设置的值</param>
+            <returns>true表示设置成功</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.XMLHelper.GetXmlNodeCollectValue(System.String,System.String)">
+            <summary>
+            获取xml节点集合的值
+            </summary>
+            <param name="xmlFile">xml文件</param>
+            <param name="xpath">xpath访问路径</param>
+            <returns>节点值</returns>
+        </member>
+        <member name="M:Sunny.Common.Helper.XMLHelper.GetHashtableFromXmlNodeCollectAttr(System.String,System.String,System.String,System.String)">
+            <summary>
+            获取xml节点集合的2个属性值,封装成Hashtable返回
+            </summary>
+            <param name="xmlFile">xml文件</param>
+            <param name="xpath">xpath访问路径</param>
+            <param name="keyAttrName">属性值作为Hashtable键的属性名称</param>
+            <param name="valueAttrName">属性值作为Hashtable值的属性名称</param>
+            <returns>节点值</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Caching.Distributed.IDistributedCacheExtend.Set(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String,System.Object,Microsoft.Extensions.Caching.Distributed.DistributedCacheEntryOptions)">
+            <summary>
+            将对象转成json字符串后存到缓存中
+            </summary>
+            <param name="cache"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="options">过期选项,如果不指定,则在配置的默认时间后滑动过期</param>
+        </member>
+        <member name="M:Microsoft.Extensions.Caching.Distributed.IDistributedCacheExtend.SetAsync(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String,System.Object,Microsoft.Extensions.Caching.Distributed.DistributedCacheEntryOptions)">
+            <summary>
+            将对象转成json字符串后存到缓存中
+            </summary>
+            <param name="cache"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="options">过期选项,如果不指定,则在配置的默认时间后滑动过期</param>
+        </member>
+        <member name="M:Microsoft.Extensions.Caching.Distributed.IDistributedCacheExtend.Get``1(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String,``0)">
+            <summary>
+            从缓存中获取json字符串并转成指定类型对象返回
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cache"></param>
+            <param name="key"></param>
+            <param name="defaultValue">如果没有取到返回的默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Caching.Distributed.IDistributedCacheExtend.GetAsync``1(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String,``0)">
+            <summary>
+            从缓存中获取json字符串并转成指定类型对象返回
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cache"></param>
+            <param name="key"></param>
+            <param name="defaultValue">如果没有取到返回的默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Caching.Distributed.IDistributedCacheExtend.ExistsAsync(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String)">
+            <summary>
+            指定的key是否存在
+            </summary>
+            <param name="cache"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Logging.LoggerFactoryExtend.AddNetLoggerUseDefaultFilter(Microsoft.Extensions.Logging.ILoggerFactory,Sunny.Common.ConfigOption.NetLoggerOption)">
+            <summary>
+            使用默认的过虑规则启用网络日志记录,默认规则是只记录微软Warning及以上的日志,或非微软Info及以上的日志
+            </summary>
+            <param name="factory"></param>
+            <param name="option">网络日志配置</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Logging.LoggerFactoryExtend.AddConsoleLoggerUseDefaultFilter(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            使用默认的过虑规则启用控制台日志记录,默认规则是只记录微软Warning及以上的日志,或非微软Info及以上的日志,或SQL语句
+            </summary>
+            <param name="factory"></param>
+            <param name="option"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.CollectionQuery.Pagination``1(System.Linq.IQueryable{``0},System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            分页
+            </summary>
+            <param name="list"> 数据源 </param>
+            <param name="pageIndex"> 第几页 </param>
+            <param name="pageSize"> 每页记录数 </param>
+            <param name="recordTotal"> 记录总数 </param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.CollectionQuery.Pagination``1(System.Linq.IQueryable{``0},Sunny.Common.Extend.CollectionQuery.PageInfo)">
+            <summary>
+            分页并返回包含分页信息的数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="pageInfo">分页要求</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.DateTimeExtend.ToNormalString(System.DateTime)">
+            <summary>
+            返回yyyy-MM-dd HH:mm:ss 格式的时间
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ClassTypeExtend.Extend``1(``0,System.Object,System.Boolean)">
+            <summary>
+            使用另一个对象对源对象进行扩展，这类似于 jQuery 中的 extend 方法。
+            </summary>
+            <param name="source">源对象。</param>
+            <param name="other">用于扩展的另一个对象。</param>
+            <param name="isOverride">是否要覆盖源对象中同名属性的值,默认为否</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtend.ToDynamic``1(System.Collections.Generic.List{``0},System.Func{``0,System.Object})">
+            <summary>
+            对集合中的项进行扩展,返回一个dynamic集合
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="func">如ToDynamic(x=>{x.Extend(new{EnumCn=x.EnumX.GetDescribe()})})</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.ObjectExtend.ConvertTo``1(System.Object,``0)">
+            <summary>
+            将objValue的值转换成defValue的类型,如果转换失败,返回defValue
+            </summary>
+            <typeparam name="T">目标类型</typeparam>
+            <param name="objValue">要转换的原数据</param>
+            <param name="defValue">转换失败时返回的默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtend.IsNumber(System.String)">
+            <summary>
+            检查是否是数字，包括整数和小数
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtend.IsNumberMoreThanZero(System.String)">
+            <summary>
+            检查是否是大于0的数字，包括整数和小数
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtend.SingleSpace(System.String)">
+            <summary>
+            让字符串中的多个空格合并成一个,并移除首尾的空格字符,将中文空格换成英文的
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtend.NOSQL(System.String)">
+            <summary>
+            验证数据，防止注入
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtend.BxSubstring(System.String,System.Int32,System.Boolean)">
+            <summary>
+            截取字符串
+            </summary>
+            <param name="inputString">输入字符串</param>
+            <param name="maxLength">最大长度(按半角计算, 全角按半角的2倍计算)</param>
+            <param name="appendEllipsis">是否需要添加省略号</param>
+            <returns>截取后的字符串</returns>
+        </member>
+        <member name="M:System.StringExtend.MaskString(System.String,System.Decimal)">
+            <summary>
+            遮罩中间部分字符串
+            </summary>
+            <param name="x"></param>
+            <param name="maskRate">遮罩比例,0.6表示60%</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtend.GetChineseSpell(System.String)">
+            <summary>
+            获取一串中文字的首字母组合
+            </summary>
+            <param name="strText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtend.LikeElement(System.String,System.String[])">
+            <summary>
+            判断当前字符串中是否包含数组中的任意元素
+            </summary>
+            <param name="str">当前字符串</param>
+            <param name="strArr">字符串数组</param>
+            <returns>true包含</returns>
+        </member>
+        <member name="M:System.StringExtend.GetLikeFirstElement(System.String,System.String[])">
+            <summary>
+            如果当前字符串中包含数组中的任意元素,则返回第一个符合条件的元素
+            </summary>
+            <param name="str">当前字符串</param>
+            <param name="strArr"></param>
+            <returns>返回第一个符合条件的元素,没有则返回null</returns>
+        </member>
+        <member name="M:System.StringExtend.ContainsUL(System.String,System.String,System.Boolean)">
+            <summary>
+            是否包含某字符串
+            </summary>
+            <param name="s"></param>
+            <param name="data">某字符串</param>
+            <param name="caseUL">是否大小写敏感，默认否</param>
+            <returns>包含返回true</returns>
+        </member>
+        <member name="M:System.StringExtend.ContainsElement(System.String[],System.String[],System.Boolean)">
+            <summary>
+            当前字符串数组中的任何元素是否与指定数组中的任一元素相等
+            </summary>
+            <param name="s">当前字符串数组</param>
+            <param name="arr">指定数组</param>
+            <param name="caseUL">是否区分大小写,默认不区分</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtend.AutoSubstring(System.String,System.Int32,System.Int32)">
+            <summary>
+            截取字符串的指定部分，索引超出时返回原字符串,不报异常
+            </summary>
+            <param name="input"></param>
+            <param name="startIndex">开始位置</param>
+            <param name="length">截取长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtend.SqlLikeArgsProcess(System.String)">
+            <summary>
+            转义like参数中的通配符
+            </summary>
+            <param name="s">源字符串</param>
+            <returns>转义后的字符串</returns>
+        </member>
+        <member name="M:System.StringExtend.GetInString(System.String[])">
+            <summary>
+            获取in条件格式的字符串,用','连接的
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtend.GetInString(System.Collections.Generic.List{System.String})">
+            <summary>
+            获取in条件格式的字符串,用','连接的
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
