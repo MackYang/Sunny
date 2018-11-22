@@ -15,13 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunny.TemplateT4", "Templat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UseDemo", "UseDemo", "{4267E4AE-CBE4-4D18-A4B5-078FD2ED6719}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiDemo", "Demo\ApiDemo\ApiDemo.csproj", "{BF2B2FBD-12B0-41BC-ABDD-A39400062361}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiDemo", "Demo\ApiDemo\ApiDemo.csproj", "{BF2B2FBD-12B0-41BC-ABDD-A39400062361}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryDemo", "Demo\RepositoryDemo\RepositoryDemo.csproj", "{A3E24D59-31A3-4E6C-B0DC-EE0642E815A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryDemo", "Demo\RepositoryDemo\RepositoryDemo.csproj", "{A3E24D59-31A3-4E6C-B0DC-EE0642E815A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDemo", "Demo\ServiceDemo\ServiceDemo.csproj", "{910654BD-EAD7-4887-9F0C-8764FD9EF097}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDemo", "Demo\ServiceDemo\ServiceDemo.csproj", "{910654BD-EAD7-4887-9F0C-8764FD9EF097}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateT4Demo", "Demo\TemplateT4Demo\TemplateT4Demo.csproj", "{927A980D-14DD-4EB1-BB7B-1BBE529C7ECD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateT4Demo", "Demo\TemplateT4Demo\TemplateT4Demo.csproj", "{927A980D-14DD-4EB1-BB7B-1BBE529C7ECD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{3A2C1FE6-AE23-4C54-8786-885237999245}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
