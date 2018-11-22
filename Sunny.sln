@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunny.Common", "Sunny.Common\Sunny.Common.csproj", "{430C45D0-09D8-42FA-88B4-526385BFAE8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunny.Common", "Framework\Sunny.Common\Sunny.Common.csproj", "{430C45D0-09D8-42FA-88B4-526385BFAE8F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunny.Repository", "Sunny.Repository\Sunny.Repository.csproj", "{1F8A0634-DAFC-49FC-9E4E-BF93A4BE1683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunny.Repository", "Framework\Sunny.Repository\Sunny.Repository.csproj", "{1F8A0634-DAFC-49FC-9E4E-BF93A4BE1683}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{25C48BCE-DBD6-4261-A047-AA8AB47F5EA6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunny.Api", "Sunny.Api\Sunny.Api.csproj", "{913AE651-2048-4BE1-9199-63C8AB3B8299}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunny.Api", "Framework\Sunny.Api\Sunny.Api.csproj", "{913AE651-2048-4BE1-9199-63C8AB3B8299}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunny.TemplateT4", "TemplateT4\Sunny.TemplateT4.csproj", "{1B813AAE-92C9-4AE5-869C-87AC1B3519CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunny.TemplateT4", "Framework\TemplateT4\Sunny.TemplateT4.csproj", "{1B813AAE-92C9-4AE5-869C-87AC1B3519CD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UseDemo", "UseDemo", "{4267E4AE-CBE4-4D18-A4B5-078FD2ED6719}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiDemo", "Demo\ApiDemo\ApiDemo.csproj", "{BF2B2FBD-12B0-41BC-ABDD-A39400062361}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiDemo", "UseDemo\ApiDemo\ApiDemo.csproj", "{BF2B2FBD-12B0-41BC-ABDD-A39400062361}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryDemo", "Demo\RepositoryDemo\RepositoryDemo.csproj", "{A3E24D59-31A3-4E6C-B0DC-EE0642E815A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryDemo", "UseDemo\RepositoryDemo\RepositoryDemo.csproj", "{A3E24D59-31A3-4E6C-B0DC-EE0642E815A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDemo", "Demo\ServiceDemo\ServiceDemo.csproj", "{910654BD-EAD7-4887-9F0C-8764FD9EF097}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDemo", "UseDemo\ServiceDemo\ServiceDemo.csproj", "{910654BD-EAD7-4887-9F0C-8764FD9EF097}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateT4Demo", "Demo\TemplateT4Demo\TemplateT4Demo.csproj", "{927A980D-14DD-4EB1-BB7B-1BBE529C7ECD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateT4Demo", "UseDemo\TemplateT4Demo\TemplateT4Demo.csproj", "{927A980D-14DD-4EB1-BB7B-1BBE529C7ECD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

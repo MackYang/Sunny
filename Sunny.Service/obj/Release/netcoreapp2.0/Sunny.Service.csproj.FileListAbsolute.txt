@@ -1,9 +1,0 @@
-D:\Work\Code\Sunny\Sunny.Service\bin\Release\netcoreapp2.0\Sunny.Service.deps.json
-D:\Work\Code\Sunny\Sunny.Service\bin\Release\netcoreapp2.0\Sunny.Service.dll
-D:\Work\Code\Sunny\Sunny.Service\bin\Release\netcoreapp2.0\Sunny.Service.pdb
-D:\Work\Code\Sunny\Sunny.Service\obj\Release\netcoreapp2.0\Sunny.Service.csproj.CoreCompileInputs.cache
-D:\Work\Code\Sunny\Sunny.Service\obj\Release\netcoreapp2.0\Sunny.Service.AssemblyInfoInputs.cache
-D:\Work\Code\Sunny\Sunny.Service\obj\Release\netcoreapp2.0\Sunny.Service.AssemblyInfo.cs
-D:\Work\Code\Sunny\Sunny.Service\obj\Release\netcoreapp2.0\Sunny.Service.dll
-D:\Work\Code\Sunny\Sunny.Service\obj\Release\netcoreapp2.0\Sunny.Service.pdb
-D:\Work\Code\Sunny\Sunny.Service\obj\Release\netcoreapp2.0\Sunny.Service.csprojResolveAssemblyReference.cache
