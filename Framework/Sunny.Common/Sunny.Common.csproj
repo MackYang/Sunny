@@ -7,7 +7,8 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;1591</NoWarn>
-    <DocumentationFile>D:\Work\Code\Sunny\Sunny.Common\Sunny.Common.xml</DocumentationFile>
+    <DocumentationFile>D:\Work\Code\Sunny\Framework\Sunny.Common\Sunny.Common.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
