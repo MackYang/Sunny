@@ -18,6 +18,7 @@ builder.Property(x => x.CreateTime).HasColumnName("create_time");
 builder.Property(x => x.CreaterId).HasColumnName("creater_id");
 builder.Property(x => x.UpdateTime).HasColumnName("update_time").IsRowVersion();
 builder.Property(x => x.UpdaterId).HasColumnName("updater_id");
+            
 
              
         }
