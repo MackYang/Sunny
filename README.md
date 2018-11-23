@@ -101,7 +101,7 @@ services.AddAutoMapper();
 
 在要使用的类里通过构造函数注入一个IMapper类型的对象mapper,然后在需要转换的地方获取转换后的类型
 
-```cs
+``` cs
 
 IMapper mapper;
 
