@@ -52,7 +52,9 @@
 请将UseDemo\ApiDemo中的[StartUp.cs](https://github.com/MackYang/Sunny/tree/master/UseDemo/ApiDemo/Startup.cs)文件和[appsettings.json](https://github.com/MackYang/Sunny/tree/master/UseDemo/ApiDemo/appsettings.json)文件复制到您的项目中进行替换,并按实际需要进行修改
 
 
-<a name="snowflakeId">*使用SnowflakeId*</a>
+
+
+<a name="snowflakeId">**使用SnowflakeId**</a>
 
 在StartUp.cs文件Configure方法中进行初始化
 ```cs
