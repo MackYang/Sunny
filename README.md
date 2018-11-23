@@ -99,10 +99,21 @@ services.AddAutoMapper();
     }
 ```
 
-在需要的地方获取转换后的类型
+在要使用的类里通过构造函数注入一个IMapper类型的对象mapper,然后在需要转换的地方获取转换后的类型
 
 ```cs
-Buyer getBuyer = mapper.Map<Buyer>(seller);
+
+IMapper mapper;
+
+public SomeClass(IMapper mapper)
+{
+    this.mapper=mapper;
+}
+
+public void SomeMethod()
+{
+    Buyer getBuyer = mapper.Map<Buyer>(seller);
+}
 ```
 ---
 
