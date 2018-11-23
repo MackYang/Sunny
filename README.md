@@ -5,7 +5,7 @@
 ### 目前已集成和实现的内容
 
 - <a href="#snowflakeId">SnowflakeId (Twitter的雪花Id算法)</a>
-- <a href="autoMapper">AutoMapper (实体间类型转换)</a>
+- <a href="#autoMapper">AutoMapper (实体间类型转换)</a>
 - Quartz (定时任务)
 - FluentValidation Api参数模型验证
 - Api参数模型绑定
