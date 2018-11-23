@@ -1,9 +1,0 @@
-D:\Work\Code\Sunny\DB\bin\Debug\netcoreapp2.0\DB.deps.json
-D:\Work\Code\Sunny\DB\bin\Debug\netcoreapp2.0\DB.dll
-D:\Work\Code\Sunny\DB\obj\Debug\netcoreapp2.0\DB.csprojResolveAssemblyReference.cache
-D:\Work\Code\Sunny\DB\obj\Debug\netcoreapp2.0\DB.csproj.CoreCompileInputs.cache
-D:\Work\Code\Sunny\DB\obj\Debug\netcoreapp2.0\DB.AssemblyInfoInputs.cache
-D:\Work\Code\Sunny\DB\obj\Debug\netcoreapp2.0\DB.AssemblyInfo.cs
-D:\Work\Code\Sunny\DB\bin\Debug\netcoreapp2.0\DB.pdb
-D:\Work\Code\Sunny\DB\obj\Debug\netcoreapp2.0\DB.dll
-D:\Work\Code\Sunny\DB\obj\Debug\netcoreapp2.0\DB.pdb
