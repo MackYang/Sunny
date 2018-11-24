@@ -1,10 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
+    <Description>Sunny框架的WebApi部分,提供一些Api的常用功能</Description>
+    <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/MackYang/Sunny/tree/master/Doc/sunny.png</PackageIconUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -36,6 +40,6 @@
     <Folder Include="Properties\" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>

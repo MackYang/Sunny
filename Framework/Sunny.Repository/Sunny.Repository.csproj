@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
+    <PackageIconUrl>https://github.com/MackYang/Sunny/tree/master/Doc/sunny.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
+    <Description>Sunny框架的Repository部分,用于项目中的数据仓储</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -11,6 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.1" />
