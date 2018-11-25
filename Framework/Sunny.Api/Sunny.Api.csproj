@@ -8,7 +8,7 @@
     <Description>Sunny框架的WebApi部分,提供一些Api的常用功能</Description>
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/MackYang/Sunny/tree/master/Doc/sunny.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/MackYang/Sunny/raw/master/Doc/sunny.png</PackageIconUrl>
     <Version>1.0.2</Version>
     <Authors>MackYang</Authors>
   </PropertyGroup>

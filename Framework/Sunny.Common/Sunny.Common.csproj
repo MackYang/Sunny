@@ -5,7 +5,7 @@
     <LangVersion>7.3</LangVersion>
     <Description>Sunny框架需要依赖的通用部分</Description>
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/MackYang/Sunny/tree/master/Doc/sunny.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/MackYang/Sunny/raw/master/Doc/sunny.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
     <Authors>MackYang</Authors>
     <Version>1.0.1</Version>

@@ -6,7 +6,7 @@
     <ApplicationIcon />
     <StartupObject />
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
-    <PackageIconUrl>https://github.com/MackYang/Sunny/tree/master/Doc/sunny.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/MackYang/Sunny/raw/master/Doc/sunny.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
     <Description>Sunny框架的T4模板部分,主要用于生成DbModel的FluentApi配置</Description>
     <Authors>MackYang</Authors>
