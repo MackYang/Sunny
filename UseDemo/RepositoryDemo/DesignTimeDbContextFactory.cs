@@ -19,7 +19,7 @@ namespace Sunny.Repository
             var builder = new DbContextOptionsBuilder<MyDbContext>();
             
              
-            builder.UseMySql("server=localhost;database=test;user=root;password=myAdmin.;");
+            builder.UseMySql("server=localhost;database=test;user=root;password=youPassword;");
             
             return new MyDbContext(builder.Options);
 

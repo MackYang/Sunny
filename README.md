@@ -1,5 +1,5 @@
 # Sunny
-**这是一个基于AspNetCore+EFCore的快速开发框架,用更少的代码去实现目标,希望可以为更多的人节省时间.**
+**这是一个基于AspNetCore+EFCore的快速开发框架(NetCore2.1),用更少的代码去实现目标,希望可以为更多的人节省时间.**
 
 
 ### 目前已集成和实现的内容
@@ -45,12 +45,85 @@
 
 #### 快速开始
 
-创建一个AspNetCore的WebApi项目,从Nuget中搜索SunnyApi并引用
+
+**备注:文档中的斜体部分是作为建议,不是必须的.**
+
+
+**创建一个AspNetCore的WebApi项目**,从Nuget中搜索SunnyApi并引用
+
+![](Doc/packapi.jpg)
+
+
+*建议将UseDemo\ApiDemo中的[Program.cs](https://github.com/MackYang/Sunny/blob/master/UseDemo/ApiDemo/Program.cs)类定义部分复制到您的Program.cs中.*
+
+请将UseDemo\ApiDemo中的[appsettings.json](https://github.com/MackYang/Sunny/tree/master/UseDemo/ApiDemo/appsettings.json)文件复制到您的项目中进行替换,并将[StartUp.cs](https://github.com/MackYang/Sunny/tree/master/UseDemo/ApiDemo/Startup.cs)类定义部分复制到您的StartUp.cs中,在报红的地方按Alt+Enter引入对应的命名空间.
+
+
+将StartUp.cs中的MyDbContext部分换成您项目中自定义的数据库上下文.
+
+![](Doc/myDbContext.jpg)
 
 
 
-请将UseDemo\ApiDemo中的[StartUp.cs](https://github.com/MackYang/Sunny/tree/master/UseDemo/ApiDemo/Startup.cs)文件和[appsettings.json](https://github.com/MackYang/Sunny/tree/master/UseDemo/ApiDemo/appsettings.json)文件复制到您的项目中进行替换,并按实际需要进行修改
+**创建一个NetCore的类库项目**,作为您的数据库访问层,并在该项目中引入Sunny.Repository的Nuget包
 
+![](Doc/packRepository.jpg)
+
+
+新建一个类作为您的数据库上下文,如MyDbContext,将RepositoryDemo中的[MyDbContext.cs](https://github.com/MackYang/Sunny/blob/master/UseDemo/RepositoryDemo/MyDbContext.cs)类定义部分的代码复制到您的类中.
+
+记得将FluentApiTools.ApplyDbModelFluentApiConfig(modelBuilder, "RepositoryDemo");中的"RepositoryDemo"修改成您Repository项目的名称,以便接下来应用FluentApi的DbModel配置.
+
+
+新建一个类作为您设计时的上下文工厂,并请将[DesignTimeDbContextFactory](https://github.com/MackYang/Sunny/blob/master/UseDemo/RepositoryDemo/DesignTimeDbContextFactory.cs)中的类定义部分代码复制到该类中,
+用于将DbModel的修改应用到数据库中.
+
+
+新建一个DbModel文件夹,内部结构可参照RepositoryDemo项目中的[DbModel](https://github.com/MackYang/Sunny/tree/master/UseDemo/RepositoryDemo/DbModel).
+
+
+*Model用于存放您定义的DbModel类*
+*ModelConfig用于存放FluentApi的配置,这个文件夹中的文件是自动生成的,主要作用是将DbModel中的大写转成数据库中的下划线,配置id等,字段的内容长度等,通常生成完成后,需要手动修改某些字段长度,生成部分具体操作请见<a href="#t4DbModel">使用T4模板自动生成DbModel的FluentApi配置</a>*
+*RelationMap用于存放您DbModel关系间的配置,在遵循微软EF约定的默认关系规则情况下,通常情况不需要手动配置*
+
+
+*建议您的DbModel继承自BaseModel,BaseModel里包含了Id,CreaterId,CreateTime,UpdaterId,UpdateTime等.*
+
+*如:*
+
+``` cs
+ public class Student : BaseModel
+    {
+        public Student() { }
+
+        public string StudentName { get; set; }
+
+        public int Age { get; set; }
+
+    }
+
+```
+
+
+*建议新建一个DbSet.cs文件,作为MyDbContext的分部类,把所有的DbSet放在该文件中*
+
+*如:*
+``` cs
+ public partial class MyDbContext
+    {
+        public DbSet<Student> Student { get; set; }
+
+        public DbSet<StudentAddress> StudentAddress { get; set; }
+
+        public DbSet<IdTest> IdTest { get; set; }
+    }
+
+```
+
+*DbModel写好之后,再用T4模板生成FluentApi配置,就可以通过Add-Migration xx 和 Update-Database将DbModel应用到数据库中了*
+
+
+*建议创建一个Service项目对Repository中的数据库层进行业务逻辑封装,再提供给Api层调用*
 
 ---
 
@@ -115,6 +188,13 @@ public void SomeMethod()
     Buyer getBuyer = mapper.Map<Buyer>(seller);
 }
 ```
+
+---
+
+#### <a name="t4DbModel">使用T4模板自动生成DbModel的FluentApi配置</a>
+
+此部分待编辑
+
 ---
 
 使用文档不断完善中,如果在使用中遇到问题,可以查看UseDemo或到技术交流QQ群852498368寻求帮助.
