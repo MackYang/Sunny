@@ -53,7 +53,7 @@
 
 **创建一个AspNetCore的WebApi项目**,从Nuget中搜索SunnyApi并引用
 
-![](Doc/packapi.jpg)
+![](Doc/packApi.png)
 
 
 *建议将UseDemo\ApiDemo中的[Program.cs](https://github.com/MackYang/Sunny/blob/master/UseDemo/ApiDemo/Program.cs)类定义部分复制到您的Program.cs中.*
@@ -63,7 +63,7 @@
 
 将StartUp.cs中的MyDbContext部分换成您项目中自定义的数据库上下文.
 
-![](Doc/myDbContext.jpg)
+![](Doc/myDbContext.png)
 
 
 
@@ -71,7 +71,7 @@
 
 **创建一个NetCore的类库项目**,作为您的数据库访问层,并在该项目中引入Sunny.Repository的Nuget包
 
-![](Doc/packRepository.jpg)
+![](Doc/packRepository.png)
 
 
 新建一个类作为您的数据库上下文,如MyDbContext,将RepositoryDemo中的[MyDbContext.cs](https://github.com/MackYang/Sunny/blob/master/UseDemo/RepositoryDemo/MyDbContext.cs)类定义部分的代码复制到您的类中.
