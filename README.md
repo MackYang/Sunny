@@ -49,6 +49,8 @@
 **备注:文档中的斜体部分是作为建议,不是必须的.**
 
 
+
+
 **创建一个AspNetCore的WebApi项目**,从Nuget中搜索SunnyApi并引用
 
 ![](Doc/packapi.jpg)
@@ -62,6 +64,8 @@
 将StartUp.cs中的MyDbContext部分换成您项目中自定义的数据库上下文.
 
 ![](Doc/myDbContext.jpg)
+
+
 
 
 
@@ -120,10 +124,10 @@
 
 ```
 
-*DbModel写好之后,再用T4模板生成FluentApi配置,就可以通过Add-Migration xx 和 Update-Database将DbModel应用到数据库中了*
+*DbModel写好之后,再用T4模板生成FluentApi配置,就可以通过Add-Migration xx 和 Update-Database将DbModel应用到数据库中了.*
 
 
-*建议创建一个Service项目对Repository中的数据库层进行业务逻辑封装,再提供给Api层调用*
+*建议创建一个Service项目对Repository中的数据库层进行业务逻辑封装,再提供给Api层调用.*
 
 ---
 
