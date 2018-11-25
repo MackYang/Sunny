@@ -10,6 +10,7 @@
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
     <Description>Sunny框架的T4模板部分,主要用于生成DbModel的FluentApi配置</Description>
     <Authors>MackYang</Authors>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
