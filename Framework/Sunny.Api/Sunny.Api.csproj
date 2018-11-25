@@ -9,6 +9,7 @@
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
     <PackageIconUrl>https://github.com/MackYang/Sunny/tree/master/Doc/sunny.png</PackageIconUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -32,7 +33,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sunny.Common\Sunny.Common.csproj" />
-    <ProjectReference Include="..\Sunny.Repository\Sunny.Repository.csproj" />
   </ItemGroup>
 
   <ItemGroup>
