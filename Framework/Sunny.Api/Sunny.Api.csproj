@@ -9,7 +9,8 @@
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
     <PackageIconUrl>https://github.com/MackYang/Sunny/tree/master/Doc/sunny.png</PackageIconUrl>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
+    <Authors>MackYang</Authors>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
