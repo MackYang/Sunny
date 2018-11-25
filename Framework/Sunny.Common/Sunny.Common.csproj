@@ -3,6 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <LangVersion>7.3</LangVersion>
+    <Description>Sunny框架需要依赖的通用部分</Description>
+    <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/MackYang/Sunny/raw/master/Doc/sunny.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
+    <Authors>MackYang</Authors>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
