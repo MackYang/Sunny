@@ -13,7 +13,7 @@
 - <a href="#t4DbModel">T4模板用于为DbModel生成EFCore使用的FluentApi配置文件</a>
 - <a href="#exMiddware">全局异常处理中间件</a>
 - <a href="#tokenMiddware">Token验证中间件</a>
-- 网络日志 记录失败时会记到本地文件
+- <a href="#netLog">网络日志 记录失败时会记到本地文件</a>
 - 自动依赖注入
 - Redis
 - Long,Decimal,DateTime的Json处理
@@ -403,8 +403,50 @@ if (env.IsDevelopment())
 
     },
 ```
-这样一来,不用在每个需要登录的方法上加标注,对于不用验证的api,如注册,注销,发验证码等,以非/api开头的路径即可,如"/unAuth/api".
 
+在StartUp.cs的Configure方法中加入以下代码(通常在app.UseMvc()中间件前):
+
+```cs
+app.UseMiddleware<TokenValidateMiddleware>();
+```
+
+这样一来,不用在每个需要登录的方法上加标注,中间件会从header中获取token的值,并以值作为key去缓存查询是否存在,如果存在即验证通过.
+
+对于不用验证的api,如注册,注销,发验证码等,以非/api开头的路径即可,如"/unAuth/api".
+
+---
+
+#### <a name="netLog">网络日志</a>
+
+为了方便集中管理和查询日志,框架提供了网络日志,写入后到指定的url上可查询您的日志.
+
+在appsetting.json中配置日志选项:
+
+```json
+"NetLoggerOption": {
+      "Url": "http://test.log.loc-mall.com/Api/AddLog",
+      //每个业务系统配置自己的ID,请发邮件给我分配(1651493066@qq.com),邮件里写明来意和系统名称即可
+      //写入的日志在这里查看http://test.log.loc-mall.com/ui/pages/log.aspx?systemid=xxxxxxxx
+      "SystemId": "xxxxxx"
+    }
+```
+
+
+在StartUp.cs的Configure方法中加入以下代码:
+
+```cs
+loggerFactory.AddNetLoggerUseDefaultFilter(Configuration.GetSection("SunnyOptions:NetLoggerOption").Get<NetLoggerOption>());
+```
+这样便会记录所有level>=info的分类为非microsoft开头的日志,分类以microsoft开头的日志在>=warning以上时才记录.
+
+
+查询日志,访问指定的url即可,如:http://test.log.loc-mall.com/ui/pages/log.aspx?systemid=xxxxx
+
+![](Doc/netLog.png)
+
+如果网络日志写入失败(通常是因为网络原因),会将日志写入到C:\SunnyOfflineLog下以日期作为文件名的txt文件里,如:
+
+![](Doc/offlineLog.png)
 
 ---
 
