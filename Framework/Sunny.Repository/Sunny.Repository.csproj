@@ -7,10 +7,16 @@
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
     <Description>Sunny框架的Repository部分,用于项目中的数据仓储</Description>
     <Authors>MackYang</Authors>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
+    <PackageReleaseNotes>增加了注释</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+    <DocumentationFile>D:\Work\Code\Sunny\Framework\Sunny.Repository\Sunny.Repository.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <NoWarn>1701;1702;1591</NoWarn>
     <DocumentationFile>D:\Work\Code\Sunny\Framework\Sunny.Repository\Sunny.Repository.xml</DocumentationFile>
   </PropertyGroup>
