@@ -9,6 +9,10 @@
     <DocumentationFile>D:\Work\Code\Sunny\UseDemo\ApiDemo\ApiDemo.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Work\Code\Sunny\UseDemo\ApiDemo\ApiDemo.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>

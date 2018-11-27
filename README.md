@@ -39,7 +39,7 @@
 - *基于Vue的后台管理UI*
 - *Sso*
 
-  
+---  
 
 ### 使用文档
 
@@ -48,8 +48,8 @@
 
 **(备注:文档中的斜体部分是作为建议,不是必须的.)**
 
-
-
+<br/>
+<br/>
 
 **创建一个AspNetCore的WebApi项目**,从Nuget中搜索SunnyApi并引用
 
@@ -66,8 +66,15 @@
 ![](Doc/myDbContext.png)
 
 
+如果您启用了Swagger,请设置您项目的生成选项,输出xml以便SwaggerUI中能看到Api的注释内容
+![](Doc/commentXml.png)
 
 
+修改下图中的xml文件为您项目的xml文件名称
+![](Doc/swaggerXml.png)
+
+<br/>
+<br/>
 
 **创建一个NetCore的类库项目**,作为您的数据库访问层,并在该项目中引入Sunny.Repository的Nuget包
 
@@ -123,6 +130,20 @@
     }
 
 ```
+
+
+<br/>
+<br/>
+<a name="t4DbModel">使用T4模板自动生成DbModel的FluentApi配置</a>
+
+**创建一个NetCore的控制台应用程序项目**,用于生成T4模板,并在该项目中引入Sunny.Repository的Nuget包
+![](Doc/packT4.png)
+
+将UseDemo/TemplateT4Demo下的[Program.cs](https://github.com/MackYang/Sunny/blob/master/UseDemo/TemplateT4Demo/Program.cs)类定义部分复制到您的Program.cs中替换后修改下图所示的地方为您的Repository项目名称.
+![](Doc/T4Repository.png)
+
+运行该项目,如果没有指定输出路径,默认输出到D:\SunnyFramework\Output\DbConfig\下,打开该目录,把生成的文件复制到您Repository项目中的ModelConfig文件夹下按实际需要做相应修改.
+
 
 *DbModel写好之后,再用T4模板生成FluentApi配置,就可以通过Add-Migration xx 和 Update-Database将DbModel应用到数据库中了.*
 
@@ -195,9 +216,6 @@ public void SomeMethod()
 
 ---
 
-#### <a name="t4DbModel">使用T4模板自动生成DbModel的FluentApi配置</a>
-
-此部分待编辑
 
 ---
 
