@@ -136,7 +136,7 @@
 <br/>
 <a name="t4DbModel">使用T4模板自动生成DbModel的FluentApi配置</a>
 
-**创建一个NetCore的控制台应用程序项目**,用于生成T4模板,并在该项目中引入Sunny.Repository的Nuget包
+**创建一个NetCore的控制台应用程序项目**,用于生成T4模板,并在该项目中引用您的Repository项目,以及引用Sunny.TemplateT4的Nuget包
 ![](Doc/packT4.png)
 
 将UseDemo/TemplateT4Demo下的[Program.cs](https://github.com/MackYang/Sunny/blob/master/UseDemo/TemplateT4Demo/Program.cs)类定义部分复制到您的Program.cs中替换后修改下图所示的地方为您的Repository项目名称.
