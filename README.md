@@ -8,11 +8,11 @@
 - <a href="#autoMapper">AutoMapper (实体间类型转换)</a>
 - <a href="#quartZ">Quartz (定时任务)</a>
 - <a href="#apiValidation">FluentValidation Api参数模型验证</a>
-- Api参数模型绑定
-- Swagger Api文档生成
-- T4模板用于为DbModel生成EFCore使用的FluentApi配置文件
-- 全局异常处理中间件
-- Token验证中间件
+- <a href="#argsBind">Api参数模型绑定</a>
+- <a href="#swaggerDoc">Swagger Api文档生成</a>
+- <a href="#t4DbModel">T4模板用于为DbModel生成EFCore使用的FluentApi配置文件</a>
+- <a href="#exMiddware">全局异常处理中间件</a>
+- <a href="#tokenMiddware">Token验证中间件</a>
 - 网络日志 记录失败时会记到本地文件
 - 自动依赖注入
 - Redis
@@ -65,13 +65,6 @@
 
 ![](Doc/myDbContext.png)
 
-
-如果您启用了Swagger,请设置您项目的生成选项,输出xml以便SwaggerUI中能看到Api的注释内容
-![](Doc/commentXml.png)
-
-
-修改下图中的xml文件为您项目的xml文件名称
-![](Doc/swaggerXml.png)
 
 <br/>
 <br/>
@@ -336,6 +329,82 @@ services.AddMvcCore()
             return this.Success(new A { FullName = "AbcYH", Age = 123.123456789m, MFF = long.MaxValue });
         }
 ```
+
+---
+
+#### <a name="argsBind">参数模型绑定</a>
+
+在写参数时可以不显示的声明[FromBody],[FromQuery],[FormHeader]等,默认是[FromBody],如果不是通过body传参,可以显示声明传参方式.
+
+
+#### <a name="swaggerDoc">生成Swagger文档</a>
+
+请设置您Api项目的生成选项,输出xml以便SwaggerUI中能看到Api的注释内容
+![](Doc/commentXml.png)
+
+
+在StartUp.cs的ConfigureServices方法中加入以下代码:
+```cs
+ services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "ApiDemo Project Swagger API", Version = "v1" });
+                // 为 Swagger JSON and UI设置xml文档注释路径
+                var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录（绝对，不受工作目录影响，建议采用此方法获取路径）
+                var xmlPath = Path.Combine(basePath, "ApiDemo.xml");
+                c.IncludeXmlComments(xmlPath);
+            });
+```
+
+并将下图中的xml文件为您项目的xml文件名称
+![](Doc/swaggerXml.png)
+
+
+在StartUp.cs的Configure方法的最后加入以下代码:
+
+```cs
+ app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+```
+
+运行Api项目,即可访问Swagger文档,如"https://localhost:44381/swagger"
+
+---
+
+#### <a name="exMiddware">全局异常处理</a>
+
+在StartUp.cs的Configure方法中加入以下代码(通常在所有中间件前加入,以便捕获所有异常):
+
+```cs
+if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseMiddleware<ErrorHandlingMiddleware>();
+            }
+```
+这样在非开发环境中,都会使用异常处理中间件,将异常写入到日志中,并向客户端显示友好信息.
+
+---
+
+#### <a name="tokenMiddware">Token验证中间件</a>
+
+在实际业务场景中,很多Api都是在访问前要验证是否登录,我们可以在appsetting.json中配置以指定路径开头的api需要验证后才能访问,如:
+
+```json
+"TokenValidateOption": {
+      //将根据该值来从HttpHeader中存取对应的token值,默认就是"token"
+      "TokenKey": "token",
+      // 以此开头的API都需要验证Token,如果不需要可不配置
+      "AuthApiStartWith": "/api"
+
+    },
+```
+这样一来,不用在每个需要登录的方法上加标注,对于不用验证的api,如注册,注销,发验证码等,以非/api开头的路径即可,如"/unAuth/api".
+
 
 ---
 
