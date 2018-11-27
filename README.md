@@ -6,8 +6,8 @@
 
 - <a href="#snowflakeId">SnowflakeId (Twitter的雪花Id算法)</a>
 - <a href="#autoMapper">AutoMapper (实体间类型转换)</a>
-- Quartz (定时任务)
-- FluentValidation Api参数模型验证
+- <a href="#quartZ">Quartz (定时任务)</a>
+- <a href="#apiValidation">FluentValidation Api参数模型验证</a>
 - Api参数模型绑定
 - Swagger Api文档生成
 - T4模板用于为DbModel生成EFCore使用的FluentApi配置文件
@@ -216,6 +216,126 @@ public void SomeMethod()
 
 ---
 
+#### <a name="quartZ">使用定时任务</a>
+
+在Api项目下创建一个类,实现IJobEntity接口
+
+```cs
+ public class JobB : IJobEntity
+    {
+
+        public string JobName => "this job B Name";
+
+        public string Describe => "this job B Describe";
+
+        IStudentServic studentServic;
+
+        public JobB(IStudentServic studentServic)
+        {
+            this.studentServic = studentServic;
+
+        }
+
+
+        public async Task ExecuteAsync(IJobExecutionContext jobContext)
+        {
+            Console.WriteLine(jobContext.JobDetail.JobDataMap["pxxx"]);//使用了配置中传来的参数,参数的名称要和配置里的一样
+            Console.WriteLine( (await studentServic.GetStudent()).StudentName);
+
+        }
+
+    }
+```
+
+在appsetting.json中配置任务:
+
+```json
+"JobOption": [
+      {
+        //Job所的的类名称
+        "JobClassName": "JobB",
+        //Job所属的组,同一组中不能有2个相同的任务
+        "JobGroup": "group1",
+        //Job在什么时候运行,用Cron表达式
+        "RunAtCron": "*/55 * * * * ?",
+        //Job的参数,没有可以不写
+        "Args": {
+          //参数名字和你在任务中写的要相同
+          "pxxx": "kkk",
+          "nnn": 123
+        }
+      },
+
+      {
+        //Job所的的类名称
+        "JobClassName": "JobA",
+        //Job在什么时候运行,用Cron表达式
+        "RunAtCron": "*/59 * * * * ?"
+
+      }
+    ]
+```
+
+在StartUp.cs的ConfigureServices方法中注册任务服务
+```cs
+services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();//注册ISchedulerFactory的实例。
+```
+
+在StartUp.cs的Configure方法中启用Job,启用后,Job会在配置的时间运行
+
+```cs
+ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ISchedulerFactory schedulerFactory)
+        {
+            app.InitServiceProvider();
+            app.EnableJob(Configuration, schedulerFactory);
+        }
+```
+
+---
+
+#### <a name="apiValidation">Api参数验证</a>
+
+在StartUp.cs中注册Fluent验证:
+```cs
+services.AddMvcCore()
+                .AddFluentValidation()
+```
+
+在Api项目中创建一个类,继承自Validator<T>,如:
+
+```cs
+ public class CustomerValidator : Validator<Customer>
+    {
+        public CustomerValidator()
+        {
+            RuleFor(x => x.Surname).NotEmpty();
+            RuleFor(x => x.Forename).NotEmpty().WithMessage("PleasFFe specify a first name");
+            RuleFor(x => x.Discount).NotEqual(0).When(x => x.HasDiscount);
+            RuleFor(x => x.Address).Length(20, 250);
+            RuleFor(x => x.Postcode).Must(BeAValidPostcode).WithMessage("Please specify a valid postcode");
+        }
+
+        private bool BeAValidPostcode(string postcode)
+        {
+            return postcode == "123";
+            // custom postcode validating logic goes here
+        }
+    }
+```
+
+在Api中直接使用实体Customer,进入方法之前会先对customer验证,如果验证不通过不会进入方法内部,会返回相应的提示信息:
+```cs
+ /// <summary>
+        /// 带返回值的成功场景测试,测试模型验证
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("Get2")]
+        public Result<A> Get2(Customer customer)
+        {
+
+            return this.Success(new A { FullName = "AbcYH", Age = 123.123456789m, MFF = long.MaxValue });
+        }
+```
 
 ---
 
