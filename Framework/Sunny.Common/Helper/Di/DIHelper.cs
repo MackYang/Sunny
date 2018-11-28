@@ -98,7 +98,7 @@ namespace Sunny.Common.Helper
             return t;
         }
 
-   
+
 
 
         /// <summary>
@@ -158,9 +158,9 @@ namespace Sunny.Common.Helper
         static public void RegisterByAssemblyName(IServiceCollection services, string assemblyName)
         {
 
-            //集中注册服务
+            //集中注册继承自依赖注入的接口
 
-            var mapping = GetDIMapping(assemblyName);
+            var mapping = GetDiClassInterfaceMapping(assemblyName);
 
             var scoped = mapping.Where(x => typeof(IScoped).IsAssignableFrom(x.Key));
             var transient = mapping.Where(x => typeof(ITransient).IsAssignableFrom(x.Key));
@@ -170,14 +170,26 @@ namespace Sunny.Common.Helper
             transient.ToList().ForEach(x => { x.Value.ToList().ForEach(n => services.AddTransient(n, x.Key)); });
             singleton.ToList().ForEach(x => { x.Value.ToList().ForEach(n => services.AddSingleton(n, x.Key)); });
 
+            //集中注册继承自依赖注入的类
+
+            var mappingClass = GetDiClassMapping(assemblyName);
+
+            var scopedClass = mappingClass.Where(x => typeof(IScoped).IsAssignableFrom(x.Key));
+            var transientClass = mappingClass.Where(x => typeof(ITransient).IsAssignableFrom(x.Key));
+            var singletonClass = mappingClass.Where(x => typeof(ISingleton).IsAssignableFrom(x.Key));
+
+            scopedClass.ToList().ForEach(x => services.AddScoped(x.Key));
+            transientClass.ToList().ForEach(x => services.AddTransient(x.Key));
+            singletonClass.ToList().ForEach(x => services.AddSingleton(x.Key));
+
         }
 
 
         /// <summary>  
-        /// 获取程序集中的实现类对应的多个接口
+        /// 获取程序集中继承自依赖注入的接口实现类对应的多个接口
         /// </summary>  
         /// <param name="assemblyName">程序集</param>
-        static public Dictionary<Type, Type[]> GetDIMapping(string assemblyName)
+        static public Dictionary<Type, Type[]> GetDiClassInterfaceMapping(string assemblyName)
         {
             var result = new Dictionary<Type, Type[]>();
             if (!String.IsNullOrEmpty(assemblyName))
@@ -187,8 +199,12 @@ namespace Sunny.Common.Helper
 
                 foreach (var item in ts.Where(s => !s.IsInterface && typeof(IDependency).IsAssignableFrom(s) && !s.GetTypeInfo().IsAbstract))
                 {
-                    var interfaceType = item.GetInterfaces();
-                    result.Add(item, interfaceType);
+                    var interfaceType = item.GetInterfaces().Where(x => x != typeof(IDependency) && x != typeof(IScoped) && x != typeof(ITransient) && x != typeof(ISingleton));
+                    if(interfaceType.Count()>0)
+                    {
+                        result.Add(item, interfaceType.ToArray());
+                    }
+                    
                 }
 
             }
@@ -196,6 +212,35 @@ namespace Sunny.Common.Helper
         }
 
 
+        /// <summary>  
+        /// 获取程序集中继承自依赖注释接口的类
+        /// </summary>  
+        /// <param name="assemblyName">程序集</param>
+        static public Dictionary<Type, Type> GetDiClassMapping(string assemblyName)
+        {
+            var result = new Dictionary<Type, Type>();
+            if (!String.IsNullOrEmpty(assemblyName))
+            {
+                Assembly assembly = Assembly.Load(assemblyName);
+                List<Type> ts = assembly.GetTypes().ToList();
 
+                foreach (var item in ts.Where(s => !s.IsInterface && typeof(IDependency).IsAssignableFrom(s) && !s.GetTypeInfo().IsAbstract))
+                {
+                    var interfaceType = item.GetInterfaces().Where(x => x != typeof(IDependency));
+                    if (interfaceType.Count() == 1)
+                    {
+                        var t = interfaceType.First();
+                        if (t == typeof(IScoped) || t == typeof(ITransient) || t == typeof(ISingleton))
+                        {
+                            result.Add(item, t);
+                        }
+
+                    }
+
+                }
+
+            }
+            return result;
+        }
     }
 }

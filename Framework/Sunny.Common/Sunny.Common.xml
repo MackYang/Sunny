@@ -241,9 +241,15 @@
             <param name="services"></param>
             <param name="assemblyName"></param>
         </member>
-        <member name="M:Sunny.Common.Helper.DiHelper.GetDIMapping(System.String)">
+        <member name="M:Sunny.Common.Helper.DiHelper.GetDiClassInterfaceMapping(System.String)">
             <summary>  
-            获取程序集中的实现类对应的多个接口
+            获取程序集中继承自依赖注入的接口实现类对应的多个接口
+            </summary>  
+            <param name="assemblyName">程序集</param>
+        </member>
+        <member name="M:Sunny.Common.Helper.DiHelper.GetDiClassMapping(System.String)">
+            <summary>  
+            获取程序集中继承自依赖注释接口的类
             </summary>  
             <param name="assemblyName">程序集</param>
         </member>

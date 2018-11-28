@@ -14,8 +14,8 @@
 - <a href="#exMiddware">全局异常处理中间件</a>
 - <a href="#tokenMiddware">Token验证中间件</a>
 - <a href="#netLog">网络日志 记录失败时会记到本地文件</a>
-- 自动依赖注入
-- Redis
+- <a href="#autoDi">自动依赖注入</a>
+- <a href="#redis">Redis</a>
 - Long,Decimal,DateTime的Json处理
 - Api统一返回格式 (code,data,msg)
 - 类型扩展动态属性
@@ -274,7 +274,7 @@ public void SomeMethod()
 services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();//注册ISchedulerFactory的实例。
 ```
 
-在StartUp.cs的Configure方法中启用Job,启用后,Job会在配置的时间运行
+在StartUp.cs的Configure方法中启用Job,启用后,Job会在配置的时间运行,届时会将运行时间及任务运行耗时等信息写入到日志.
 
 ```cs
  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ISchedulerFactory schedulerFactory)
@@ -410,7 +410,7 @@ if (env.IsDevelopment())
 app.UseMiddleware<TokenValidateMiddleware>();
 ```
 
-这样一来,不用在每个需要登录的方法上加标注,中间件会从header中获取token的值,并以值作为key去缓存查询是否存在,如果存在即验证通过.
+这样一来,不用在每个需要登录的方法上加标注,中间件会从header中获取token的值,并以值作为key去缓存查询是否存在(需要您在登录成功的方法里将对应的token值写入到缓存,框架中默认的是redis),如果存在即验证通过.
 
 对于不用验证的api,如注册,注销,发验证码等,以非/api开头的路径即可,如"/unAuth/api".
 
@@ -449,6 +449,103 @@ loggerFactory.AddNetLoggerUseDefaultFilter(Configuration.GetSection("SunnyOption
 ![](Doc/offlineLog.png)
 
 ---
+
+#### <a name="autoDi">自动依赖注入</a>
+
+在StartUp.cs的ConfigureServices方法中加入以下代码:
+```cs
+DiHelper.AutoRegister(services);
+```
+
+当您的类或接口继承自ISingleton,IScoped,ITransient中的任意接口,系统启动时会自动注册依赖关系,在使用时可通过构造函数注入的方式获取您类或接口的实例.
+
+首先我们的类或接口继承自以上任意接口:
+```cs
+  public interface IStudentServic:IScoped
+    {
+
+        Task<Student> GetStudent();
+
+        Task<Student> GetStudent2();
+    }
+
+
+    public class SomeoneClass : IScoped
+    {
+
+        public string SomeoneMethod()
+        {
+            return "hello this is di class";
+        }
+    }
+```
+
+然后在我们要使用的地方通过构造函数注入:
+
+![](Doc/diInst.png)
+
+如果您不想使用构造函数的注入方式,也可以在要使用的地方直接创建实例:
+
+```cs
+ var s = DiHelper.CreateInstance<SomeoneClass>();
+ var x = DiHelper.GetService<IStudentServic>();
+```
+
+---
+
+#### <a name="redis">使用Redis缓存</a>
+
+在appsetting.json中配置redis选项:
+```json
+"RedisOptions": {
+      //连接字符串
+      "ConnectionString": "127.0.0.1:6543",
+      //调用方实例名称,redis中的key会自动以设置的字符串开头,用以标识是哪台机器存入的key
+      "InstanceName": "api_",
+      //默认的滑动过期时间多少秒,为了防止缓存击穿,实际存入时会在该时间上加10秒类的随机数
+      "DefaultSlidingExpiration": 600
+    }
+```
+
+在StartUp.cs的ConfigureServices方法中加入以下代码:
+```cs
+services.AddDistributedRedisCache(options =>
+            {
+                var configOption = Configuration.GetSection("SunnyOptions:RedisOptions").Get<RedisOption>();
+                options.Configuration = configOption.ConnectionString;
+                options.InstanceName = configOption.InstanceName;
+                IDistributedCacheExtend.DefaultSlidingExpiration = configOption.DefaultSlidingExpiration;
+            });
+```
+
+通过构造函数注入一个IDistributedCache的实例cache后即可调用:
+
+```cs
+        /// <summary>
+        /// Redis测试
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetRedis")]
+        public async Task<Result<dynamic>> GetRedis()
+        {
+            cache.SetString("aaa", "A杨家勇A");
+
+            cache.Set("customer", new Customer());
+
+            await cache.SetAsync("customerAsync", new Customer() { Address = "Async" });
+
+            var cus = cache.Get<Customer>("customer");
+
+            var cusAsync = await cache.GetAsync<Customer>("customerAsync");
+
+            return this.SuccessDynamic(new { Cus = cus, CusAsync = cusAsync });
+        }
+```
+
+
+---
+
+#### <a name="xx">go on</a>
 
 使用文档不断完善中,如果在使用中遇到问题,可以查看UseDemo或到技术交流QQ群852498368寻求帮助.
 
