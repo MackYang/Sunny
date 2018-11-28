@@ -31,22 +31,23 @@ namespace ApiDemo.Api.Controllers
         IDistributedCache cache;
         //这里只是为了演示,实际使用时建议使用各业务的Service
         MyDbContext db;
-        //学生业务的Service
-        public IStudentServic studentServic;
+       
         ILogger logger;
         IMapper mapper;
         ISchedulerFactory schedulerFactory;
+        //学生业务的Service
+        public IStudentServic studentServic;
         SomeoneClass someone;
         //TDbContext tDbContex;
-        public ValuesController(SomeoneClass someone,ISchedulerFactory schedulerFactory, MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache, IStudentServic studentServic)
+        public ValuesController(IStudentServic studentServic,SomeoneClass someone,ISchedulerFactory schedulerFactory, MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache)
         {
             this.db = efDbContext;
             this.logger = logger;
             this.mapper = mapper;
             this.cache = cache;
-            this.studentServic = studentServic;
             //this.tDbContex = tDbContext;
             this.schedulerFactory = schedulerFactory;
+            this.studentServic = studentServic;
             this.someone = someone;
         }
 
@@ -55,7 +56,11 @@ namespace ApiDemo.Api.Controllers
         [HttpGet]
         public Result<string> Get()
         {
-            return this.Success(someone.SomeoneMethod());
+            var s = DiHelper.CreateInstance<SomeoneClass>();
+
+            var x = DiHelper.GetService<IStudentServic>();
+
+            return this.Success(someone.SomeoneMethod()+s.SomeoneMethod()+x.GetStudent2().Result.StudentName);
         }
         /// <summary>
         /// Session测试

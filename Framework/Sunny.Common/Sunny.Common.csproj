@@ -8,8 +8,8 @@
     <PackageIconUrl>https://github.com/MackYang/Sunny/raw/master/Doc/sunny.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
     <Authors>MackYang</Authors>
-    <Version>1.0.2</Version>
-    <PackageReleaseNotes>增加了注释</PackageReleaseNotes>
+    <Version>1.0.3</Version>
+    <PackageReleaseNotes>增加了类的依赖注入注册</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
