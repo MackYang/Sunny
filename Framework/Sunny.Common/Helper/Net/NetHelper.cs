@@ -104,84 +104,84 @@ namespace Sunny.Common.Helper
         }
 
 
-        /// <summary>
-        /// 发送短信
-        /// </summary>
-        /// <param name="smsInfo">短信实体</param>
-        /// <returns></returns>
-        private static async void SendSMS(SMSInfo smsInfo, SmsOption smsOption)
-        {
-            //记得加上短信内容长度截取的代码,以免恶意用户发送超长短信导致不必费用.
-            try
-            {
+        ///// <summary>
+        ///// 发送短信
+        ///// </summary>
+        ///// <param name="smsInfo">短信实体</param>
+        ///// <returns></returns>
+        //private static async void SendSMS(SMSInfo smsInfo, SmsOption smsOption)
+        //{
+        //    //记得加上短信内容长度截取的代码,以免恶意用户发送超长短信导致不必费用.
+        //    try
+        //    {
 
 
-                if (smsInfo != null)
-                {
-                    smsInfo.SMSContent = smsInfo.SMSContent.AutoSubstring(0, 70);
+        //        if (smsInfo != null)
+        //        {
+        //            smsInfo.SMSContent = smsInfo.SMSContent.AutoSubstring(0, 70);
 
-                    string url = smsOption.ApiUrl;
+        //            string url = smsOption.ApiUrl;
 
-                    string gbkStr = smsInfo.SMSContent;
+        //            string gbkStr = smsInfo.SMSContent;
 
-                    url = url.Replace("$TOPHONE", smsInfo.ToPhone);
-                    url = url.Replace("$CONTENT", HttpUtility.UrlEncode(smsInfo.SMSContent, Encoding.GetEncoding("gbk")));
-                    string responseStr = await Get(url);
+        //            url = url.Replace("$TOPHONE", smsInfo.ToPhone);
+        //            url = url.Replace("$CONTENT", HttpUtility.UrlEncode(smsInfo.SMSContent, Encoding.UTF8));
+        //            string responseStr = await Get(url);
 
-                    if (!string.IsNullOrWhiteSpace(responseStr))
-                    {
-                        //<response><result>0</result></response>
-                        responseStr = responseStr.Replace("<response><result>", "");
-                        responseStr = responseStr.Replace("</result></response>", "");
+        //            if (!string.IsNullOrWhiteSpace(responseStr))
+        //            {
+        //                //<response><result>0</result></response>
+        //                responseStr = responseStr.Replace("<response><result>", "");
+        //                responseStr = responseStr.Replace("</result></response>", "");
 
-                        int flag = responseStr.ConvertTo(-717);
-                        if (flag != 0)
-                        {
-                            Dictionary<int, string> dicReason = new Dictionary<int, string>();
-                            dicReason.Add(-99, "其它故障");
-                            dicReason.Add(5, "含有禁止发送的内容");
-                            dicReason.Add(-1, "用户名或密码不正确");
-                            dicReason.Add(-2, "余额不够");
-                            dicReason.Add(-3, "帐号没有注册");
-                            dicReason.Add(-4, "内容超长");
-                            dicReason.Add(-5, "账号路由为空");
-                            dicReason.Add(-6, "手机号码超过1000个（或手机号码非法或错误");
-                            dicReason.Add(-8, "扩展号超长");
-                            dicReason.Add(-12, "Key值要是32位长的英文，建议32个a");
-                            dicReason.Add(-13, "定时时间错误或者小于当前系统时间");
-                            dicReason.Add(-17, "手机号码为空");
-                            dicReason.Add(-18, "号码不是数字或者逗号不是英文逗号");
-                            dicReason.Add(-19, "短信内容为空");
+        //                int flag = responseStr.ConvertTo(-717);
+        //                if (flag != 0)
+        //                {
+        //                    Dictionary<int, string> dicReason = new Dictionary<int, string>();
+        //                    dicReason.Add(-99, "其它故障");
+        //                    dicReason.Add(5, "含有禁止发送的内容");
+        //                    dicReason.Add(-1, "用户名或密码不正确");
+        //                    dicReason.Add(-2, "余额不够");
+        //                    dicReason.Add(-3, "帐号没有注册");
+        //                    dicReason.Add(-4, "内容超长");
+        //                    dicReason.Add(-5, "账号路由为空");
+        //                    dicReason.Add(-6, "手机号码超过1000个（或手机号码非法或错误");
+        //                    dicReason.Add(-8, "扩展号超长");
+        //                    dicReason.Add(-12, "Key值要是32位长的英文，建议32个a");
+        //                    dicReason.Add(-13, "定时时间错误或者小于当前系统时间");
+        //                    dicReason.Add(-17, "手机号码为空");
+        //                    dicReason.Add(-18, "号码不是数字或者逗号不是英文逗号");
+        //                    dicReason.Add(-19, "短信内容为空");
 
-                            string info = "短信发送失败：";
+        //                    string info = "短信发送失败：";
 
-                            if (dicReason.ContainsKey(flag))
-                            {
-                                info = info + dicReason[flag];
-                            }
-                            else
-                            {
-                                info = info + flag + "(该代码没在错误类型中。)[" + responseStr + "]";
-                            }
-                            throw new Exception(info);
-                        }
-                    }
-                    else
-                    {
-                        throw new Exception("发送短信接口返回的响应字符串为空");
-                    }
-                }
-                if (OnRecordSMS != null)
-                {
-                    OnRecordSMS.Invoke(smsInfo);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("系统发送短信时发生异常:" + ex);
-            }
+        //                    if (dicReason.ContainsKey(flag))
+        //                    {
+        //                        info = info + dicReason[flag];
+        //                    }
+        //                    else
+        //                    {
+        //                        info = info + flag + "(该代码没在错误类型中。)[" + responseStr + "]";
+        //                    }
+        //                    throw new Exception(info);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                throw new Exception("发送短信接口返回的响应字符串为空");
+        //            }
+        //        }
+        //        if (OnRecordSMS != null)
+        //        {
+        //            OnRecordSMS.Invoke(smsInfo);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("系统发送短信时发生异常:" + ex);
+        //    }
 
-        }
+        //}
         /// <summary>
         /// 发送邮件，为异步发送邮件而写的内部方法
         /// </summary>
@@ -243,39 +243,37 @@ namespace Sunny.Common.Helper
         }
 
 
-        /// <summary>
-        /// 异步发送短信
-        /// </summary>
-        ///<param name="smsInfo">短信信息实体</param>
+        ///// <summary>
+        ///// 异步发送短信
+        ///// </summary>
+        /////<param name="smsInfo">短信信息实体</param>
 
-        public static void AsyncSendSMS(SMSInfo smsInfo, SmsOption smsOption)
-        {
-            if (smsInfo.ToPhone.IsPhoneNum() && !string.IsNullOrWhiteSpace(smsInfo.SMSContent))
-            {
-                bool canSend = true;
+        //public static void AsyncSendSMS(SMSInfo smsInfo, SmsOption smsOption)
+        //{
+        //    if (smsInfo.ToPhone.IsPhoneNum() && !string.IsNullOrWhiteSpace(smsInfo.SMSContent))
+        //    {
+        //        bool canSend = true;
 
-                if (!smsOption.IPWhiteList.Contains(smsInfo.OperaterIP))//如果IP不在白名单中,则检查
-                {
+        //        if (!smsOption.IPWhiteList.Contains(smsInfo.OperaterIP))//如果IP不在白名单中,则检查
+        //        {
 
-                    if (OnCheckSMS != null)
-                    {
-                        canSend = OnCheckSMS.Invoke(smsInfo);
-                    }
-                }
+        //            if (OnCheckSMS != null)
+        //            {
+        //                canSend = OnCheckSMS.Invoke(smsInfo);
+        //            }
+        //        }
 
-#if DEBUG
-                return;
-#endif
-                if (canSend)
-                {
 
-                    ThreadPool.QueueUserWorkItem(new WaitCallback(x => { SendSMS(smsInfo, smsOption); }));
-                }
+        //        if (canSend)
+        //        {
+
+        //            ThreadPool.QueueUserWorkItem(new WaitCallback(x => { SendSMS(smsInfo, smsOption); }));
+        //        }
 
 
 
-            }
-        }
+        //    }
+        //}
 
 
         /// <summary>
@@ -302,11 +300,11 @@ namespace Sunny.Common.Helper
 
                 if (!string.IsNullOrWhiteSpace(tmp))
                 {
-                    Regex r = new Regex("(?<=所在地理位置：).*?(?=</p>)");
+                    Regex r = new Regex("(?<=所在地理位置：<code>).*?(?=</code></p>)");
 
                     IPInfo ipInfo = new IPInfo();
                     ipInfo.IP = ip;
-                    ipInfo.FullAddress = r.Match(tmp).ToString();
+                    ipInfo.Info = r.Match(tmp).ToString();
                     return ipInfo;
                 }
                 else
@@ -335,83 +333,73 @@ namespace Sunny.Common.Helper
         }
 
 
-        #region 辅助类
+    }
 
-        public class IPInfo
-        {
-            public string IP { get; set; }
-            public string Province { get; set; }
-            public string City { get; set; }
-            /// <summary>
-            /// 区县名称
-            /// </summary>
-            public string District { get; set; }
-            /// <summary>
-            /// 街道名称
-            /// </summary>
-            public string Street { get; set; }
-            /// <summary>
-            /// 门牌号
-            /// </summary>
-            public string StreetNum { get; set; }
-            /// <summary>
-            /// IP所在地址,就是将省,市..等拼起来
-            /// </summary>
-            public string FullAddress { get; set; }
+    #region 辅助类
 
-        }
-
+    public class IPInfo
+    {
         /// <summary>
-        /// 邮件信息类,供异步发送邮件时对邮件信息的封装,使其满足线程参数的要求
+        /// ip地址
         /// </summary>
-        public class MailInfo
-        {
-            /// <summary>
-            /// 邮件接收者
-            /// </summary>
-            public string ToMail { get; set; }
-            /// <summary>
-            /// 邮件标题
-            /// </summary>
-            public string Title { get; set; }
-            /// <summary>
-            /// 邮件内容
-            /// </summary>
-            public string Content { get; set; }
-            /// <summary>
-            /// 操作者ID
-            /// </summary>
-            public string OperaterID { get; set; }
-            /// <summary>
-            /// 操作者IP
-            /// </summary>
-            public string OperaterIP { get; set; }
-        }
+        public string IP { get; set; }
         /// <summary>
-        /// 短信信息类,代异步发送短信时对短信数据的封装,使其满足线程参数的要求
+        /// 查询到的IP信息
         /// </summary>
-        public class SMSInfo
-        {
-            /// <summary>
-            /// 短信内容
-            /// </summary>
-            public string SMSContent { get; set; }
-            /// <summary>
-            /// 接收号码
-            /// </summary>
-            public string ToPhone { get; set; }
-
-            /// <summary>
-            /// 操作者ID
-            /// </summary>
-            public string OperaterID { get; set; }
-            /// <summary>
-            /// 操作者IP
-            /// </summary>
-            public string OperaterIP { get; set; }
-        }
-
-        #endregion
+        public string Info { get; set; }
 
     }
+
+    /// <summary>
+    /// 邮件信息类,供异步发送邮件时对邮件信息的封装,使其满足线程参数的要求
+    /// </summary>
+    public class MailInfo
+    {
+        /// <summary>
+        /// 邮件接收者
+        /// </summary>
+        public string ToMail { get; set; }
+        /// <summary>
+        /// 邮件标题
+        /// </summary>
+        public string Title { get; set; }
+        /// <summary>
+        /// 邮件内容
+        /// </summary>
+        public string Content { get; set; }
+        /// <summary>
+        /// 操作者ID
+        /// </summary>
+        public string OperaterID { get; set; }
+        /// <summary>
+        /// 操作者IP
+        /// </summary>
+        public string OperaterIP { get; set; }
+    }
+    /// <summary>
+    /// 短信信息类,代异步发送短信时对短信数据的封装,使其满足线程参数的要求
+    /// </summary>
+    public class SMSInfo
+    {
+        /// <summary>
+        /// 短信内容
+        /// </summary>
+        public string SMSContent { get; set; }
+        /// <summary>
+        /// 接收号码
+        /// </summary>
+        public string ToPhone { get; set; }
+
+        /// <summary>
+        /// 操作者ID
+        /// </summary>
+        public string OperaterID { get; set; }
+        /// <summary>
+        /// 操作者IP
+        /// </summary>
+        public string OperaterIP { get; set; }
+    }
+
+    #endregion
+
 }

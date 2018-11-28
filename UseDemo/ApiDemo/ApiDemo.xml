@@ -51,7 +51,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ApiDemo.Api.Controllers.ValuesController.Get3(System.String,System.Int32)">
+        <member name="M:ApiDemo.Api.Controllers.ValuesController.pageTest(Sunny.Common.Extend.CollectionQuery.PageInfo)">
             <summary>
             带返回值,且值为动态扩展对象的场景测试,分页测试
             </summary>

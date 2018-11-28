@@ -8,8 +8,8 @@
     <PackageIconUrl>https://github.com/MackYang/Sunny/raw/master/Doc/sunny.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
     <Authors>MackYang</Authors>
-    <Version>1.0.3</Version>
-    <PackageReleaseNotes>增加了类的依赖注入注册</PackageReleaseNotes>
+    <Version>1.0.4</Version>
+    <PackageReleaseNotes>删除了发短信的方法,以后重新接入其他短信平台</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

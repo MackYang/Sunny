@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Quartz;
 using RepositoryDemo;
 using RepositoryDemo.DbModel;
@@ -13,7 +14,7 @@ using ServiceDemo;
 using Sunny.Api.Controllers;
 
 using Sunny.Api.DTO.Response;
-
+using Sunny.Common.ConfigOption;
 using Sunny.Common.Enum;
 using Sunny.Common.Extend.CollectionQuery;
 using Sunny.Common.Helper;
@@ -38,9 +39,14 @@ namespace ApiDemo.Api.Controllers
         //学生业务的Service
         public IStudentServic studentServic;
         SomeoneClass someone;
+        MailOption mailOption;
+        IpInfoQueryOption ipQueryOption;
         //TDbContext tDbContex;
-        public ValuesController(IStudentServic studentServic,SomeoneClass someone,ISchedulerFactory schedulerFactory, MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache)
+        public ValuesController(IOptions<MailOption> mailOption,IOptions<IpInfoQueryOption> ipQueryOption, IStudentServic studentServic,SomeoneClass someone,ISchedulerFactory schedulerFactory, MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache)
         {
+
+            this.mailOption = mailOption.Value;
+            this.ipQueryOption = ipQueryOption.Value;
             this.db = efDbContext;
             this.logger = logger;
             this.mapper = mapper;
@@ -49,9 +55,47 @@ namespace ApiDemo.Api.Controllers
             this.schedulerFactory = schedulerFactory;
             this.studentServic = studentServic;
             this.someone = someone;
+            
+        }
+
+        [HttpGet("IpQuery")]
+        public IResult<IPInfo> IpQuery()
+        {
+            //var ip=NetHelper.GetClientIP(this.HttpContext);
+            var ip = "171.214.202.111";
+            return this.Success(NetHelper.QueryIpInfo(ip, ipQueryOption));
         }
 
 
+        //[HttpGet("SmsTest")]
+        //public IResult<string> SmsTest()
+        //{
+        //    SMSInfo info = new SMSInfo();
+        //    info.SMSContent = "你好,这是测试短信";
+        //    info.ToPhone = "15287152672";
+        //    info.OperaterID = "yh";
+        //    info.OperaterIP = NetHelper.GetClientIP(this.HttpContext);
+
+
+
+        //    NetHelper.AsyncSendSMS(info, smsOption);
+        //    return this.Success("ok");
+        //}
+
+
+        [HttpGet("MailTest")]
+        public  IResult<string> MailTest()
+        {
+            MailInfo mailInfo = new MailInfo();
+            mailInfo.Content = "hello";
+            mailInfo.OperaterID = "yh";
+            mailInfo.OperaterIP = NetHelper.GetClientIP(this.HttpContext);
+            mailInfo.Title = "this is test mail";
+            mailInfo.ToMail = "someone@qq.com";
+
+            NetHelper.AsyncSendEmail(mailInfo, mailOption);
+            return this.Success("ok");
+        }
 
         [HttpGet]
         public IResult<string> Get()
@@ -135,34 +179,12 @@ namespace ApiDemo.Api.Controllers
         /// <param name="abc"></param>
         /// <param name="age"></param>
         /// <returns></returns>
-        [HttpGet("Get3")]
-        public IResult<PageData<dynamic>> Get3(string abc, int age)
+        [HttpPost("pageTest")]
+        public IResult<PageData<dynamic>> pageTest(PageInfo pageInfo)
         {
-            IdTest model = new IdTest();
-            model.Id = IdHelper.GenId();
-            model.requestType = Enums.RequestType.Post;
-
-            IdTest model2 = new IdTest();
-            model2.Id = IdHelper.GenId();
-            model2.requestType = Enums.RequestType.Get;
-
-
-
-            db.IdTest.AddRange(model, model2);
-            db.SaveChanges();
-
-            PageInfo pageInfo = new PageInfo { PageIndex = 2, PageSize = 3 };
-
-
-
-            var ttt = db.IdTest.Pagination(pageInfo);
-
-            Customer c = mapper.Map<Customer>(db.IdTest.First());
-
-            IdTest id = mapper.Map<IdTest>(new Customer { Id = 123 });
-
-
-            return this.Success(ttt.ToDynamic(x => x.Extend(new { At = DateTime.Now, Sort = DateTime.Now.Millisecond })));
+            var pageList = db.IdTest.Pagination(pageInfo);
+            //让列表中返回的每一项都有At和Sort属性         
+            return this.Success(pageList.ToDynamic(x => x.Extend(new { At = DateTime.Now, Sort = DateTime.Now.Millisecond })));
         }
 
         /// <summary>
