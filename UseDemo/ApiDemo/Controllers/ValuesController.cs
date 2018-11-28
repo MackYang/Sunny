@@ -54,7 +54,7 @@ namespace ApiDemo.Api.Controllers
 
 
         [HttpGet]
-        public Result<string> Get()
+        public IResult<string> Get()
         {
             var s = DiHelper.CreateInstance<SomeoneClass>();
 
@@ -67,7 +67,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetSession")]
-        public Result<string> GetSession()
+        public IResult<string> GetSession()
         {
             HttpContext.Session.Set("a", new byte[] { 1, 3, 4 });
             HttpContext.Session.SetString("bbb", "bxxx");
@@ -79,7 +79,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetRedis")]
-        public async Task<Result<dynamic>> GetRedis()
+        public async Task<IResult<dynamic>> GetRedis()
         {
             cache.SetString("aaa", "A杨家勇A");
 
@@ -100,7 +100,7 @@ namespace ApiDemo.Api.Controllers
         /// <returns></returns>
         // GET api/values
         [HttpGet("Get1")]
-        public Result Get1()
+        public IResult Get1()
         {
 
             return this.Success();
@@ -122,7 +122,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("Get2")]
-        public Result<A> Get2(Customer customer)
+        public IResult<A> Get2(Customer customer)
         {
 
             return this.Success(new A { FullName = "AbcYH", Age = 123.123456789m, MFF = long.MaxValue });
@@ -136,7 +136,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="age"></param>
         /// <returns></returns>
         [HttpGet("Get3")]
-        public Result<PageData<dynamic>> Get3(string abc, int age)
+        public IResult<PageData<dynamic>> Get3(string abc, int age)
         {
             IdTest model = new IdTest();
             model.Id = IdHelper.GenId();
@@ -172,7 +172,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="a"></param>
         /// <returns></returns>
         [HttpGet("GetFail")]
-        public Result GetFail()
+        public IResult GetFail()
         {
 
             return this.Fail("我也不知道为什么");
@@ -185,7 +185,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("Get6/{id}")]
-        public Result<A> Get6(A a, int id)
+        public IResult<A> Get6(A a, int id)
         {
 
             return this.Success(a);
@@ -197,7 +197,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="a"></param>
         /// <returns></returns>
         [HttpPost, Route("Get5")]
-        public Result<A> Get5(A a)
+        public IResult<A> Get5(A a)
         {
 
             return this.Success(a);
@@ -208,7 +208,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetAutoMapper")]
-        public Result<dynamic> GetAutoMapper()
+        public IResult<dynamic> GetAutoMapper()
         {
             OrderInfo order = new OrderInfo { Price = 2.3m, ProductCount = 6 };
 
@@ -297,7 +297,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPost("D")]
-        public Result<bool> D(MemPua c)
+        public IResult<bool> D(MemPua c)
         {
             return this.Success(ModelState.IsValid);
         }
@@ -309,7 +309,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetOld")]
-        public async Task<object> GetOld()
+        public async Task<IResult<Student>> GetOld()
         {
 
 
@@ -354,7 +354,7 @@ namespace ApiDemo.Api.Controllers
 
 
 
-            return this.Success(new { Student = x, log1Time = log1.Seconds, log2Time = log2.Seconds });
+            return this.Success(y);
         }
 
 

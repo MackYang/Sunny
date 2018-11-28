@@ -16,8 +16,8 @@
 - <a href="#netLog">网络日志 记录失败时会记到本地文件</a>
 - <a href="#autoDi">自动依赖注入</a>
 - <a href="#redis">Redis</a>
-- Long,Decimal,DateTime的Json处理
-- Api统一返回格式 (code,data,msg)
+- <a href="#jsonFormat">Long,Decimal,DateTime的Json处理</a>
+- <a href="#apiFormat>Api统一返回格式 (code,data,msg)</a>
 - 类型扩展动态属性
 - 分页处理
 - 网络铺助(发邮件,发短信,Ip信息查询)
@@ -526,7 +526,7 @@ services.AddDistributedRedisCache(options =>
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetRedis")]
-        public async Task<Result<dynamic>> GetRedis()
+        public async Task<IResult<dynamic>> GetRedis()
         {
             cache.SetString("aaa", "A杨家勇A");
 
@@ -542,6 +542,75 @@ services.AddDistributedRedisCache(options =>
         }
 ```
 
+---
+
+#### <a name="jsonFormat">Long,Decimal,DateTime的Json处理</a>
+
+当我们以js作为api的前端应用时,会发现Long,Decimal类型会产生精度丢失的现象,DateTime的日期中会带"T"的现象.
+
+为此,我们将针对这三种类型的json格式化作加工处理,Long,Decimal转为字符串,前端传给我们的时候自动转为对应的类型.
+
+DateTime类型我们显式的设置它的字符串格式.
+
+
+在StartUp.cs的ConfigureServices方法中加入以下代码:
+```cs
+services.AddMvcCore()
+                .AddJsonFormatters(x =>
+                {
+                    x.Converters.Add(new LongConverter());
+                    x.Converters.Add(new DecimalConverter());
+                    x.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                    x.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                })
+```
+
+---
+
+#### <a name="apiFormat">Api统一返回格式</a>
+
+为了便于前端解析,只要成功调用到我们的Api时,每个返回的结果中都会由code,msg,data这三个元素组成.
+
+code:为0时表示操作成功,为1时表示操作失败,为-1时表示操作异常.
+
+msg:默认是"操作成功",当code不为0时,msg表示具体的失败原因,code为-1时显示"我们已经收到此次异常信息,将尽快解决!"
+
+data:当code为0时表示返回的具体数据,code为非0时通常为null.
+
+
+另外,为了我们在维护Api时一眼就能看出给前端返回的数据内容,建议将返回的数据项创建为一个类,在Api的返回结果中显示的指定该类IResult<T>,如:
+
+```cs
+  [HttpGet("GetOld")]
+        public async Task<IResult<Student>> GetOld()
+        {
+            var y = await studentServic.GetStudent2();
+             return this.Success(y);
+             
+         }
+```
+
+这样的好处是,在我们看Api时,不会一堆Api都返回object.
+
+
+当操作失败时,我们要用 return this.Fail("这是原因");向前端返回失败的原因.
+
+
+对于没有数据需要返回给前端,只要返回操作状态时,我们Api定义的返回值为IResult<T>的非泛型版本IResult
+
+```cs
+ /// <summary>
+        /// 不带返回值的成功场景测试
+        /// </summary>
+        /// <returns></returns>
+        // GET api/values
+        [HttpGet("Get1")]
+        public IResult Get1()
+        {
+
+            return this.Success();
+        }
+```
 
 ---
 
