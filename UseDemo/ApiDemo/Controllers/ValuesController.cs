@@ -36,8 +36,9 @@ namespace ApiDemo.Api.Controllers
         ILogger logger;
         IMapper mapper;
         ISchedulerFactory schedulerFactory;
+        SomeoneClass someone;
         //TDbContext tDbContex;
-        public ValuesController(ISchedulerFactory schedulerFactory, MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache, IStudentServic studentServic)
+        public ValuesController(SomeoneClass someone,ISchedulerFactory schedulerFactory, MyDbContext efDbContext, ILogger<ValuesController> logger, IMapper mapper, IDistributedCache cache, IStudentServic studentServic)
         {
             this.db = efDbContext;
             this.logger = logger;
@@ -46,15 +47,15 @@ namespace ApiDemo.Api.Controllers
             this.studentServic = studentServic;
             //this.tDbContex = tDbContext;
             this.schedulerFactory = schedulerFactory;
+            this.someone = someone;
         }
 
 
 
         [HttpGet]
-        public Result Get()
+        public Result<string> Get()
         {
-           
-            return this.Success();
+            return this.Success(someone.SomeoneMethod());
         }
         /// <summary>
         /// Session测试
@@ -335,6 +336,8 @@ namespace ApiDemo.Api.Controllers
 
 
             var x = await studentServic.GetStudent();
+
+            var y = await studentServic.GetStudent2();
 
             DateTime now = DateTime.Now;
 

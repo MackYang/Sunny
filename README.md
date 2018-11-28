@@ -14,7 +14,7 @@
 - <a href="#exMiddware">全局异常处理中间件</a>
 - <a href="#tokenMiddware">Token验证中间件</a>
 - <a href="#netLog">网络日志 记录失败时会记到本地文件</a>
-- 自动依赖注入
+- <a href="#autoDi">自动依赖注入</a>
 - Redis
 - Long,Decimal,DateTime的Json处理
 - Api统一返回格式 (code,data,msg)
@@ -274,7 +274,7 @@ public void SomeMethod()
 services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();//注册ISchedulerFactory的实例。
 ```
 
-在StartUp.cs的Configure方法中启用Job,启用后,Job会在配置的时间运行
+在StartUp.cs的Configure方法中启用Job,启用后,Job会在配置的时间运行,届时会将运行时间及任务运行耗时等信息写入到日志.
 
 ```cs
  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ISchedulerFactory schedulerFactory)
@@ -410,7 +410,7 @@ if (env.IsDevelopment())
 app.UseMiddleware<TokenValidateMiddleware>();
 ```
 
-这样一来,不用在每个需要登录的方法上加标注,中间件会从header中获取token的值,并以值作为key去缓存查询是否存在,如果存在即验证通过.
+这样一来,不用在每个需要登录的方法上加标注,中间件会从header中获取token的值,并以值作为key去缓存查询是否存在(需要您在登录成功的方法里将对应的token值写入到缓存,框架中默认的是redis),如果存在即验证通过.
 
 对于不用验证的api,如注册,注销,发验证码等,以非/api开头的路径即可,如"/unAuth/api".
 
@@ -450,6 +450,15 @@ loggerFactory.AddNetLoggerUseDefaultFilter(Configuration.GetSection("SunnyOption
 
 ---
 
+#### <a name="autoDi">自动依赖注入</a>
+
+在StartUp.cs的ConfigureServices方法中加入以下代码:
+```cs
+DiHelper.AutoRegister(services);
+```
+
+
+---
 使用文档不断完善中,如果在使用中遇到问题,可以查看UseDemo或到技术交流QQ群852498368寻求帮助.
 
 如果该框架有帮助到您,请送上您的小星星哦.

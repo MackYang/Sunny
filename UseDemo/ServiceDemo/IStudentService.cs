@@ -9,5 +9,17 @@ namespace ServiceDemo
     {
 
         Task<Student> GetStudent();
+
+        Task<Student> GetStudent2();
+    }
+
+
+    public class SomeoneClass : IScoped
+    {
+
+        public string SomeoneMethod()
+        {
+            return "hello this is di class";
+        }
     }
 }

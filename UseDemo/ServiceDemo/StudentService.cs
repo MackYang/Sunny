@@ -18,5 +18,10 @@ namespace ServiceDemo
         {
             return await Task.Run(()=>db.Student.FirstOrDefault());
         }
+
+        public async Task<Student> GetStudent2()
+        {
+            return await Task.Run(() => db.Student.FirstOrDefault());
+        }
     }
 }
