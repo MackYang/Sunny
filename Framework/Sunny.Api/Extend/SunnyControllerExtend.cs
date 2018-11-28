@@ -9,7 +9,7 @@ namespace Sunny.Api.Controllers
         #region 封装操作结果
         public static Result<T> GetResult<T>(this SunnyController controller, T responseData, int code, string msg)
         {
-            return new Result<T> { Data = responseData, Code = code, Msg = msg };
+            return new Result<T> { Code = code, Msg = msg , Data = responseData};
         }
 
         public static Result<T> Success<T>(this SunnyController controller, T responseData) 

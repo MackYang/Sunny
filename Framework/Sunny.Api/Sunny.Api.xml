@@ -11,16 +11,31 @@
             <param name="responseData"></param>
             <returns></returns>
         </member>
+        <member name="T:Sunny.Api.DTO.Response.IResult">
+            <summary>
+            无返回数据的结果
+            </summary>
+        </member>
+        <member name="P:Sunny.Api.DTO.Response.IResult.Code">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Sunny.Api.DTO.Response.IResult.Msg">
+            <summary>
+            提示消息
+            </summary>
+        </member>
+        <member name="P:Sunny.Api.DTO.Response.IResult.Data">
+            <summary>
+            返回数据
+            </summary>
+        </member>
         <member name="T:Sunny.Api.DTO.Response.IResult`1">
             <summary>
             有返回数据的结果
             </summary>
             <typeparam name="T">返回的数据类型</typeparam>
-        </member>
-        <member name="T:Sunny.Api.DTO.Response.IResult">
-            <summary>
-            无返回数据的结果
-            </summary>
         </member>
         <member name="T:Sunny.Api.DTO.Response.Result`1">
             <summary>

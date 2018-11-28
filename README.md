@@ -18,7 +18,7 @@
 - <a href="#redis">Redis</a>
 - <a href="#jsonFormat">Long,Decimal,DateTime的Json处理</a>
 - <a href="#apiFormat>Api统一返回格式 (code,data,msg)</a>
-- 类型扩展动态属性
+- <a href="#dynamicProp">类型扩展动态属性</a>
 - 分页处理
 - 网络铺助(发邮件,发短信,Ip信息查询)
 - 字符串与枚举相关的扩展
@@ -581,7 +581,7 @@ data:当code为0时表示返回的具体数据,code为非0时通常为null.
 另外,为了我们在维护Api时一眼就能看出给前端返回的数据内容,建议将返回的数据项创建为一个类,在Api的返回结果中显示的指定该类IResult<T>,如:
 
 ```cs
-  [HttpGet("GetOld")]
+        [HttpGet("GetOld")]
         public async Task<IResult<Student>> GetOld()
         {
             var y = await studentServic.GetStudent2();
@@ -612,6 +612,11 @@ data:当code为0时表示返回的具体数据,code为非0时通常为null.
         }
 ```
 
+---
+
+ #### <a name="dynamicProp">类型扩展动态属性</a>
+
+ 
 ---
 
 #### <a name="xx">go on</a>
