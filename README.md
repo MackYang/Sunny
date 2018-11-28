@@ -737,6 +737,7 @@ services.Configure<IpInfoQueryOption>(Configuration.GetSection("SunnyOptions:IpI
 字符串扩展部分的内容就不一一列举了,请通过"".来查看相关的方法,枚举主要扩展了一个GetDescribe()方法来获取DescriptionAttribute属性标注的内容,如果没有标注则返回枚举项的或称.
 
 另外字符串的辅助类请用StringHelper.点出来看.
+
 ---
 
 #### <a name="imageHelper">图片缩放,水印,验证码图片等</a>
