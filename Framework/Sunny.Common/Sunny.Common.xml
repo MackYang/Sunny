@@ -432,31 +432,18 @@
             </summary>
             <returns>失败返回null</returns>
         </member>
-        <member name="M:Sunny.Common.Helper.NetHelper.SendSMS(Sunny.Common.Helper.NetHelper.SMSInfo,Sunny.Common.ConfigOption.SmsOption)">
-            <summary>
-            发送短信
-            </summary>
-            <param name="smsInfo">短信实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Sunny.Common.Helper.NetHelper.SendEmail(Sunny.Common.Helper.NetHelper.MailInfo,Sunny.Common.ConfigOption.MailOption)">
+        <member name="M:Sunny.Common.Helper.NetHelper.SendEmail(Sunny.Common.Helper.MailInfo,Sunny.Common.ConfigOption.MailOption)">
              <summary>
              发送邮件，为异步发送邮件而写的内部方法
              </summary>
             <param name="miData">邮件信息实体</param>
              <returns></returns>
         </member>
-        <member name="M:Sunny.Common.Helper.NetHelper.AsyncSendEmail(Sunny.Common.Helper.NetHelper.MailInfo,Sunny.Common.ConfigOption.MailOption)">
+        <member name="M:Sunny.Common.Helper.NetHelper.AsyncSendEmail(Sunny.Common.Helper.MailInfo,Sunny.Common.ConfigOption.MailOption)">
              <summary>
              异步发送邮件
              </summary>
             <param name="mi">邮件信息实体</param>
-        </member>
-        <member name="M:Sunny.Common.Helper.NetHelper.AsyncSendSMS(Sunny.Common.Helper.NetHelper.SMSInfo,Sunny.Common.ConfigOption.SmsOption)">
-             <summary>
-             异步发送短信
-             </summary>
-            <param name="smsInfo">短信信息实体</param>
         </member>
         <member name="M:Sunny.Common.Helper.NetHelper.QueryIpInfo(System.String,Sunny.Common.ConfigOption.IpInfoQueryOption)">
             <summary>
@@ -465,77 +452,67 @@
             <param name="ip">要查询的IP</param>
             <returns>IP信息实体</returns>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.IPInfo.District">
+        <member name="P:Sunny.Common.Helper.IPInfo.IP">
             <summary>
-            区县名称
+            ip地址
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.IPInfo.Street">
+        <member name="P:Sunny.Common.Helper.IPInfo.Info">
             <summary>
-            街道名称
+            查询到的IP信息
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.IPInfo.StreetNum">
-            <summary>
-            门牌号
-            </summary>
-        </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.IPInfo.FullAddress">
-            <summary>
-            IP所在地址,就是将省,市..等拼起来
-            </summary>
-        </member>
-        <member name="T:Sunny.Common.Helper.NetHelper.MailInfo">
+        <member name="T:Sunny.Common.Helper.MailInfo">
             <summary>
             邮件信息类,供异步发送邮件时对邮件信息的封装,使其满足线程参数的要求
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.MailInfo.ToMail">
+        <member name="P:Sunny.Common.Helper.MailInfo.ToMail">
             <summary>
             邮件接收者
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.MailInfo.Title">
+        <member name="P:Sunny.Common.Helper.MailInfo.Title">
             <summary>
             邮件标题
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.MailInfo.Content">
+        <member name="P:Sunny.Common.Helper.MailInfo.Content">
             <summary>
             邮件内容
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.MailInfo.OperaterID">
+        <member name="P:Sunny.Common.Helper.MailInfo.OperaterID">
             <summary>
             操作者ID
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.MailInfo.OperaterIP">
+        <member name="P:Sunny.Common.Helper.MailInfo.OperaterIP">
             <summary>
             操作者IP
             </summary>
         </member>
-        <member name="T:Sunny.Common.Helper.NetHelper.SMSInfo">
+        <member name="T:Sunny.Common.Helper.SMSInfo">
             <summary>
             短信信息类,代异步发送短信时对短信数据的封装,使其满足线程参数的要求
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.SMSInfo.SMSContent">
+        <member name="P:Sunny.Common.Helper.SMSInfo.SMSContent">
             <summary>
             短信内容
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.SMSInfo.ToPhone">
+        <member name="P:Sunny.Common.Helper.SMSInfo.ToPhone">
             <summary>
             接收号码
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.SMSInfo.OperaterID">
+        <member name="P:Sunny.Common.Helper.SMSInfo.OperaterID">
             <summary>
             操作者ID
             </summary>
         </member>
-        <member name="P:Sunny.Common.Helper.NetHelper.SMSInfo.OperaterIP">
+        <member name="P:Sunny.Common.Helper.SMSInfo.OperaterIP">
             <summary>
             操作者IP
             </summary>

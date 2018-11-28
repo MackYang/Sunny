@@ -9,9 +9,9 @@
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
     <PackageIconUrl>https://github.com/MackYang/Sunny/raw/master/Doc/sunny.png</PackageIconUrl>
-    <Version>1.0.3</Version>
+    <Version>1.0.6</Version>
     <Authors>MackYang</Authors>
-    <PackageReleaseNotes>增加了注释</PackageReleaseNotes>
+    <PackageReleaseNotes>增加了分页参数PageInfo的验证,pageIndex,pageSize必须&gt;0</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,10 +25,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="7.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.100" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.1" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.101" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.6" />
     <PackageReference Include="Microsoft.Extensions.Caching.Redis" Version="2.1.2" />
     <PackageReference Include="Quartz" Version="3.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
@@ -43,7 +43,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\Request\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 

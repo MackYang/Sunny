@@ -53,6 +53,9 @@ namespace ApiDemo
 
             //根据需要在这里配置要使用的Option,然后在要使用的地方通过构造器注入IOptions<TOption>得到TOption
             services.Configure<TokenValidateOption>(Configuration.GetSection("SunnyOptions:TokenValidateOption"));
+            services.Configure<MailOption>(Configuration.GetSection("SunnyOptions:MailOption"));
+            services.Configure<IpInfoQueryOption>(Configuration.GetSection("SunnyOptions:IpInfoQueryOption"));
+            //services.Configure<SmsOption>(Configuration.GetSection("SunnyOptions:SmsOption"));
 
             services.AddMvcCore()
                 .AddFluentValidation()

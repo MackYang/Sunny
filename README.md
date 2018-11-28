@@ -16,21 +16,22 @@
 - <a href="#netLog">网络日志 记录失败时会记到本地文件</a>
 - <a href="#autoDi">自动依赖注入</a>
 - <a href="#redis">Redis</a>
-- Long,Decimal,DateTime的Json处理
-- Api统一返回格式 (code,data,msg)
-- 类型扩展动态属性
-- 分页处理
-- 网络铺助(发邮件,发短信,Ip信息查询)
-- 字符串与枚举相关的扩展
-- 图片缩放,水印,验证码图片等
-- Xml文件,文本文件读取写入
-- 加解密相关
-- Base64序列化相关
+- <a href="#jsonFormat">Long,Decimal,DateTime的Json处理</a>
+- <a href="#apiFormat">Api统一返回格式 (code,data,msg)</a>
+- <a href="#dynamicProp">类型扩展动态属性</a>
+- <a href="#dynamicProp">分页处理</a>
+- <a href="#netHelper">网络铺助(发邮件,Ip信息查询)</a>
+- <a href="#stringEnumEx">字符串与枚举相关的扩展</a>
+- <a href="#imageHelper">图片缩放,水印,验证码图片等</a>
+- <a href="#fileHelper">Xml文件,文本文件读取写入</a>
+- <a href="#security">加解密相关</a>
+- <a href="#base64">Base64序列化相关</a>
 
 ---
 
 ### 未来打算集成和实现的内容
 
+- *发送短信*
 - *Lucence*
 - *RabbitMq*
 - *支付相关(微信,支付宝)*
@@ -404,6 +405,11 @@ if (env.IsDevelopment())
     },
 ```
 
+在StartUp.cs的ConfigureServices方法中加入以下代码:
+```cs
+services.Configure<TokenValidateOption>(Configuration.GetSection("SunnyOptions:TokenValidateOption"));
+```
+
 在StartUp.cs的Configure方法中加入以下代码(通常在app.UseMvc()中间件前):
 
 ```cs
@@ -526,7 +532,7 @@ services.AddDistributedRedisCache(options =>
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetRedis")]
-        public async Task<Result<dynamic>> GetRedis()
+        public async Task<IResult<dynamic>> GetRedis()
         {
             cache.SetString("aaa", "A杨家勇A");
 
@@ -542,6 +548,221 @@ services.AddDistributedRedisCache(options =>
         }
 ```
 
+---
+
+#### <a name="jsonFormat">Long,Decimal,DateTime的Json处理</a>
+
+当我们以js作为api的前端应用时,会发现Long,Decimal类型会产生精度丢失的现象,DateTime的日期中会带"T"的现象.
+
+为此,我们将针对这三种类型的json格式化作加工处理,Long,Decimal转为字符串,前端传给我们的时候自动转为对应的类型.
+
+DateTime类型我们显式的设置它的字符串格式.
+
+
+在StartUp.cs的ConfigureServices方法中加入以下代码:
+```cs
+services.AddMvcCore()
+                .AddJsonFormatters(x =>
+                {
+                    x.Converters.Add(new LongConverter());
+                    x.Converters.Add(new DecimalConverter());
+                    x.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                    x.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                })
+```
+
+---
+
+#### <a name="apiFormat">Api统一返回格式</a>
+
+为了便于前端解析,只要成功调用到我们的Api时,每个返回的结果中都会由code,msg,data这三个元素组成.
+
+code:为0时表示操作成功,为1时表示操作失败,为-1时表示操作异常.
+
+msg:默认是"操作成功",当code不为0时,msg表示具体的失败原因,code为-1时显示"我们已经收到此次异常信息,将尽快解决!"
+
+data:当code为0时表示返回的具体数据,code为非0时通常为null.
+
+
+另外,为了我们在维护Api时一眼就能看出给前端返回的数据内容,建议将返回的数据项创建为一个类,在Api的返回结果中显示的指定该类IResult<T>,如:
+
+```cs
+        [HttpGet("GetOld")]
+        public async Task<IResult<Student>> GetOld()
+        {
+            var y = await studentServic.GetStudent2();
+             return this.Success(y);
+             
+         }
+```
+
+这样的好处是,在我们看Api时,不会一堆Api都返回object.
+
+
+当操作失败时,我们要用 return this.Fail("这是原因");向前端返回失败的原因.
+
+
+对于没有数据需要返回给前端,只要返回操作状态时,我们Api定义的返回值为IResult<T>的非泛型版本IResult
+
+```cs
+ /// <summary>
+        /// 不带返回值的成功场景测试
+        /// </summary>
+        /// <returns></returns>
+        // GET api/values
+        [HttpGet("Get1")]
+        public IResult Get1()
+        {
+
+            return this.Success();
+        }
+```
+
+---
+
+ #### <a name="dynamicProp">类型扩展动态属性与分页处理</a>
+
+ 通常我们会遇到这样的场景...我们要将某个枚举的中文意思返回给前端,但又不想新建一个类型,于是框架里有了一个偷懒的办法:
+
+```cs
+ [HttpGet("GetDynamic")]
+public IResultata<dynamic> GetDynamic()
+{
+    A a= from db...;
+    this.SuccessDynamic(a.Extend(new { EnumCn = a.LocalType.GetDescribe() }));
+}
+
+```
+这样做的缺点就是不能通过Api的方法签名直观的看出返回的类型.
+
+某些场景可能需要将列表中的每一项都扩展一些额外的属性返回,框架针对List<T>和PageData<T>扩展了一个方法ToDynamic,以解决这样的场景:
+
+```cs
+        /// <summary>
+        /// 带返回值,且值为动态扩展对象的场景测试,分页测试
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("pageTest")]
+        public IResult<PageData<dynamic>> pageTest(PageInfo pageInfo)
+        {
+            var pageList = db.IdTest.Pagination(pageInfo);
+            //让列表中返回的每一项都有At和Sort属性         
+            return this.Success(pageList.ToDynamic(x => x.Extend(new { At = DateTime.Now, Sort = DateTime.Now.Millisecond })));
+        }
+```
+
+分页测试:
+![](Doc/pageRequest.png)
+![](Doc/pageResponse.png)
+
+
+---
+
+#### <a name="netHelper">网络铺助(发邮件,Ip信息查询)</a>
+
+首先在appsettings.json中配置邮件发送和Ip查询选项:
+
+```json
+    //邮件配置
+    "MailOption": {
+      // 邮件服务器地址
+      "EmailHost": "smtp.ym.163.com",
+      // 用户名
+      "EmailUserName": "you user name",
+      // 密码
+      "EmailPassword": "you password",
+      // IP白名单列表,在列表中的IP发邮件前不执行检查事件
+      "IPWhiteList": [ "127.0.0.1" ]
+    },
+     //查询IP信息的配置
+    "IpInfoQueryOption": {
+      //IP查询的API
+      "ApiUrl": "http://www.ip.cn/index.php?ip="
+    },
+```
+
+然后在StartUp.cs的ConfigureServices方法中加入以下代码:
+```cs
+services.Configure<MailOption>(Configuration.GetSection("SunnyOptions:MailOption"));
+services.Configure<IpInfoQueryOption>(Configuration.GetSection("SunnyOptions:IpInfoQueryOption"));
+```
+
+在使用到的地方通过构造函数注入配置项:
+
+```cs
+        MailOption mailOption;
+        IpInfoQueryOption ipQueryOption;
+        
+        public ValuesController(IOptions<MailOption> mailOption,IOptions<IpInfoQueryOption> ipQueryOption)
+        {
+
+            this.mailOption = mailOption.Value;
+            this.ipQueryOption = ipQueryOption.Value;
+        }
+
+
+```
+
+再调用NetHelper的相关方法即可,如:
+```cs
+        [HttpGet("IpQuery")]
+        public IResult<IPInfo> IpQuery()
+        {
+            //var ip=NetHelper.GetClientIP(this.HttpContext);
+            var ip = "171.214.202.111";
+            return this.Success(NetHelper.QueryIpInfo(ip, ipQueryOption));
+        }
+
+        [HttpGet("MailTest")]
+        public  IResult<string> MailTest()
+        {
+            MailInfo mailInfo = new MailInfo();
+            mailInfo.Content = "hello";
+            mailInfo.OperaterID = "yh";
+            mailInfo.OperaterIP = NetHelper.GetClientIP(this.HttpContext);
+            mailInfo.Title = "this is test mail";
+            mailInfo.ToMail = "someone@qq.com";
+
+
+
+            NetHelper.AsyncSendEmail(mailInfo, mailOption);
+            return this.Success("ok");
+        }
+```
+
+---
+
+#### <a name="stringEnumEx">字符串与枚举相关的扩展</a>
+
+字符串扩展部分的内容就不一一列举了,请通过"".来查看相关的方法,枚举主要扩展了一个GetDescribe()方法来获取DescriptionAttribute属性标注的内容,如果没有标注则返回枚举项的或称.
+
+另外字符串的辅助类请用StringHelper.点出来看.
+
+---
+
+#### <a name="imageHelper">图片缩放,水印,验证码图片等</a>
+
+图片的处理,如缩放,加水印,生成验证码图片等方法都在ImageHelper中,直接调用相关方法即可使用.
+
+---
+
+#### <a name="fileHelper">Xml文件,文本文件读取写入</a>
+
+Xml文件的操作请见XMLHelper类中的方法.
+
+文本文件的操作请见FileHelper类中的方法.
+
+---
+
+#### <a name="security">加解密相关</a>
+
+加解密相关的操作请见SecurityHelper中提供的方法,目前提供了MD5,SHA1加密以及Des的加解密.
+
+---
+
+#### <a name="base64">Base64序列化相关</a>
+
+Base64的序列化操作请见SerializeHelper中提供的方法.
 
 ---
 
