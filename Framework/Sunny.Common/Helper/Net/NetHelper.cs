@@ -203,7 +203,8 @@ namespace Sunny.Common.Helper
                     mailMessage.Body = miData.Content;
                     SmtpClient smtp = new SmtpClient();
                     smtp.Host = mailOption.EmailHost;
-                    smtp.UseDefaultCredentials = true;
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
                     smtp.Credentials = new NetworkCredential(mailOption.EmailUserName, mailOption.EmailPassword);
                     smtp.Send(mailMessage);
 
