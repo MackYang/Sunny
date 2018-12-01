@@ -431,7 +431,7 @@ app.UseMiddleware<TokenValidateMiddleware>();
 ```json
 "NetLoggerOption": {
       "Url": "http://test.log.loc-mall.com/Api/AddLog",
-      //每个业务系统配置自己的ID,请发邮件给我分配(1651493066@qq.com),邮件里写明来意和系统名称即可
+      //每个业务系统配置自己的ID,请到http://test.log.loc-mall.com/ui/pages/apply.aspx申请,并妥善保存,
       //写入的日志在这里查看http://test.log.loc-mall.com/ui/pages/log.aspx?systemid=xxxxxxxx
       "SystemId": "xxxxxx"
     }
