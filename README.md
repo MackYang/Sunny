@@ -433,7 +433,7 @@ app.UseMiddleware<TokenValidateMiddleware>();
       "Url": "http://test.log.loc-mall.com/Api/AddLog",
       //每个业务系统配置自己的ID,请到http://test.log.loc-mall.com/ui/pages/apply.aspx申请,并妥善保存,
       //写入的日志在这里查看http://test.log.loc-mall.com/ui/pages/log.aspx?systemid=xxxxxxxx
-      //或者到https://github.com/MackYang/logservice.git下载自己的日志系统来部署
+      //生产环境去掉test.即可,或者到https://github.com/MackYang/LogService.git下来部署载自己的日志系统
       "SystemId": "xxxxxx"
     }
 ```
