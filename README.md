@@ -429,13 +429,15 @@ app.UseMiddleware<TokenValidateMiddleware>();
 在appsetting.json中配置日志选项:
 
 ```json
-"NetLoggerOption": {
+ "NetLoggerOption": {
       "Url": "http://test.log.loc-mall.com/Api/AddLog",
       //每个业务系统配置自己的ID,请到http://test.log.loc-mall.com/ui/pages/apply.aspx申请,并妥善保存,
       //写入的日志在这里查看http://test.log.loc-mall.com/ui/pages/log.aspx?systemid=xxxxxxxx
       //生产环境去掉test.即可,或者到https://github.com/MackYang/LogService.git下来部署载自己的日志系统
-      "SystemId": "xxxxxx"
-    }
+      "SystemId": "b06b7e4d-bbce-11e8-98ca-00163e063309",
+      //存放离线日志的目录,当网络日志记录失败时,会将日志以yyyy-MM-dd.txt写到该目录下
+      "OfflineLogPath": "D:\\SunnyFramework\\OfflineLog"
+    },
 ```
 
 
@@ -451,7 +453,7 @@ loggerFactory.AddNetLoggerUseDefaultFilter(Configuration.GetSection("SunnyOption
 
 ![](Doc/netLog.png)
 
-如果网络日志写入失败(通常是因为网络原因),会将日志写入到C:\SunnyOfflineLog下以日期作为文件名的txt文件里,如:
+如果网络日志写入失败(通常是因为网络原因),会将日志写入到C:\SunnyFramework\OfflineLog下以日期作为文件名的txt文件里,如:
 
 ![](Doc/offlineLog.png)
 
