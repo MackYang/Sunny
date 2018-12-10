@@ -97,12 +97,12 @@ namespace Sunny.Common.Log
 
             try
             {
-                string offlineFilePath = $@"C:\SunnyOfflineLog\{DateTime.Now.ToString("yyyy-MM-dd")}.txt";
+                string offlineFilePath = $@"{option.OfflineLogPath}\{DateTime.Now.ToString("yyyy-MM-dd")}.txt";
 
                 string data = $"Time:{DateTime.Now.ToNormalString()}\r\n\r\nOriginalLogInfo:{originalLogInfo}";
                 if (offlineExInfo != null)
                 {
-                    data += $"\r\n\r\nOfflineExceptionInfo:{JsonHelper.ToJsonString(offlineExInfo)}";
+                    data += $"\r\n\r\nOfflineExceptionInfo:{$"Message:{offlineExInfo.Message},Stack:{offlineExInfo.StackTrace}"}";
                 }
                 data += "\r\n\r\n\r\n\r\n\r\n";
 
