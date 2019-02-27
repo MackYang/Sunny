@@ -337,6 +337,7 @@ services.AddMvcCore()
 
 在写参数时可以不显示的声明[FromBody],[FromQuery],[FormHeader]等,默认是[FromBody],如果不是通过body传参,可以显示声明传参方式.
 
+---
 
 #### <a name="swaggerDoc">生成Swagger文档</a>
 
