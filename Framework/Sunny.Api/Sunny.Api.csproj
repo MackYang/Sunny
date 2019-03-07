@@ -9,9 +9,9 @@
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
     <PackageIconUrl>https://github.com/MackYang/Sunny/raw/master/Doc/sunny.png</PackageIconUrl>
-    <Version>1.0.6</Version>
+    <Version>1.0.8</Version>
     <Authors>MackYang</Authors>
-    <PackageReleaseNotes>增加了分页参数PageInfo的验证,pageIndex,pageSize必须&gt;0</PackageReleaseNotes>
+    <PackageReleaseNotes>增加了业务异常的特殊处理</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

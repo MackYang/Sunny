@@ -58,6 +58,15 @@ namespace ApiDemo.Api.Controllers
             
         }
 
+        [HttpGet("BizExceptionTest")]
+        public async Task<IResult> BizExceptionTest()
+        {
+            await studentServic.BizExceptionTest();
+            return this.Success();
+        }
+
+
+
         [HttpGet("IpQuery")]
         public IResult<IPInfo> IpQuery()
         {

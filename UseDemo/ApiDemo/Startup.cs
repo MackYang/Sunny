@@ -110,6 +110,7 @@ namespace ApiDemo
             {
                 app.UseMiddleware<ErrorHandlingMiddleware>();
             }
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseStaticFiles();
             app.UseSession();

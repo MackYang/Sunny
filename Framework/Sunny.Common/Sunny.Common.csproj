@@ -8,8 +8,8 @@
     <PackageIconUrl>https://github.com/MackYang/Sunny/raw/master/Doc/sunny.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
     <Authors>MackYang</Authors>
-    <Version>1.0.5</Version>
-    <PackageReleaseNotes>添加了离线日志的路径配置</PackageReleaseNotes>
+    <Version>1.0.6</Version>
+    <PackageReleaseNotes>增加了业务异常类</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
