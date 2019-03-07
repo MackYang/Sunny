@@ -23,5 +23,10 @@ namespace ServiceDemo
         {
             return await Task.Run(() => db.Student.FirstOrDefault());
         }
+
+        public async Task<Student> BizExceptionTest()
+        {
+            throw new BizException("订单不存在,这是一个测试抛出的业务异常");
+        }
     }
 }

@@ -56,6 +56,27 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
+        <member name="M:Sunny.Api.Midware.ErrorHandlingMiddleware.HandleBizExceptionAsync(Microsoft.AspNetCore.Http.HttpContext,System.BizException)">
+             <summary>
+            处理业务异常 
+             </summary>
+             <param name="context"></param>
+             <param name="ex"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Sunny.Api.Midware.ErrorHandlingMiddleware.ResponseInfo(Microsoft.AspNetCore.Http.HttpContext,Sunny.Api.Midware.SpeciResult)">
+            <summary>
+            向前端输出信息
+            </summary>
+            <param name="context"></param>
+            <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sunny.Api.Midware.SpeciResult">
+            <summary>
+            特殊的返回结果类,和IResult所定义的不同之处在于字段全是小写的,因为发生异常时,后边的中间件不会被调用,所以没法将大驼峰转小驼峰再返回给前端
+            </summary>
+        </member>
         <member name="T:Sunny.Api.Quartz.IJobEntity">
             <summary>
             任务信息

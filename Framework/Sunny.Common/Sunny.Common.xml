@@ -760,6 +760,11 @@
             <param name="dateTime"></param>
             <returns></returns>
         </member>
+        <member name="T:System.BizException">
+            <summary>
+            用于表示业务异常的类
+            </summary>
+        </member>
         <member name="M:System.ClassTypeExtend.Extend``1(``0,System.Object,System.Boolean)">
             <summary>
             使用另一个对象对源对象进行扩展，这类似于 jQuery 中的 extend 方法。

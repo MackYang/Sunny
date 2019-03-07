@@ -390,6 +390,29 @@ if (env.IsDevelopment())
 ```
 这样在非开发环境中,都会使用异常处理中间件,将异常写入到日志中,并向客户端显示友好信息.
 
+关于业务异常的处理:
+
+在开发过程中,通常将业务逻辑封装在Service层中供Api层调用,那么当Service层内的数据不符合逻辑时,直接抛出业务异常,经中间件处理后将具体的信息返回给前端,但Code的枚举值不是异常的-1,而是业务失败的1.
+
+```cs
+
+ public async Task<Student> BizExceptionTest()
+        {
+            throw new BizException("订单不存在,这是一个测试抛出的业务异常");
+        }
+```
+
+前端收到的数据:
+
+```json
+
+{
+    "code": 1,
+    "msg": "订单不存在,这是一个测试抛出的业务异常",
+    "data": null
+}
+```
+
 ---
 
 #### <a name="tokenMiddware">Token验证中间件</a>

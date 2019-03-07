@@ -11,6 +11,8 @@ namespace ServiceDemo
         Task<Student> GetStudent();
 
         Task<Student> GetStudent2();
+
+        Task<Student> BizExceptionTest();
     }
 
 
