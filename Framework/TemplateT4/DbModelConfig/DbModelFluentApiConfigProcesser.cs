@@ -34,8 +34,9 @@ namespace Sunny.TemplateT4.DbModelConfig
 
             }
  
-            Console.WriteLine("DbModalFluentApiConfig Generated!");
-          
+            Console.WriteLine("DbModalFluentApiConfig Generated To:");
+            Console.WriteLine(outputDir);
+
         }
     }
 }
