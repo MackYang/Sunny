@@ -89,7 +89,7 @@ namespace ApiDemo
                 var xmlPath = Path.Combine(basePath, "ApiDemo.xml");
                 c.IncludeXmlComments(xmlPath);
             });
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -105,17 +105,17 @@ namespace ApiDemo
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseMiddleware<BizExceptionHandlerMiddleware>();
             }
             else
             {
                 app.UseMiddleware<ErrorHandlingMiddleware>();
             }
-            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseStaticFiles();
             app.UseSession();
             app.UseMiddleware<TokenValidateMiddleware>();
-           
+
             app.UseMvc();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
