@@ -19,7 +19,7 @@ namespace Sunny.TemplateT4.DbModelConfig
 
             var baseFields = typeof(BaseModel).GetProperties();
 
-            //取到自己的属性字段,不要BaseModel的
+            //取到自己的公共属性字段,私有的会自动过滤,不要BaseModel的
             var selfFields = DbModelType.GetProperties().Where(x => !baseFields.Any(dx => { return dx.Name == x.Name; }));
 
             //排除导航属性字段,这些字段是以关系的形式

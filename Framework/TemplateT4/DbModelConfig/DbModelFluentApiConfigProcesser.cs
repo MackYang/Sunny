@@ -21,7 +21,8 @@ namespace Sunny.TemplateT4.DbModelConfig
             Assembly assembly = Assembly.Load(assemblyName);
             List<Type> ts = assembly.GetTypes().ToList();
 
-            foreach (var item in ts.Where(s => !s.IsInterface && typeof(BaseModel).IsAssignableFrom(s) && !s.GetTypeInfo().IsAbstract && s.FullName != "Sunny.Repository.DbModel.BaseModel"))
+            var typeList = ts.Where(s => !s.IsInterface && typeof(BaseModel).IsAssignableFrom(s) && !s.GetTypeInfo().IsAbstract && s.FullName != "Sunny.Repository.DbModel.BaseModel");
+            foreach (var item in typeList)
             {
                 var fullNameArr = item.FullName.Split(".");
                 var filePath = $@"{fullNameArr[fullNameArr.Length - 2]}\{fullNameArr[fullNameArr.Length - 1]}Config.cs";

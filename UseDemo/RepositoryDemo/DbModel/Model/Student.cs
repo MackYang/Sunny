@@ -14,7 +14,7 @@ namespace RepositoryDemo.DbModel
 
         public string Test { get; set; }
 
-        public string AA2 { get; set; }
+        private string AA2 { get; set; }
 
         
 
