@@ -197,6 +197,19 @@ namespace ApiDemo.Api.Controllers
         }
 
         /// <summary>
+        /// 带查询条件分页测试
+        /// </summary>
+        /// <param name="abc"></param>
+        /// <param name="age"></param>
+        /// <returns></returns>
+        [HttpPost("pageTestCondition")]
+        public IResult<PageData<Student>> pageTestCondition(PageQuery<Student> pageQuery)
+        {
+            var pageList = db.Student.Where(x=>x.StudentName==pageQuery.Condition.StudentName).Pagination(pageQuery.PageInfo);
+            return this.Success(pageList);
+        }
+
+        /// <summary>
         /// 失败返回值测试
         /// </summary>
         /// <param name="abc"></param>

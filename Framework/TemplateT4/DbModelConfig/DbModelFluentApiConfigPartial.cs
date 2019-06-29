@@ -48,7 +48,6 @@ namespace Sunny.TemplateT4.DbModelConfig
 
             string fieldConfig = $"builder.Property(x => x.{originName}).HasColumnName(\"{ destName}\")";
 
-
             if (originName == "UpdateTime")
             {
                 fieldConfig += ".IsRowVersion()";

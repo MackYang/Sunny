@@ -59,6 +59,14 @@
             <param name="age"></param>
             <returns></returns>
         </member>
+        <member name="M:ApiDemo.Api.Controllers.ValuesController.pageTestCondition(Sunny.Common.Extend.CollectionQuery.PageQuery{RepositoryDemo.DbModel.Student})">
+            <summary>
+            带查询条件分页测试
+            </summary>
+            <param name="abc"></param>
+            <param name="age"></param>
+            <returns></returns>
+        </member>
         <member name="M:ApiDemo.Api.Controllers.ValuesController.GetFail">
             <summary>
             失败返回值测试
