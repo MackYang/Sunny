@@ -16,7 +16,9 @@ namespace RepositoryDemo.DbModel
 
         private string AA2 { get; set; }
 
-        
+        private new DateTime UpdateTime { get; set; }
+
+        private new long UpdaterId { get; set; }
 
         public StudentAddress Address { get; set; }
 

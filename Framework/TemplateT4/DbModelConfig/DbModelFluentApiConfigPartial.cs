@@ -15,12 +15,13 @@ namespace Sunny.TemplateT4.DbModelConfig
 
         public string GetFieldsConfig()
         {
-
-
             var baseFields = typeof(BaseModel).GetProperties();
 
-            //取到自己的公共属性字段,私有的会自动过滤,不要BaseModel的
-            var selfFields = DbModelType.GetProperties().Where(x => !baseFields.Any(dx => { return dx.Name == x.Name; }));
+            //当前类型的所有公共属性
+            var allFields = DbModelType.GetProperties();
+
+            //排除BaseModel的属性
+            var selfFields = allFields.Where(x => !baseFields.Any(dx => { return dx.Name == x.Name; }));
 
             //排除导航属性字段,这些字段是以关系的形式
             var simpleTypeFields = selfFields.Where(x => !x.PropertyType.IsGenericType && !typeof(BaseModel).IsAssignableFrom(x.PropertyType));
@@ -30,7 +31,8 @@ namespace Sunny.TemplateT4.DbModelConfig
             sb.Clear();
             sb.AppendLine(GetFieldConfig(baseFields.Where(x=>x.Name=="Id").First()));
             simpleTypeFields.ToList().ForEach(x => sb.AppendLine(GetFieldConfig(x)));
-            baseFields.Where(x=>x.Name!="Id").ToList().ForEach(x => sb.AppendLine(GetFieldConfig(x)));
+            //排除在子类中被private的字段
+            baseFields.Where(x=>x.Name!="Id"&&allFields.Any(n=> { return n.Name == x.Name; })).ToList().ForEach(x => sb.AppendLine(GetFieldConfig(x)));
 
             return sb.ToString();
            

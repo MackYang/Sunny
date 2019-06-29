@@ -8,17 +8,10 @@ namespace TemplateT4Demo
         static void Main(string[] args)
         {
             string assemblyName = "RepositoryDemo";
-
             string configNameSpace = "RepositoryDemo.DbModel.ModelConfig";
 
-
             DbModelFluentApiConfigProcesser.GenerateFiles(assemblyName,configNameSpace);
-
-
-
-
-            Console.WriteLine("Hello World!");
-
+            
             Console.Read();
         }
     }
