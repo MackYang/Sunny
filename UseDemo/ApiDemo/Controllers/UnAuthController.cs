@@ -44,7 +44,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IResult<bool>> Get()
+        public async Task<Result<bool>> Get()
         {
             return await Task.Run(() => this.Success(true));
         }
@@ -54,7 +54,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("SetToken")]
-        public IResult<bool> SetToken()
+        public Result<bool> SetToken()
         {
 
             cache.Set("123", "aweiskOK23");
@@ -66,7 +66,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetException")]
-        public IResult<bool> GetException()
+        public Result<bool> GetException()
         {
 
             throw new Exception("Test Excexxxx");

@@ -59,7 +59,7 @@ namespace ApiDemo.Api.Controllers
         }
 
         [HttpGet("BizExceptionTest")]
-        public async Task<IResult> BizExceptionTest()
+        public async Task<Result> BizExceptionTest()
         {
             await studentServic.BizExceptionTest();
             return this.Success();
@@ -68,7 +68,7 @@ namespace ApiDemo.Api.Controllers
 
 
         [HttpGet("IpQuery")]
-        public IResult<IPInfo> IpQuery()
+        public Result<IPInfo> IpQuery()
         {
             //var ip=NetHelper.GetClientIP(this.HttpContext);
             var ip = "171.214.202.111";
@@ -77,7 +77,7 @@ namespace ApiDemo.Api.Controllers
 
 
         //[HttpGet("SmsTest")]
-        //public IResult<string> SmsTest()
+        //public Result<string> SmsTest()
         //{
         //    SMSInfo info = new SMSInfo();
         //    info.SMSContent = "你好,这是测试短信";
@@ -93,7 +93,7 @@ namespace ApiDemo.Api.Controllers
 
 
         [HttpGet("MailTest")]
-        public  IResult<string> MailTest()
+        public  Result<string> MailTest()
         {
             MailInfo mailInfo = new MailInfo();
             mailInfo.Content = "hello";
@@ -107,7 +107,7 @@ namespace ApiDemo.Api.Controllers
         }
 
         [HttpGet]
-        public IResult<string> Get()
+        public Result<string> Get()
         {
             var s = DiHelper.CreateInstance<SomeoneClass>();
 
@@ -120,7 +120,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetSession")]
-        public IResult<string> GetSession()
+        public Result<string> GetSession()
         {
             HttpContext.Session.Set("a", new byte[] { 1, 3, 4 });
             HttpContext.Session.SetString("bbb", "bxxx");
@@ -132,7 +132,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetRedis")]
-        public async Task<IResult<dynamic>> GetRedis()
+        public async Task<Result<dynamic>> GetRedis()
         {
             cache.SetString("aaa", "A杨家勇A");
 
@@ -153,7 +153,7 @@ namespace ApiDemo.Api.Controllers
         /// <returns></returns>
         // GET api/values
         [HttpGet("Get1")]
-        public IResult Get1()
+        public Result Get1()
         {
 
             return this.Success();
@@ -175,7 +175,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("Get2")]
-        public IResult<A> Get2(Customer customer)
+        public Result<A> Get2(Customer customer)
         {
 
             return this.Success(new A { FullName = "AbcYH", Age = 123.123456789m, MFF = long.MaxValue });
@@ -189,7 +189,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="age"></param>
         /// <returns></returns>
         [HttpPost("pageTest")]
-        public IResult<PageData<dynamic>> pageTest(PageInfo pageInfo)
+        public Result<PageData<dynamic>> pageTest(PageInfo pageInfo)
         {
             var pageList = db.IdTest.Pagination(pageInfo);
             //让列表中返回的每一项都有At和Sort属性         
@@ -203,7 +203,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="a"></param>
         /// <returns></returns>
         [HttpGet("GetFail")]
-        public IResult GetFail()
+        public Result GetFail()
         {
 
             return this.Fail("我也不知道为什么");
@@ -216,7 +216,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("Get6/{id}")]
-        public IResult<A> Get6(A a, int id)
+        public Result<A> Get6(A a, int id)
         {
 
             return this.Success(a);
@@ -228,7 +228,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="a"></param>
         /// <returns></returns>
         [HttpPost, Route("Get5")]
-        public IResult<A> Get5(A a)
+        public Result<A> Get5(A a)
         {
 
             return this.Success(a);
@@ -239,7 +239,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetAutoMapper")]
-        public IResult<dynamic> GetAutoMapper()
+        public Result<dynamic> GetAutoMapper()
         {
             OrderInfo order = new OrderInfo { Price = 2.3m, ProductCount = 6 };
 
@@ -307,7 +307,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetAAA")]
-        public IResult<Customer> GetB()
+        public Result<Customer> GetB()
         {
             var customer = new Customer();
 
@@ -328,7 +328,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="c"></param>
         /// <returns></returns>
         [HttpPost("D")]
-        public IResult<bool> D(MemPua c)
+        public Result<bool> D(MemPua c)
         {
             return this.Success(ModelState.IsValid);
         }
@@ -340,7 +340,7 @@ namespace ApiDemo.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetOld")]
-        public async Task<IResult<Student>> GetOld()
+        public async Task<Result<Student>> GetOld()
         {
 
 
