@@ -7,8 +7,8 @@
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
     <Description>Sunny框架的Repository部分,用于项目中的数据仓储</Description>
     <Authors>MackYang</Authors>
-    <Version>1.0.2</Version>
-    <PackageReleaseNotes>增加了注释</PackageReleaseNotes>
+    <Version>1.0.3</Version>
+    <PackageReleaseNotes>去掉创建时间的默认值,如果要设置应该在ModelConfig中设置,以数据库时间为准</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

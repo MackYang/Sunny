@@ -14,9 +14,11 @@ namespace RepositoryDemo.DbModel
 
         public string Test { get; set; }
 
-        public string AA2 { get; set; }
+        private string AA2 { get; set; }
 
-        
+        private new DateTime UpdateTime { get; set; }
+
+        private new long UpdaterId { get; set; }
 
         public StudentAddress Address { get; set; }
 

@@ -164,6 +164,22 @@
             总页数
             </summary>
         </member>
+        <member name="T:Sunny.Common.Extend.CollectionQuery.PageQuery`1">
+            <summary>
+            带分页的查询条件
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Sunny.Common.Extend.CollectionQuery.PageQuery`1.Condition">
+            <summary>
+            查询条件
+            </summary>
+        </member>
+        <member name="P:Sunny.Common.Extend.CollectionQuery.PageQuery`1.PageInfo">
+            <summary>
+            分页信息
+            </summary>
+        </member>
         <member name="M:Sunny.Common.Helper.CalcHelper.CalcDifferenceRate(System.Decimal,System.Decimal)">
             <summary>
             计算增减率返回%比形式字符串,保留2位小数

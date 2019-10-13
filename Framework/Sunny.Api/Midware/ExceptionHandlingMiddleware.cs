@@ -103,18 +103,5 @@ namespace Sunny.Api.Midware
 
         }
 
-
-
     }
-
-    /// <summary>
-    /// 特殊的返回结果类,和IResult所定义的不同之处在于字段全是小写的,因为发生异常时,后边的中间件不会被调用,所以没法将大驼峰转小驼峰再返回给前端
-    /// </summary>
-    class SpeciResult
-    {
-        public int code { get; set; }
-        public string msg { get; set; }
-        public object data { get; set; }
-    }
-
 }

@@ -125,7 +125,8 @@ namespace Sunny.Common.Helper
         static public IEnumerable<CompilationLibrary> GetCustomizeCompilationLibraries()
         {
             var deps = DependencyContext.Default;
-            return deps.CompileLibraries.Where(lib => !lib.Serviceable && lib.Type != "package");
+            var list = deps.CompileLibraries.Where(lib => lib.Name.StartsWith("Sunny."));
+            return list.Union(deps.CompileLibraries.Where(lib => !lib.Serviceable && lib.Type != "package"));
         }
 
 
