@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Sunny.Repository.DbModel
 {
-    public class BaseModel
+    public class BaseModel: IDbModel
     {
 
         public long Id { get; set; }

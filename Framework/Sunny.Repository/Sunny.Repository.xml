@@ -4,6 +4,16 @@
         <name>Sunny.Repository</name>
     </assembly>
     <members>
+        <member name="T:Sunny.Repository.DbModel.IDbModel">
+            <summary>
+            用于标识某类是DbModel,继承此接口后可通过T4模板生成ModelConfig类
+            </summary>
+        </member>
+        <member name="T:Sunny.Repository.DbModel.IRelationMap">
+            <summary>
+            用于标识用于映射多对多的类,继承此接口后可通过T4模板生成RelationMap类
+            </summary>
+        </member>
         <member name="M:Sunny.Repository.FluentApiTools.ApplyDbModelFluentApiConfig(Microsoft.EntityFrameworkCore.ModelBuilder,System.String)">
             <summary>
             对DbModel应用FlentApi字段配置
