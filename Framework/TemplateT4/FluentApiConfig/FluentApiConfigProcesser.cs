@@ -6,9 +6,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Sunny.TemplateT4.DbModelConfig
+namespace Sunny.TemplateT4.FluentApiConfig
 {
-    public class DbModelFluentApiConfigProcesser
+    public class FluentApiConfigProcesser
     {
         /// <summary>
         /// 生成DbModel的FluentApi配置文件
@@ -21,18 +21,24 @@ namespace Sunny.TemplateT4.DbModelConfig
             Assembly assembly = Assembly.Load(assemblyName);
             List<Type> ts = assembly.GetTypes().ToList();
 
-            var typeList = ts.Where(s => !s.IsInterface && typeof(BaseModel).IsAssignableFrom(s) && !s.GetTypeInfo().IsAbstract && s.FullName != "Sunny.Repository.DbModel.BaseModel");
+            var typeList = ts.Where(s => !s.IsInterface && (typeof(IDbModel).IsAssignableFrom(s) || typeof(IRelationMap).IsAssignableFrom(s)) && !s.GetTypeInfo().IsAbstract && s.FullName != "Sunny.Repository.DbModel.BaseModel");
             foreach (var item in typeList)
             {
                 var fullNameArr = item.FullName.Split(".");
-                var filePath = $@"{fullNameArr[fullNameArr.Length - 2]}\{fullNameArr[fullNameArr.Length - 1]}Config.cs";
+                var filePath = $@"{fullNameArr[fullNameArr.Length - 2]}\{fullNameArr[fullNameArr.Length - 1]}";
 
-                string outputFile = outputDir + filePath;
-
-                DbModelFluentApiConfig config = new DbModelFluentApiConfig(item, outputFileNamespace);
-
-                FileHelper.WriteFile(outputFile, config.TransformText(), false);
-
+                if (typeof(IRelationMap).IsAssignableFrom(item))
+                {
+                    RelationMapConfig config = new RelationMapConfig(item, outputFileNamespace);
+                    string outputFile = outputDir + @"\RelationConfig\" + filePath + "Map.cs";
+                    FileHelper.WriteFile(outputFile, config.TransformText(), false);
+                }
+                else
+                {
+                    DbModelConfig config = new DbModelConfig(item, outputFileNamespace);
+                    string outputFile = outputDir+@"\FieldConfig\" + filePath+"Config.cs";
+                    FileHelper.WriteFile(outputFile, config.TransformText(), false);
+                }
             }
  
             Console.WriteLine("DbModalFluentApiConfig Generated To:");

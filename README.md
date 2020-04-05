@@ -109,6 +109,93 @@
 
 ```
 
+*如果BaseModel里的某写字段你用不到,可以采用 private new 的形式覆盖,这样就不会在数据库中生成对应的字段,比如:*
+``` cs
+ public class Student : BaseModel
+    {
+        public Student() { }
+
+        private new long UpdaterId { get; set; }
+
+    }
+
+```
+
+
+当然,你也可以不继承自BaseModel,而是继承自IDbModel,这样的话所有的字段自己定义,继承自IDbModel是让T4模板自动生成FluentApi的配置文件(生成操作后边会讲)):
+
+``` cs
+ public class Student : IDbModel
+    {
+        public long Id {get;set;}
+
+        public string Name {get;set;}
+
+    }
+
+```
+
+另外,通过继承IRelationMap,可以通过T4模板生成多对多的关系配置如:
+
+``` cs
+  public class Role:BaseModel
+    {
+        public string Name { get; set; }
+
+        public string Remark { get; set; }
+
+        public IList<RoleUser> RoleUsers { get; set; }
+ 
+    }
+
+
+     public class User:BaseModel
+    {
+        public string UserName { get; set;}
+       
+        public string Password { get; set; }
+               
+        public IList<RoleUser> RoleUsers { get; set; }
+    }
+
+
+ public class RoleUser:IRelationMap
+    {
+        public long RoleId { get; set; }
+
+        public Role Role { get; set; }
+
+        public long UserId { get; set; }
+
+        public User User { get; set; }
+    }
+
+    
+```
+
+生成的文件如下:
+
+``` cs
+
+ public class RoleUserMap : IEntityTypeConfiguration<RoleUser>
+    {
+
+        public void Configure(EntityTypeBuilder<RoleUser> builder)
+        {
+            builder.ToTable("role_user");
+            builder.HasKey(t => new { t.RoleId, t.UserId });
+            builder.HasOne(t => t.Role).WithMany(x => x.RoleUsers).HasForeignKey(t => t.RoleId);
+            builder.HasOne(t => t.User).WithMany(x => x.RoleUsers).HasForeignKey(t => t.UserId);
+
+
+        }
+    }
+
+```
+
+
+
+
 
 *建议新建一个DbSet.cs文件,作为MyDbContext的分部类,把所有的DbSet放在该文件中*
 

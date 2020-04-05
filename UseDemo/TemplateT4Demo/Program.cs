@@ -1,4 +1,4 @@
-﻿using Sunny.TemplateT4.DbModelConfig;
+﻿using Sunny.TemplateT4.FluentApiConfig;
 using System;
 
 namespace TemplateT4Demo
@@ -10,7 +10,7 @@ namespace TemplateT4Demo
             string assemblyName = "RepositoryDemo";
             string configNameSpace = "RepositoryDemo.DbModel.ModelConfig";
 
-            DbModelFluentApiConfigProcesser.GenerateFiles(assemblyName,configNameSpace);
+            FluentApiConfigProcesser.GenerateFiles(assemblyName,configNameSpace);
             
             Console.Read();
         }

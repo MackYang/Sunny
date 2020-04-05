@@ -11,5 +11,6 @@ namespace RepositoryDemo.DbModel
         public string CategoryName { get; set; }
 
         public   IList<PassageCategory> PassageCategories { get; set; }
+
     }
 }
