@@ -559,7 +559,7 @@ services.AddDistributedRedisCache(options =>
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetRedis")]
-        public async Task<IResult<dynamic>> GetRedis()
+        public async Task<Result<dynamic>> GetRedis()
         {
             cache.SetString("aaa", "A杨家勇A");
 
@@ -611,11 +611,11 @@ msg:默认是"操作成功",当code不为0时,msg表示具体的失败原因,cod
 data:当code为0时表示返回的具体数据,code为非0时通常为null.
 
 
-另外,为了我们在维护Api时一眼就能看出给前端返回的数据内容,建议将返回的数据项创建为一个类,在Api的返回结果中显示的指定该类IResult<T>,如:
+另外,为了我们在维护Api时一眼就能看出给前端返回的数据内容,建议将返回的数据项创建为一个类,在Api的返回结果中显示的指定该类Result<T>,如:
 
 ```cs
         [HttpGet("GetOld")]
-        public async Task<IResult<Student>> GetOld()
+        public async Task<Result<Student>> GetOld()
         {
             var y = await studentServic.GetStudent2();
              return this.Success(y);
@@ -629,7 +629,7 @@ data:当code为0时表示返回的具体数据,code为非0时通常为null.
 当操作失败时,我们要用 return this.Fail("这是原因");向前端返回失败的原因.
 
 
-对于没有数据需要返回给前端,只要返回操作状态时,我们Api定义的返回值为IResult<T>的非泛型版本IResult
+对于没有数据需要返回给前端,只要返回操作状态时,我们Api定义的返回值非泛型版本Result
 
 ```cs
  /// <summary>
@@ -638,7 +638,7 @@ data:当code为0时表示返回的具体数据,code为非0时通常为null.
         /// <returns></returns>
         // GET api/values
         [HttpGet("Get1")]
-        public IResult Get1()
+        public Result Get1()
         {
 
             return this.Success();
@@ -653,7 +653,7 @@ data:当code为0时表示返回的具体数据,code为非0时通常为null.
 
 ```cs
  [HttpGet("GetDynamic")]
-public IResultata<dynamic> GetDynamic()
+public Result<dynamic> GetDynamic()
 {
     A a= from db...;
     this.SuccessDynamic(a.Extend(new { EnumCn = a.LocalType.GetDescribe() }));
@@ -670,7 +670,7 @@ public IResultata<dynamic> GetDynamic()
         /// </summary>
         /// <returns></returns>
         [HttpPost("pageTest")]
-        public IResult<PageData<dynamic>> pageTest(PageInfo pageInfo)
+        public Result<PageData<dynamic>> pageTest(PageInfo pageInfo)
         {
             var pageList = db.IdTest.Pagination(pageInfo);
             //让列表中返回的每一项都有At和Sort属性         
@@ -733,7 +733,7 @@ services.Configure<IpInfoQueryOption>(Configuration.GetSection("SunnyOptions:IpI
 再调用NetHelper的相关方法即可,如:
 ```cs
         [HttpGet("IpQuery")]
-        public IResult<IPInfo> IpQuery()
+        public Result<IPInfo> IpQuery()
         {
             //var ip=NetHelper.GetClientIP(this.HttpContext);
             var ip = "171.214.202.111";
@@ -741,7 +741,7 @@ services.Configure<IpInfoQueryOption>(Configuration.GetSection("SunnyOptions:IpI
         }
 
         [HttpGet("MailTest")]
-        public  IResult<string> MailTest()
+        public  Result<string> MailTest()
         {
             MailInfo mailInfo = new MailInfo();
             mailInfo.Content = "hello";
