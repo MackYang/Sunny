@@ -7,6 +7,7 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Quartz;
 using Quartz.Impl;
@@ -65,6 +66,7 @@ namespace ApiDemo
                     x.Converters.Add(new DecimalConverter());
                     x.DateFormatString = "yyyy-MM-dd HH:mm:ss";
                     x.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    x.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 })
                 .AddCors()
                 .AddFormatterMappings()
