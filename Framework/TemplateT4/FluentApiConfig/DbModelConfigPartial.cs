@@ -61,7 +61,7 @@ namespace Sunny.TemplateT4.FluentApiConfig
 
             if (hasIsDelete)
             {
-                queryFilterConfig = ".HasQueryFilter(x=>x.IsDelete)";
+                queryFilterConfig = ".HasQueryFilter(x=> !x.IsDelete)";
             }
             var tabConfig = $"builder.ToTable(\"{DbModelType.Name.UpperCharToUnderLine()}\"){queryFilterConfig};";
             return tabConfig;
