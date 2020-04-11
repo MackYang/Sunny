@@ -604,6 +604,13 @@
             <param name="jsonString">json字符串</param>
             <returns>动态解析类型的对象</returns>
         </member>
+        <member name="M:Sunny.Common.Helper.StringHelper.GetExName(System.String)">
+            <summary>
+            获取文件扩展名
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
         <member name="M:Sunny.Common.Helper.StringHelper.ToBase64(System.String)">
             <summary>
             转为Base64字符串

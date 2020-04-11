@@ -8,6 +8,16 @@ namespace Sunny.Common.Helper
     public static class StringHelper
     {
         /// <summary>
+        /// 获取文件扩展名
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static string GetExName(string fileName)
+        {
+            return fileName.Substring(fileName.LastIndexOf('.'));
+        }
+
+        /// <summary>
         /// 转为Base64字符串
         /// </summary>
         /// <param name="input"></param>
