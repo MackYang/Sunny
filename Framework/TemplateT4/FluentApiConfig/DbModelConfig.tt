@@ -16,7 +16,7 @@ namespace <#=ConfigNamespace#>
         
         public void Configure(EntityTypeBuilder<<#=DbModelType.Name#>> builder)
         {
-            builder.ToTable("<#=DbModelType.Name.UpperCharToUnderLine()#>");
+            <#=GetTableConfig() #>
             <#=GetFieldsConfig() #>
              
         }

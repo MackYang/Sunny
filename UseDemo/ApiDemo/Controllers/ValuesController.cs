@@ -203,7 +203,7 @@ namespace ApiDemo.Api.Controllers
         /// <param name="age"></param>
         /// <returns></returns>
         [HttpPost("pageTestCondition")]
-        public IResult<PageData<Student>> pageTestCondition(PageQuery<Student> pageQuery)
+        public Result<PageData<Student>> pageTestCondition(PageQuery<Student> pageQuery)
         {
             var pageList = db.Student.Where(x=>x.StudentName==pageQuery.Condition.StudentName).Pagination(pageQuery.PageInfo);
             return this.Success(pageList);

@@ -58,14 +58,14 @@ namespace Sunny.TemplateT4.FluentApiConfig
             
             #line default
             #line hidden
-            this.Write("> builder)\r\n        {\r\n            builder.ToTable(\"");
+            this.Write("> builder)\r\n        {\r\n            ");
             
             #line 19 "D:\Work\Code\Sunny\Framework\TemplateT4\FluentApiConfig\DbModelConfig.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(DbModelType.Name.UpperCharToUnderLine()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTableConfig()));
             
             #line default
             #line hidden
-            this.Write("\");\r\n            ");
+            this.Write("\r\n            ");
             
             #line 20 "D:\Work\Code\Sunny\Framework\TemplateT4\FluentApiConfig\DbModelConfig.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetFieldsConfig()));

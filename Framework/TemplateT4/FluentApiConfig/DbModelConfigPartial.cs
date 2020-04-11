@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Sunny.TemplateT4.FluentApiConfig
@@ -41,7 +42,7 @@ namespace Sunny.TemplateT4.FluentApiConfig
         {
             //当前类型的所有公共属性
             var allFields = DbModelType.GetProperties();
-             
+
             //排除导航属性字段,这些字段是以关系的形式处理
             var simpleTypeFields = allFields.Where(x => !x.PropertyType.IsGenericType && !typeof(IDbModel).IsAssignableFrom(x.PropertyType));
 
@@ -49,6 +50,21 @@ namespace Sunny.TemplateT4.FluentApiConfig
             simpleTypeFields.ToList().ForEach(x => sb.AppendLine(GetFieldConfig(x)));
 
             return sb.ToString();
+        }
+
+        public string GetTableConfig()
+        {
+            var queryFilterConfig = "";
+
+            //是否有软删除字段
+            var hasIsDelete = DbModelType.GetProperties().Count(x => x.Name == "IsDelete") > 0;
+
+            if (hasIsDelete)
+            {
+                queryFilterConfig = ".HasQueryFilter(x=>x.IsDelete)";
+            }
+            var tabConfig = $"builder.ToTable(\"{DbModelType.Name.UpperCharToUnderLine()}\"){queryFilterConfig};";
+            return tabConfig;
         }
 
         public string GetFieldsConfig()
