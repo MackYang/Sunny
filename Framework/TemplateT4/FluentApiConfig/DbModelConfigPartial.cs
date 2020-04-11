@@ -73,6 +73,11 @@ namespace Sunny.TemplateT4.FluentApiConfig
 
             string fieldConfig = $"builder.Property(x => x.{originName}).HasColumnName(\"{ destName}\")";
 
+            if (originName == "CreateTime")
+            {
+                fieldConfig += ".HasDefaultValueSql(\"now()\")";
+            }
+
             if (originName == "UpdateTime")
             {
                 fieldConfig += ".IsRowVersion()";

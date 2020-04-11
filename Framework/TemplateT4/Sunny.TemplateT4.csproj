@@ -10,10 +10,10 @@
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
     <Description>Sunny框架的T4模板部分,主要用于生成DbModel的FluentApi配置</Description>
     <Authors>MackYang</Authors>
-    <Version>1.0.5</Version>
-    <PackageReleaseNotes>优化了FluentApi生成的文件,增加了关系配置的生成</PackageReleaseNotes>
-    <AssemblyVersion>1.0.5.0</AssemblyVersion>
-    <FileVersion>1.0.5.0</FileVersion>
+    <Version>1.0.6</Version>
+    <PackageReleaseNotes>增加了数据库默认创建时间的设置</PackageReleaseNotes>
+    <AssemblyVersion>1.0.6.0</AssemblyVersion>
+    <FileVersion>1.0.6.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
