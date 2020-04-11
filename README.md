@@ -193,7 +193,7 @@
 
 ```
 
-
+如果您的字段中有名为IsDelete的字段,为自动生成默认的查询过滤器,如builder.ToTable("your_table").HasQueryFilter(x => x.IsDelete);
 
 
 

@@ -8,19 +8,20 @@ namespace RepositoryDemo.DbModel.ModelConfig
 {
     public class PassageConfig : IEntityTypeConfiguration<Passage>
     {
-        
+
         public void Configure(EntityTypeBuilder<Passage> builder)
         {
-            builder.ToTable("passage");
+            builder.ToTable("passage").HasQueryFilter(x => !x.IsDelete);
             builder.Property(x => x.Id).HasColumnName("id");
-builder.Property(x => x.Title).HasColumnName("title").HasMaxLength(30);
-builder.Property(x => x.LastEditTime).HasColumnName("last_edit_time");
-builder.Property(x => x.CreateTime).HasColumnName("create_time");
-builder.Property(x => x.CreaterId).HasColumnName("creater_id");
-builder.Property(x => x.UpdateTime).HasColumnName("update_time").IsRowVersion();
-builder.Property(x => x.UpdaterId).HasColumnName("updater_id");
+            builder.Property(x => x.Title).HasColumnName("title").HasMaxLength(30);
+            builder.Property(x => x.LastEditTime).HasColumnName("last_edit_time");
+            builder.Property(x => x.IsDelete).HasColumnName("is_delete");
+            builder.Property(x => x.CreateTime).HasColumnName("create_time").HasDefaultValueSql("now()");
+            builder.Property(x => x.CreaterId).HasColumnName("creater_id");
+            builder.Property(x => x.UpdateTime).HasColumnName("update_time").IsRowVersion();
+            builder.Property(x => x.UpdaterId).HasColumnName("updater_id");
 
-             
+
         }
     }
 }
