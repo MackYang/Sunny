@@ -101,7 +101,7 @@ namespace Sunny.TemplateT4.FluentApiConfig
 
             if (pi.PropertyType == typeof(String))
             {
-                fieldConfig += ".HasMaxLength(30)";
+                fieldConfig += ".HasMaxLength(30).IsRequired()";
             }
             if (pi.PropertyType == typeof(Decimal))
             {
