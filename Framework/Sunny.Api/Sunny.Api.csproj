@@ -9,9 +9,9 @@
     <RepositoryUrl>https://github.com/MackYang/Sunny.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/MackYang/Sunny</PackageProjectUrl>
     <PackageIconUrl>https://github.com/MackYang/Sunny/raw/master/Doc/sunny.png</PackageIconUrl>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Authors>MackYang</Authors>
-    <PackageReleaseNotes>解决Swagger文档生成的问题</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
