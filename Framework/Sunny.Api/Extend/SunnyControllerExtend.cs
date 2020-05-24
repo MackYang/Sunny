@@ -9,17 +9,17 @@ namespace Sunny.Api.Controllers
         #region 封装操作结果
         public static Result<T> GetResult<T>(this SunnyController controller, T responseData, int code, string msg)
         {
-            return new Result<T> { Code = code, Msg = msg , Data = responseData};
+            return new Result<T> { Code = code, Msg = msg, Data = responseData };
         }
 
-        public static Result<T> Success<T>(this SunnyController controller, T responseData) 
+        public static Result<T> Success<T>(this SunnyController controller, T responseData)
         {
             Result<T> r = new Result<T>();
             r.Data = responseData;
             return r;
         }
 
-       
+
 
         public static Result Success(this SunnyController controller)
         {
@@ -29,6 +29,11 @@ namespace Sunny.Api.Controllers
         public static Result Fail(this SunnyController controller, string msg)
         {
             return new Result { Code = Enums.OperationStatus.Fail.GetHashCode(), Msg = msg };
+        }
+
+        public static Result Fail(this SunnyController controller, string msg, int code)
+        {
+            return new Result { Code = code, Msg = msg };
         }
 
         #endregion
